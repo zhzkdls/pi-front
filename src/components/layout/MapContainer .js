@@ -8,12 +8,12 @@ const MapContainer = ({ searchPlace }) => {
   const [category, setCategory] = useState([]);
   useEffect(() => {
     // 마커를 클릭했을 때 해당 장소의 상세정보를 보여줄 커스텀오버레이입니다
-    const placeOverlay = new kakao.maps.CustomOverlay({ zIndex: 1 }),
+    var placeOverlay = new kakao.maps.CustomOverlay({ zIndex: 1 }),
       contentNode = document.createElement("div"), // 커스텀 오버레이의 컨텐츠 엘리먼트 입니다
       markers = [], // 마커를 담을 배열입니다
       currCategory = ""; // 현재 선택된 카테고리를 가지고 있을 변수입니다
-    const infowindow = new kakao.maps.InfoWindow({ zIndex: 1 });
-    // const markers = [];
+    var infowindow = new kakao.maps.InfoWindow({ zIndex: 1 });
+    var markers = [];
     const container = document.getElementById("myMap");
     const options = {
       center: new kakao.maps.LatLng(35.229744345195066, 129.08948986278313),
@@ -27,13 +27,13 @@ const MapContainer = ({ searchPlace }) => {
 
     kakao.maps.event.addListener(map, "idle", searchPlaces);
 
-    const mapTypeControl = new kakao.maps.MapTypeControl();
+    var mapTypeControl = new kakao.maps.MapTypeControl();
 
     // 지도의 상단 우측에 지도 타입 변경 컨트롤을 추가한다
     map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
 
     // 지도에 확대 축소 컨트롤을 생성한다
-    const zoomControl = new kakao.maps.ZoomControl();
+    var zoomControl = new kakao.maps.ZoomControl();
 
     // 지도의 우측에 확대 축소 컨트롤을 추가한다
     map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
@@ -95,9 +95,9 @@ const MapContainer = ({ searchPlace }) => {
         .getElementById(currCategory)
         .getAttribute("data-order");
 
-      for (let i = 0; i < places.length; i++) {
+      for (var i = 0; i < places.length; i++) {
         // 마커를 생성하고 지도에 표시합니다
-        let marker = addMarker(
+        var marker = addMarker(
           new kakao.maps.LatLng(places[i].y, places[i].x),
           order
         );
@@ -140,7 +140,7 @@ const MapContainer = ({ searchPlace }) => {
 
     // 지도 위에 표시되고 있는 마커를 모두 제거합니다
     function removeMarker() {
-      for (let i = 0; i < markers.length; i++) {
+      for (var i = 0; i < markers.length; i++) {
         markers[i].setMap(null);
       }
       markers = [];
@@ -148,7 +148,7 @@ const MapContainer = ({ searchPlace }) => {
 
     // 클릭한 마커에 대한 장소 상세정보를 커스텀 오버레이로 표시하는 함수입니다
     function displayPlaceInfo(place) {
-      let content =
+      var content =
         '<div class="placeinfo">' +
         '   <a class="title" href="' +
         place.place_url +
@@ -309,6 +309,11 @@ const MapContainer = ({ searchPlace }) => {
           height: "85vh",
         }}
       >
+        <div className="login">
+          <ul>
+            <li>sdlkfjsdlk</li>
+          </ul>
+        </div>
         <div>
           <ul id="category">
             {/* <li id="BK9" data-order="0">
@@ -336,9 +341,6 @@ const MapContainer = ({ searchPlace }) => {
               주차장
             </li>
           </ul>
-        </div>
-        <div className="login">
-          <h1>skdjflksadjflksajdfkljsldajfkl;dasjfl;</h1>
         </div>
       </div>
 
