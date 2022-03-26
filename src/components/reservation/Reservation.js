@@ -1,16 +1,18 @@
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
-import { Calendar } from "react-calendar";
-import "react-calendar/dist/Calendar.css";
 import moment from "moment";
 import { useNavigate} from "react-router-dom";
-import addDays from "date-fns/addDays";
 import "../../App.css";
-import ReservationHome from "./ReservationHome";
+import ReservationList from "./ReservationList";
+import DatePicker from 'react-datepicker';
+import "react-datepicker/dist/react-datepicker.css";
+import {ko} from "date-fns/esm/locale"
+import addDays from "date-fns/addDays";
+
 
 const Reservation = (props) => {
   
-  const [date, setDate] = useState(new Date());
+  const [startDate, setStartDate] = useState(new Date());
   const navigate = useNavigate();
   const nowTime = moment().format("YYYY-MM-DD hh:mm:ss");
   const [message, setMessage] = useState("");
@@ -39,7 +41,7 @@ const Reservation = (props) => {
       return navigate("/reservation");
     }
 
-    reservation.rsvtYmd = moment(date).format("YYYYMMDD");
+    reservation.rsvtYmd = moment(startDate).format("YYYYMMDD");
 
     fetch("http://localhost:8081/reservation/save", {
       method: "POST",
@@ -70,8 +72,8 @@ const Reservation = (props) => {
       <Form onSubmit={addReservation}>
         <Form.Group style={{display: "flex", flexDirection: "row", justifyContent: "space-around", alignItems: "center",}}>
           <div>
-            <Form.Label>예약날짜 선택</Form.Label>
-            <Calendar name="rsvtYmd" calendarType="US" onChange={setDate} value={date} minDate={new Date()} maxDate={addDays(new Date(), 14)}/>
+            <DatePicker name="rsvtYmd" selected={startDate} onChange={date => setStartDate(date)} minDate={new Date()} maxDate={addDays(new Date(), 30)} locale={ko} editable={false} disabledKeyboardNavigation inline
+              dateFormat="yyyy-MM-dd" />
           </div>
           <div>
             <Form.Label>예약시간 선택</Form.Label>
@@ -112,7 +114,7 @@ const Reservation = (props) => {
         <br></br>
       </Form>
       <div>
-        <ReservationHome />
+        <ReservationList />
       </div>
     </div>
   );
