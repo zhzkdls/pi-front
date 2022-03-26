@@ -10,24 +10,24 @@ class PostList extends Component {
         const { posts } = this.props;
 
         const postList = posts.map(
-            ({id, title, author, modifiedDate}) => (
+            ({pstg_seq, pstg_title, pstg_pblr_name, pstg_dt, pstg_cn}) => (
                 <PostItem
-                    id = {id}
-                    title = {title}
-                    author = {author}
-                    modifiedDate = {modifiedDate}
-                    key = {id}
+                    pstg_seq = {pstg_seq}
+                    pstg_title = {pstg_title}
+                    pstg_pblr_name = {pstg_pblr_name}
+                    pstg_cn = {pstg_cn}
+                    pstg_dt = {pstg_dt}
+                    key = {pstg_seq}
                 />
             )
         )
         return (
             <div>
-                 <div style= {styles.header}>
+                <div style= {styles.header}>
                     <p>일련번호</p>
                     <p>제목</p>
                     <p>작성자</p>
                     <p>작성일</p>
-                    <p>조회</p>
                 </div>
                 {postList}
             </div>
@@ -39,7 +39,7 @@ const styles = {
     header: {
         color: '#343a40',
         display: 'grid',
-        gridTemplateColumns: 'repeat(5, 1fr)',
+        gridTemplateColumns: 'repeat(4, 1fr)',
         padding: '3px',
         borderBottom: '4px solid lightgray',
         textAlign: 'center',

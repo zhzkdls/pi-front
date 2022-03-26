@@ -1,11 +1,11 @@
 import React , { useState } from 'react';
 
 const Search = ({handleSearch}) => {
-    const [text, setText] = useState(''); // input 창에 입력한 text
-    const [searchType, setType] = useState("title"); // select 창에서 고른 type
+    const [pstg_title, setPstg_title] = useState(''); // input 창에 입력한 text
+    const [searchType, setType] = useState("pstg_title"); // select 창에서 고른 type
 
     const handleInputChange = ({target}) => {
-        setText(target.value);
+        setPstg_title(target.value);
     }
 
     const handleTypeChange = (e) => {
@@ -15,19 +15,19 @@ const Search = ({handleSearch}) => {
     return (
         <div>
             <select onChange={handleTypeChange} style = {styles.select}>
-                <option value="title">제목</option>
-                <option value="content">내용</option>
+                <option value="pstg_title">제목</option>
+                <option value="pstg_cn">내용</option>
                 <option value="all">제목 + 내용</option>
             </select>
             <input onChange={handleInputChange} style = {styles.input}></input>
-            <button onClick={() => handleSearch(text, searchType)} style = {styles.searchBtn}>검색</button>
+            <button onClick={() => handleSearch(pstg_title, searchType)} style = {styles.searchBtn}>검색</button>
         </div>
     )
 }
 
 const styles = {
     input: {
-        width: '200px',
+        width: '500px',
         padding: '.3em', /* 여백으로 높이설정 */
     },
     searchBtn: {
@@ -43,6 +43,8 @@ const styles = {
         width: '100px',
         padding: '.3em .5em', /* 여백으로 높이설정 */
         marginRight: '5px',
+        
+        
     }
 }
 export default Search;

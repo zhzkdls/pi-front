@@ -1,81 +1,100 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { useHistory } from 'react-router-dom';
 
 const NewPost = () => {
-    const [title, setTitle] = useState(''); // 제목
-    const [content, setContent] = useState(''); // 내용
-    const [author, setAutor] = useState(''); // 작성자
-    const [files, setFile] = useState(null); // 첨부파일
+    const [pstg_title, setPstg_title] = useState(); // 제목
+    const [pstg_pblr_name, setPstg_pblr_name] = useState(""); // 작성자
+    const [pstg_cn, setPstg_cn] = useState(""); // 내용
+    // const [files, setFile] = useState(null); // 첨부파일
+    const history = useHistory();
+    
+    
 
-    const handleFiles = (e) => {
-        if(files === null) {
-            setFile([e.target.files[0]]);
-        }
-        else {
-            setFile([...files, e.target.files[0]]);
-        }
-    }
+    // const handleFiles = (e) => {
+    //     if(files === null) {
+    //         setFile([e.target.files[0]]);
+    //     }
+    //     else {
+    //         setFile([...files, e.target.files[0]]);
+    //     }
+    // }
+    
+
     const handleSubmit = () => {
-        if(title === '' || content === '' || author === '') alert('모든 내용을 다 입력하세요');
+        if(pstg_title === '' || pstg_cn === '' || pstg_pblr_name === '') alert('모든 내용을 다 입력하세요');
         else {
             const body = {
-                title: title,
-                content: content,
-                author: author
+                pstg_title: pstg_title,
+                pstg_cn: pstg_cn,
+                pstg_pblr_name: pstg_pblr_name,
             }
-            console.log(files);
-            axios.post("/posts", body)
+            // console.log(files);
+
+            axios.post("http://localhost:8080/api/posts", body)
             .then(async res => {
+                history.push("/board")
                 console.log(res.data);
-                await uploadFiles(res.data); 
-                document.location.href = "/"
+                // await uploadFiles(res.data); 
+                // document.location.href = "/"
             })
             .catch(error => {
                 console.log(error);
             })
         }
     }
-    const uploadFiles = (boardId) => {
-        console.log('들어옴');
-        const formData = new FormData(); // 업로드할 파일
-        formData.append("id", parseInt(boardId));
-        files.forEach(file => formData.append("files", file));
 
-        return new Promise((resolve, reject) => {
-            axios.post("/upload", formData)
-            .then(res => {
-                resolve(res.data);
-            })
-            .catch(error => {
-                alert(error);
-                reject();
-            })
-        })
-    }
+    // const uploadFiles = (boardId) => {
+    //     console.log('들어옴');
+    //     const formData = new FormData(); // 업로드할 파일
+    //     formData.append("pstg_seq", parseInt(boardId));
+    //     files.forEach(file => formData.append("files", file));
+
+    //     return new Promise((resolve, reject) => {
+    //         axios.post("http://localhost:8080/api/upload", formData)
+    //         .then(res => {
+    //             resolve(res.data);
+    //         })
+    //         .catch(error => {
+    //             alert(error);
+    //             reject();
+    //         })
+    //     })
+    // }
     
     return (
         <div style={styles.form} encType="multipart/form-data">
+
+            
             <div style={styles.container}>
                 <label style={styles.label}>제목</label>
-                <input style={styles.input} onChange={(e) => setTitle(e.target.value)} value={title}></input>
+                <input style={styles.input} onChange={(e) => setPstg_title(e.target.value)} value={pstg_title}></input>
             </div>
+
             <div style={styles.container}>
                 <label style={styles.label}>작성자</label>
-                <input style={styles.input} onChange={(e) => setAutor(e.target.value)} value={author}></input>
+                <input style={styles.input} onChange={(e) => setPstg_pblr_name(e.target.value)} value={pstg_pblr_name}></input>
             </div>
-            <textarea style={styles.textarea} onChange={(e) => setContent(e.target.value)} value={content}></textarea>
-            <div style={styles.container}>
+            
+            <select style={styles.container} >
+                <option value="">선택하세요</option>
+                <option value="1">공지사항</option>
+                <option value="2">민원게시판</option>
+            </select>
+            <textarea style={styles.textarea} onChange={(e) => setPstg_cn(e.target.value)} value={pstg_cn}></textarea>
+            
+            {/* <div style={styles.container}>
                 <label style={styles.label}>첨부파일</label>
                 <input style={styles.input} type="file" name="file" onChange={handleFiles}></input>
             </div>
             <div style={styles.container}>
                 <label style={styles.label}>첨부파일</label>
                 <input style={styles.input} type="file" name="file" onChange={handleFiles}></input>
-            </div>
+            </div> */}
             <div>
                 <button style={styles.okBtn} onClick={handleSubmit}>등록</button>
-                <Link to="/" style={styles.cancelBtn}>취소</Link>
+                <Link to="/board" style={styles.cancelBtn}>취소</Link>
             </div>
         </div>
     )
@@ -95,8 +114,9 @@ const styles = {
         display: 'flex',
         width: '60%',
         justifyContent: 'center',
-        padding: '5px',
+        padding: '9px',
         alignItems: 'center',
+        marginTop: '2px',
     },
     label: {
         flex: 0.4,
@@ -113,13 +133,13 @@ const styles = {
     },
     okBtn: {
         width: '70px',
-        marginTop: '20px',
+        marginBottom: '50%',
         marginLeft: '10px',
         border: 'none',
         fontSize: 'medium',
         borderRadius: '3px',
         color: '#f8f9fa',
-        background: '#343a40',
+        background: '#367ED1',
         padding: '.3em', /* 여백으로 높이설정 */
     },
     cancelBtn: {
@@ -129,8 +149,8 @@ const styles = {
         border: '1px solid black',
         fontSize: 'medium',
         borderRadius: '3px',
-        color: '#343a40',
-        background: '#f8f9fa',
+        color: '#f8f9fa',
+        background: '#C23932',
         padding: '.3em', /* 여백으로 높이설정 */
         textDecoration: 'none'
     }

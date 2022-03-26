@@ -1,9 +1,15 @@
 import React from 'react';
 
 const Header = () => {
+
     return (
         <div style = {styles.container}>
-            <h2 style = {styles.title}>공지사항</h2>
+            <h1 style = {styles.title}>공지사항</h1>
+            <select style={styles.container} >
+                <option value="">선택하세요</option>
+                <option to="/board" value="1">공지사항</option>
+                <option to="/notice"value="2">민원게시판</option>
+            </select>
         </div>
     )
 }
@@ -16,7 +22,7 @@ const styles = {
     },
     title: {
         marginTop: '50px',
-        marginBottom: '50px',
+        marginBottom: '40px',
         color: '#212529'
     },
 }
