@@ -24,7 +24,7 @@ function HolydayPicker() {
 
         holyDay.tcbizBgngYmd = moment(startDate).format("YYYYMMDD");
 
-        fetch("http://localhost:8081/hldy/save", {
+        fetch("http://localhost:8080/hldy/save", {
           method: "POST",
           headers: {
             "Content-Type": "application/json; charset=utf-8",

@@ -18,32 +18,29 @@ const Reservation = (props) => {
   const [message, setMessage] = useState("");
 
   const [reservation, setReservation] = useState({
-    rsvtSeq:0,
     fcSeq: 0,
     userId: "",
     userTel: "",
     rsvtYmd: "",
     rsvtHr: "",
     rsvtPdt: 0,
-    rsvtRtrchDt: "",
     rsvtAprvDt: nowTime,
     rsvtRcptDt: nowTime,
-    rsvtMdfcnDt: nowTime,
     operHr: "",
-    stat: 1,
+    stat:2,
   });
 
   const addReservation = (e) => {
-    e.preventDefault();
-
+    
     if (reservation.rsvtHr.length === 0) {
       alert("시간을 선택해주세요.");
       return navigate("/reservation");
     }
 
+    reservation.fcSeq = 0;
     reservation.rsvtYmd = moment(startDate).format("YYYYMMDD");
 
-    fetch("http://localhost:8081/reservation/save", {
+    fetch("http://localhost:8080/reservation/save", {
       method: "POST",
       headers: {
         "Content-Type": "application/json; charset=utf-8",
@@ -53,11 +50,12 @@ const Reservation = (props) => {
     .then(response => response.text())
     .then(message => {
       setMessage(message);
-      if(message === "이미 예약된 시간입니다."){
+      if(message !== "예약 완료!"){
           alert("이미 예약된 시간입니다.");
       }
   });
     console.log(reservation);
+    navigate("/reservation");
   };
 
   const changeValue = (e) => {
@@ -72,8 +70,8 @@ const Reservation = (props) => {
       <Form onSubmit={addReservation}>
         <Form.Group style={{display: "flex", flexDirection: "row", justifyContent: "space-around", alignItems: "center",}}>
           <div>
-            <DatePicker name="rsvtYmd" selected={startDate} onChange={date => setStartDate(date)} minDate={new Date()} maxDate={addDays(new Date(), 30)} locale={ko} editable={false} disabledKeyboardNavigation inline
-              dateFormat="yyyy-MM-dd" />
+            <DatePicker name="rsvtYmd" selected={startDate} onChange={date => setStartDate(date)} minDate={addDays(new Date(), 1)} 
+            maxDate={addDays(new Date(), 7)} locale={ko} disabledKeyboardNavigation inline showOtherMonths="false"/>
           </div>
           <div>
             <Form.Label>예약시간 선택</Form.Label>
@@ -110,7 +108,6 @@ const Reservation = (props) => {
             </Button>
           </div>
         </Form.Group>
-
         <br></br>
       </Form>
       <div>

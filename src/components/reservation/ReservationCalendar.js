@@ -16,8 +16,6 @@ function ReservationCalendar() {
       return current.isBefore(today)
     }
 
-
-
     return ( 
         <div>
             <label>예약날짜 선택</label>

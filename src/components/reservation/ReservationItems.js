@@ -2,22 +2,33 @@ import { Link } from "react-router-dom";
 import Table from 'react-bootstrap/Table';
 import axios from "axios";
 import { Button } from "react-bootstrap";
+import { useNavigate} from "react-router-dom";
+import React, {useState} from 'react';
 
 
 const ReservationItems = (props) => {
     const { rsvtSeq, fcSeq, userId, userTel, rsvtYmd, rsvtHr, rsvtPdt, rsvtRtrchDt, rsvtAprvDt, rsvtRcptDt, rsvtMdfcnDt, operHr, stat} = props.reservation;
+    const [message, setMessage] = useState("");
+    const navigate = useNavigate();
 
     const deleteReservation = () => {
-        axios
-        .delete(`http://localhost:8081/reservation/delete/${rsvtSeq}`)
-        .then((res) => window.location.replace("/"))
-        .catch((error) => console.log(error));
+        fetch(`http://localhost:8080/reservation/delete/${rsvtSeq}`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json; charset=utf-8",
+        }, })
+        .then(response => response.text())
+        .then(message => {
+            setMessage(message);
+            console.log(message);
+        });
+        navigate("/reservation");
     };
 
 
     return (
         <div style={{textAlign: "center"}} >
-            <Table striped bordered hover variant="dark">
+            <Table striped bordered hover variant="dark" style={{textAlign: "center", margin: "0px", padding: "0px"}}>
             <tbody>
                 <tr>
                 <td>{rsvtSeq}</td>
@@ -33,7 +44,7 @@ const ReservationItems = (props) => {
                 <td>{rsvtMdfcnDt}</td>
                 <td>{operHr}</td>
                 <td>{stat}</td>
-                <td><Link to={"http://localhost:8081/reservation/edit/" + rsvtSeq} className="btn btn-primary" variant="primary">예약수정</Link></td>
+                <td><Link to={"http://localhost:8080/reservation/edit/" + rsvtSeq} className="btn btn-primary" variant="primary">예약수정</Link></td>
                 <td><Button onClick={deleteReservation} className="btn btn-primary" variant="primary">예약취소</Button></td>
                 </tr>
             </tbody>

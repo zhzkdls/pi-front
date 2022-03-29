@@ -6,7 +6,7 @@ const ReservationList = (props) => {
     const [reservations, setReservations] = useState([]);
   
     useEffect(() => {
-      fetch("http://localhost:8081/reservation/getAll")
+      fetch("http://localhost:8080/reservation/getAll")
         .then((res) => res.json())
         .then((res) => {
           console.log(1, res);
