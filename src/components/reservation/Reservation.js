@@ -68,15 +68,20 @@ const Reservation = (props) => {
   return (
     <div className="container">
       <Form onSubmit={addReservation}>
-        <Form.Group style={{display: "flex", flexDirection: "row", justifyContent: "space-around", alignItems: "center",}}>
+        {/* <Form.Group style={{display: "flex", flexDirection: "row", justifyContent: "space-evenly", alignItems: "center",}}> */}
+        <Form.Group style={styles.Ror}>
+
+
           <div>
             <DatePicker name="rsvtYmd" selected={startDate} onChange={date => setStartDate(date)} minDate={addDays(new Date(), 1)} 
             maxDate={addDays(new Date(), 7)} locale={ko} disabledKeyboardNavigation inline showOtherMonths="false"/>
           </div>
+
+
           <div>
             <Form.Label>예약시간 선택</Form.Label>
-            <br></br>
-            <input type="radio" name="rsvtHr" value="09:00~10:00" onChange={changeValue}/>
+            <br ></br>
+            <input  type="radio" name="rsvtHr" value="09:00~10:00" onChange={changeValue}/>
             09:00~10:00
             <br></br>
             <input type="radio" name="rsvtHr" value="10:00~11:00" onChange={changeValue}/>
@@ -103,7 +108,8 @@ const Reservation = (props) => {
             <input type="radio" name="rsvtHr" value="17:00~18:00" onChange={changeValue}/>
             17:00~18:00
             <br></br>
-            <Button variant="primary" type="submit">
+            
+            <Button style={styles.Bto} variant="primary" type="submit">
               예약
             </Button>
           </div>
@@ -117,4 +123,24 @@ const Reservation = (props) => {
   );
 }
 
+const styles = {
+  Bto : {
+      position: 'absolute',
+      width: '5%',
+      marginTop: '5%',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center'
+  },
+  
+  Ror : {
+      display: "flex", 
+      flexDirection: "row", 
+      justifyContent: "space-evenly",
+      alignItems: "center",
+  },
+  
+}
+  
 export default Reservation;
