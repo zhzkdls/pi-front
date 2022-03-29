@@ -13,16 +13,17 @@ const ReservationItems = (props) => {
 
     const deleteReservation = () => {
         fetch(`http://localhost:8080/reservation/delete/${rsvtSeq}`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json; charset=utf-8",
-        }, })
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json; charset=utf-8",
+            }, 
+        })
         .then(response => response.text())
         .then(message => {
             setMessage(message);
             console.log(message);
         });
-        navigate("/reservation");
+        window.location.reload();
     };
 
 
@@ -45,7 +46,8 @@ const ReservationItems = (props) => {
                 <td>{operHr}</td>
                 <td>{stat}</td>
                 <td><Link to={"http://localhost:8080/reservation/edit/" + rsvtSeq} className="btn btn-primary" variant="primary">예약수정</Link></td>
-                <td><Button onClick={deleteReservation} className="btn btn-primary" variant="primary">예약취소</Button></td>
+                <td>
+                    <Button type="button" onClick={deleteReservation} className="btn btn-primary" variant="primary">예약취소</Button></td>
                 </tr>
             </tbody>
             </Table>

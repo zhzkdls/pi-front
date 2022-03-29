@@ -70,11 +70,13 @@ const Reservation = (props) => {
       <Form onSubmit={addReservation}>
         <Form.Group style={{display: "flex", flexDirection: "row", justifyContent: "space-around", alignItems: "center",}}>
           <div>
+            <label>예약 날짜 선택</label>
+            <br></br>
             <DatePicker name="rsvtYmd" selected={startDate} onChange={date => setStartDate(date)} minDate={addDays(new Date(), 1)} 
             maxDate={addDays(new Date(), 7)} locale={ko} disabledKeyboardNavigation inline showOtherMonths="false"/>
           </div>
           <div>
-            <Form.Label>예약시간 선택</Form.Label>
+            <Form.Label>예약 시간 선택</Form.Label>
             <br></br>
             <input type="radio" name="rsvtHr" value="09:00~10:00" onChange={changeValue}/>
             09:00~10:00
