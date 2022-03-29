@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PostItem from './PostItem';
+import Search from './Search';
 
 class PostList extends Component {
     // 리렌더링을 할 지 말지 결정 (기본값은 true)
@@ -10,19 +11,20 @@ class PostList extends Component {
         const { posts } = this.props;
 
         const postList = posts.map(
-            ({pstg_seq, pstg_title, pstg_pblr_name, pstg_dt, pstg_cn}) => (
+            ({pstgSeq, pstgTitle, pstgPblrName, pstgDt, pstgCn}) => (
                 <PostItem
-                    pstg_seq = {pstg_seq}
-                    pstg_title = {pstg_title}
-                    pstg_pblr_name = {pstg_pblr_name}
-                    pstg_cn = {pstg_cn}
-                    pstg_dt = {pstg_dt}
-                    key = {pstg_seq}
+                    pstgSeq = {pstgSeq}
+                    pstgTitle = {pstgTitle}
+                    pstgPblrName = {pstgPblrName}
+                    pstgCn = {pstgCn}
+                    pstgDt = {pstgDt}
+                    key = {pstgSeq}
                 />
             )
         )
         return (
-            <div>
+            <div style = {styles.container}>
+                <h2 style = {styles.title}>공지사항</h2>
                 <div style= {styles.header}>
                     <p>일련번호</p>
                     <p>제목</p>
@@ -44,7 +46,18 @@ const styles = {
         borderBottom: '4px solid lightgray',
         textAlign: 'center',
         fontSize: '20px'
-    }
+    },
+
+    container: {
+        textAlign: 'center',
+        width: '100%',
+        borderBottom: '1px solid lightgray',
+    },
+    title: {
+        marginTop: '50px',
+        marginBottom: '40px',
+        color: '#212529'
+    },
 }
 
 export default PostList;

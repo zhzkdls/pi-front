@@ -4,16 +4,16 @@ import './PostItem.css'
 
 class PostItem extends Component {
     render() {
-        const { pstg_seq, pstg_title, pstg_pblr_name, pstg_dt } = this.props;
+        const { pstgSeq, pstgTitle, pstgPblrName, pstgDt } = this.props;
 
         return (
             <div className='postItem'>
-                <div>{pstg_seq}</div>  {/* id값 => 일련번호 */}
+                <div>{pstgSeq}</div>  {/* id값 => 일련번호 */}
                 <div>
-                    <Link to={`/posts/${pstg_seq}`} className="link">{pstg_title}</Link>
+                    <Link to={`/posts/${pstgSeq}`} className="link">{pstgTitle}</Link>
                 </div>
-                <div>{pstg_pblr_name}</div>
-                <div>{pstg_dt}</div>
+                <div>{pstgPblrName}</div>
+                <div>{pstgDt}</div>
             </div>
         )
     }

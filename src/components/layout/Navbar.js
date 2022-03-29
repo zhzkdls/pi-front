@@ -47,7 +47,7 @@ function NavBar() {
               <Nav className="justify-content-end flex-grow-1 pe-3">
                 <Nav.Link href="/">Home</Nav.Link>
                 <Nav.Link href="/login">이용안내</Nav.Link>
-                <Nav.Link href="/board">공지사항</Nav.Link>
+                <Nav.Link href="/post">공지사항</Nav.Link>
                 <Nav.Link href="/login">민원게시판</Nav.Link>
                 <Nav.Link href="/login">마이페이지</Nav.Link>
                 <Nav.Link href="/Reservation">예약내역</Nav.Link>

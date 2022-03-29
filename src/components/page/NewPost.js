@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import { useHistory } from 'react-router-dom';
 
 const NewPost = () => {
-    const [pstg_title, setPstg_title] = useState(); // 제목
-    const [pstg_pblr_name, setPstg_pblr_name] = useState(""); // 작성자
-    const [pstg_cn, setPstg_cn] = useState(""); // 내용
+    const [pstgTitle, setPstgTitle] = useState(); // 제목
+    const [pstgPblrName, setPstgPblrName] = useState(""); // 작성자
+    const [pstgCn, setPstgCn] = useState(""); // 내용
+    const [stat, setStat] = useState(1); //삭제할떄 상태 값
+
     // const [files, setFile] = useState(null); // 첨부파일
-    const history = useHistory();
     
     
 
@@ -23,21 +23,21 @@ const NewPost = () => {
     
 
     const handleSubmit = () => {
-        if(pstg_title === '' || pstg_cn === '' || pstg_pblr_name === '') alert('모든 내용을 다 입력하세요');
+        if(pstgTitle === '' || pstgCn === '' || pstgPblrName === '') alert('모든 내용을 다 입력하세요');
         else {
             const body = {
-                pstg_title: pstg_title,
-                pstg_cn: pstg_cn,
-                pstg_pblr_name: pstg_pblr_name,
+                pstgTitle: pstgTitle,
+                pstgCn: pstgCn,
+                pstgPblrName: pstgPblrName,
+                stat: 1,
             }
             // console.log(files);
 
             axios.post("http://localhost:8080/api/posts", body)
             .then(async res => {
-                history.push("/board")
                 console.log(res.data);
                 // await uploadFiles(res.data); 
-                // document.location.href = "/"
+                document.location.href = "/post"
             })
             .catch(error => {
                 console.log(error);
@@ -69,20 +69,16 @@ const NewPost = () => {
             
             <div style={styles.container}>
                 <label style={styles.label}>제목</label>
-                <input style={styles.input} onChange={(e) => setPstg_title(e.target.value)} value={pstg_title}></input>
+                <input style={styles.input} onChange={(e) => setPstgTitle(e.target.value)} value={pstgTitle}></input>
             </div>
 
             <div style={styles.container}>
                 <label style={styles.label}>작성자</label>
-                <input style={styles.input} onChange={(e) => setPstg_pblr_name(e.target.value)} value={pstg_pblr_name}></input>
+                <input style={styles.input} onChange={(e) => setPstgPblrName(e.target.value)} value={pstgPblrName}></input>
             </div>
             
-            <select style={styles.container} >
-                <option value="">선택하세요</option>
-                <option value="1">공지사항</option>
-                <option value="2">민원게시판</option>
-            </select>
-            <textarea style={styles.textarea} onChange={(e) => setPstg_cn(e.target.value)} value={pstg_cn}></textarea>
+            
+            <textarea style={styles.textarea} onChange={(e) => setPstgCn(e.target.value)} value={pstgCn}></textarea>
             
             {/* <div style={styles.container}>
                 <label style={styles.label}>첨부파일</label>
@@ -93,8 +89,8 @@ const NewPost = () => {
                 <input style={styles.input} type="file" name="file" onChange={handleFiles}></input>
             </div> */}
             <div>
-                <button style={styles.okBtn} onClick={handleSubmit}>등록</button>
-                <Link to="/board" style={styles.cancelBtn}>취소</Link>
+                <button style={styles.okBtn} onClick={handleSubmit} >등록</button>
+                <Link to="/post" style={styles.cancelBtn}>취소</Link>
             </div>
         </div>
     )

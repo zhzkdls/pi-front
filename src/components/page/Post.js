@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import PostList from './PostList';
-import Search from './Search';
+import PostList from '../board/PostList';
+import Search from '../board/Search';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
@@ -26,7 +26,7 @@ class Post extends Component {
   
     // 게시글 검색
     handleSearch = (keyword, type) => {
-      const url = keyword !== '' ? "http://localhost:8080/api/search/" + keyword + "/Board" + type
+      const url = keyword !== '' ? "http://localhost:8080/api/search/" + keyword + "/post" + type
       : "http://localhost:8080/api/getAll";
   
       this.handleGetList(url);
@@ -70,7 +70,7 @@ class Post extends Component {
       padding: '.6em', /* 여백으로 높이설정 */
       position: 'fixed',
       right: '10%',
-      bottom: '75%',
+      bottom: '82%',
       border: 'none',
       fontSize: 'medium',
       borderRadius: '6px',

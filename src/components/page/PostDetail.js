@@ -3,11 +3,13 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 // import FileSaver from 'file-saver';
 
-const PostContent = ({match}) => {
-    const {pstg_seq} = match.params;
-    const [pstg_title, setPstg_title] = useState('');
-    const [pstg_cn, setPstg_cn] = useState('');
+    const PostDetail = () => {
+    const [pstgSeq, setPstgSeq] = useState('');
+    const [pstgTitle, setPstgTitle] = useState('');
+    const [pstgCn, setPstgCn] = useState('');
+    const [pstgPblrName, setPstgPblrName] = useState('');
     const [isEdit, setEdit] = useState(false);
+    const [stat, setStat] = useState(1);
     // const [files, setFiles] = useState([{
     //     pstg_seq: 0,
     //     fileOriName: '',
@@ -16,8 +18,9 @@ const PostContent = ({match}) => {
 
     useEffect(() => {
         getPost().then(data => {
-            setPstg_title(data.pstg_title);
-            setPstg_cn(data.pstg_cn);
+            setPstgTitle(data.pstgTitle);
+            setPstgCn(data.pstgCn);
+            setPstgPblrName(data.pstgPblrName);
         });
         // getFiles().then(data => {
         //     // 파일 존재하는 경우 
@@ -25,15 +28,17 @@ const PostContent = ({match}) => {
         //         setFiles(data);
         //     }
         // });
-    }, [pstg_seq]);
+    }, [pstgSeq]);
 
     // 해당 게시글 내용 불러오기 
     const getPost = () => {
         // const url = "http://localhost:8080/api/find/" + pstg_seq;
-        const url = `http://localhost:8080/api/find/${pstg_seq}`;
+        const url = `http://localhost:8080/api/find/${pstgSeq}`;
         const body = {
-            pstg_title: pstg_title,
-            pstg_cn: pstg_cn,
+            pstgTitle: pstgTitle,
+            pstgCn: pstgCn,
+            pstgPblrName: pstgPblrName,
+            stat: 1,
         }
 
         return new Promise((resolve, reject) => {
@@ -64,29 +69,32 @@ const PostContent = ({match}) => {
 
     // 게시글 삭제
     const handleDelete = () => {
-        const postUrl = "http://localhost:8080/api/delete/" + pstg_seq;
+        // const postUrl = "http://localhost:8080/api/delete/" + pstg_seq;
+        const postUrl = `http://localhost:8080/api/delete/${pstgSeq}`;
 
-        axios.delete(postUrl)
+        axios.post(postUrl)
         .then(res => {
-            // window.location.href="/"
+            window.location.href="/post"
         })
         .catch(error => {
           console.log(error);
         })
 
-        const fileUrl = "http://localhost:8080/api/delete/" + pstg_seq;
-        axios.get(fileUrl)
-        .then(res => {
-            // window.location.href="/"
-        }).catch();
+        // // const fileUrl = "http://localhost:8080/api/delete/" + pstg_seq;
+        // const fileUrl = `http://localhost:8080/api/delete/${pstg_seq}`;
+        // axios.get(fileUrl)
+        // .then(res => {
+        //     // window.location.href="/"
+        // }).catch();
     }
 
     // 게시글 수정
     const handleUpdate = () => {
-        const url = "http://localhost:8080/api/update/" + pstg_seq;
-        const body = { pstg_title, pstg_cn }
+        // const url = "http://localhost:8080/api/update/" + pstgSeq;
+        const url = `http://localhost:8080/api/update/${pstgSeq}`;
+        const body = { pstgTitle, pstgCn, stat, pstgPblrName, pstgSeq}
           
-        axios.put(url, body)
+        axios.post(url, body)
         .then()
         
         .catch(error => {
@@ -113,18 +121,26 @@ const PostContent = ({match}) => {
 
     return (
         <div style={styles.form}>
-
             <div style={styles.container}>
                 <label style={styles.label}>제목</label>
                 {
-                    isEdit === false ? <div style={styles.pstg_cn}>{pstg_title}</div>
-                    : <input style={styles.pstg_cn} onChange={(e) => setPstg_title(e.target.value)} value={pstg_title}></input>
+                    isEdit === false ? <div style={styles.pstg_cn}>{pstgTitle}</div>
+                    : <input style={styles.pstg_cn} onChange={(e) => setPstgTitle(e.target.value)} value={pstgTitle}></input>
                 }
             </div>
 
+            <div style={styles.container}>
+                <label style={styles.label}>작성자</label>
+                {
+                    isEdit === true ? <div style={styles.pstg_cn}>{pstgPblrName}</div>
+                    : <input style={styles.pstg_cn} onChange={(e) => setPstgTitle(e.target.value)} value={pstgPblrName}></input>
+                }
+            </div>
+
+
             {
-                isEdit === false ? <div style={styles.textarea}>{pstg_cn}</div>
-                :  <textarea style={styles.textarea} onChange={(e) => setPstg_cn(e.target.value)} value={pstg_cn}></textarea>
+                isEdit === false ? <div style={styles.textarea}>{pstgCn}</div>
+                :  <textarea style={styles.textarea} onChange={(e) => setPstgCn(e.target.value)} value={pstgCn}></textarea>
             }
             {/* {
                 files.map((file, i) => 
@@ -136,8 +152,8 @@ const PostContent = ({match}) => {
                     isEdit === false ? (
                         <div>
                             <button style={styles.Btn} onClick={() => setEdit(true)}>수정</button>
-                            <button style={styles.Btn} onClick={() => handleDelete(pstg_seq)}>삭제</button>
-                            <Link to="/" style={styles.cancelBtn}>목록</Link>
+                            <button style={styles.Btn} onClick={() => handleDelete(pstgSeq)}>삭제</button>
+                            <Link to="/post" style={styles.cancelBtn}>목록</Link>
                         </div>
                     ) :
                     (
@@ -212,4 +228,4 @@ const styles = {
         marginBottom: '10px'
     }
 }
-export default PostContent;
+export default PostDetail;
