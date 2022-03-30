@@ -11,7 +11,7 @@ function NavBara() {
                     <Link to={"/"}>
                         <img src="./img/GO.png" alt="Xbox Logo" id="logo"/>
                         <span id="logoText">
-                            GO HOME
+                            Go Home   
                         </span>
                     </Link>
                         <Nav.Link href="#deets"></Nav.Link>

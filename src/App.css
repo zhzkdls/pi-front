@@ -265,3 +265,41 @@
   margin: 0;
   padding: 0;
 }
+
+
+
+
+
+/* ///////////// 달력 크기 조절 ///// */
+
+
+.react-datepicker {
+  font-size: 1.3rem !important;
+
+ } 
+.react-datepicker__current-month {
+  font-size: 2.5rem !important; 
+ }
+.react-datepicker__header {
+  padding-top: 9px !important; 
+  padding-right: 10px !important; 
+ }
+.react-datepicker__navigation {
+  top: 14px !important;
+ }
+.react-datepicker__day-name, .react-datepicker__day {    /* /위로/왼쪽/아래/오른쪽/   */
+  margin: 1.3rem 1.9rem 1.2rem 5.5rem !important; 
+ } 
+.saturday {
+  color: rgb(0, 0, 255) !important; 
+ }
+.sunday {
+  color: rgb(255, 0, 0) !important; 
+ }
+.react-datepicker__day--disabled {
+  color: #cccccc !important; 
+ }
+
+
+
+

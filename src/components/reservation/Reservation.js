@@ -10,6 +10,8 @@ import {ko} from "date-fns/esm/locale"
 import addDays from "date-fns/addDays";
 
 
+
+
 const Reservation = (props) => {
   
   const [startDate, setStartDate] = useState(new Date());
@@ -68,47 +70,47 @@ const Reservation = (props) => {
   return (
     <div className="container">
       <Form onSubmit={addReservation}>
-        {/* <Form.Group style={{display: "flex", flexDirection: "row", justifyContent: "space-evenly", alignItems: "center",}}> */}
-        <Form.Group style={styles.Ror}>
+        <Form.Group>
 
 
-          <div>
+          <div style={styles.BBk}>
+            <label  style={styles.BBs}> 예약 날짜 선택</label>
+            <br></br>
             <DatePicker name="rsvtYmd" selected={startDate} onChange={date => setStartDate(date)} minDate={addDays(new Date(), 1)} 
             maxDate={addDays(new Date(), 7)} locale={ko} disabledKeyboardNavigation inline showOtherMonths="false"/>
           </div>
 
 
-          <div>
-            <Form.Label>예약시간 선택</Form.Label>
-            <br ></br>
-            <input  type="radio" name="rsvtHr" value="09:00~10:00" onChange={changeValue}/>
-            09:00~10:00
-            <br></br>
-            <input type="radio" name="rsvtHr" value="10:00~11:00" onChange={changeValue}/>
-            10:00~11:00
-            <br></br>
-            <input type="radio" name="rsvtHr" value="11:00~12:00" onChange={changeValue}/>
-            11:00~12:00
-            <br></br>
-            <input type="radio" name="rsvtHr" value="12:00~13:00" onChange={changeValue}/>
-            12:00~13:00
-            <br></br>
-            <input type="radio" name="rsvtHr" value="13:00~14:00" onChange={changeValue}/>
-            13:00~14:00
-            <br></br>
-            <input type="radio" name="rsvtHr" value="14:00~15:00" onChange={changeValue}/>
-            14:00~15:00
-            <br></br>
-            <input type="radio" name="rsvtHr" value="15:00~16:00" onChange={changeValue}/>
-            15:00~16:00
-            <br></br>
-            <input type="radio" name="rsvtHr" value="16:00~17:00" onChange={changeValue}/>
-            16:00~17:00
-            <br></br>
-            <input type="radio" name="rsvtHr" value="17:00~18:00" onChange={changeValue}/>
-            17:00~18:00
-            <br></br>
-            
+            <Form.Label style={styles.BBa}>예약 시간 선택</Form.Label>
+            <div style={styles.BBt}>
+              <br></br>
+              <input type="radio" name="rsvtHr" value="09:00~10:00" onChange={changeValue}/>
+              09:00~10:00
+              <br></br>
+              <input type="radio" name="rsvtHr" value="10:00~11:00" onChange={changeValue}/>
+              10:00~11:00
+              <br></br>
+              <input type="radio" name="rsvtHr" value="11:00~12:00" onChange={changeValue}/>
+              11:00~12:00
+              <br></br>
+              <input type="radio" name="rsvtHr" value="12:00~13:00" onChange={changeValue}/>
+              12:00~13:00
+              <br></br>
+              <input type="radio" name="rsvtHr" value="13:00~14:00" onChange={changeValue}/>
+              13:00~14:00
+              <br></br>
+              <input type="radio" name="rsvtHr" value="14:00~15:00" onChange={changeValue}/>
+              14:00~15:00
+              <br></br>
+              <input type="radio" name="rsvtHr" value="15:00~16:00" onChange={changeValue}/>
+              15:00~16:00
+              <br></br>
+              <input type="radio" name="rsvtHr" value="16:00~17:00" onChange={changeValue}/>
+              16:00~17:00
+              <br></br>
+              <input type="radio" name="rsvtHr" value="17:00~18:00" onChange={changeValue}/>
+              17:00~18:00
+              <br></br>
             <Button style={styles.Bto} variant="primary" type="submit">
               예약
             </Button>
@@ -124,22 +126,97 @@ const Reservation = (props) => {
 }
 
 const styles = {
-  Bto : {
+
+  Bto : { //예약 버튼
       position: 'absolute',
-      width: '5%',
-      marginTop: '5%',
-      display: 'flex',
+      flex: 1,
+      flexDirection: 'row',
+      marginTop: '3%',
       flexDirection: 'column',
-      justifyContent: 'center',
-      alignItems: 'center'
+      borderRadius: '10px',
+      top: '100%',
+      right: '36%',
+      fontSize: '23px',
   },
+
+
   
-  Ror : {
-      display: "flex", 
-      flexDirection: "row", 
-      justifyContent: "space-evenly",
-      alignItems: "center",
+
+
+    BBt : { //시간 
+
+      padding: '1em', /* 여백으로 높이설정 */
+      position: 'absolute',
+      marginTop: '3%',
+      fontSize: '34px',
+
+      right: '10%',
+      bottom: '15%',
+      borderRadius: '30px',
+      color: '#000000',
+      background: '#ecebf3',
+      
+
   },
+
+  BBa : { //예약시간선택
+    position: 'absolute',
+    flex: 1,
+    flexDirection: 'row',
+    marginTop: '3%',
+    flexDirection: 'column',
+    
+    padding: '1em', /* 여백으로 높이설정 */
+    position: 'fixed',
+    right: '12%',
+    bottom: '79%',
+    fontSize: '22px',
+    borderRadius: '20px',
+    color: '#ffffff',
+    background: '#687693',
+    width: '10%',
+    height: '70px',
+    
+
+  },
+
+  BBs : { //예약날짜선택
+    position: 'absolute',
+    flex: 1,
+    flexDirection: 'row',
+    marginTop: '3%',
+    flexDirection: 'column',
+    
+    padding: '1em', /* 여백으로 높이설정 */
+    position: 'fixed',
+    right: '60%',
+    bottom: '80%',
+    fontSize: '22px',
+    borderRadius: '20px',
+    color: '#ffffff',
+    background: '#687693  ',
+    width: '10%',
+    height: '70px',
+    
+
+  },
+
+  BBk : { //달력
+    
+    padding: '2em', /* 여백으로 높이설정 */
+    marginTop: '3%',
+    right: '37%',
+    bottom: '15%',
+    borderRadius: '30px',
+    color: '#000000',
+    background: '#ecebf3',
+    
+    // position: 'fixed',
+    position: 'absolute',
+
+    
+  },
+
   
 }
   

@@ -20,7 +20,7 @@ function ReservationCalendar() {
         <div>
             <label>예약날짜 선택</label>
             <Calendar name="rsvtYmd" calendarType="US" onChange={setStartDate} value={startDate} minDate={new Date()} maxDate={addDays(new Date(), 30)}
-            isValidDate={disableFutureDt} Other Days="Disable"/>
+            isValidDate={disableFutureDt} OtherDays="Disable"/>
             <DatePicker selected={startDate} onChange={date => setStartDate(date)} minDate={new Date()} maxDate={addDays(new Date(), 30)} locale={ko} editable={false} disabledKeyboardNavigation inline
             dateFormat="yyyy-MM-dd" />
         </div>
