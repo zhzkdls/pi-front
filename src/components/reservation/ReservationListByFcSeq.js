@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import ReservationItems from "./ReservationItems";
+import {useParams} from "react-router-dom";
 
-
-const ReservationList = (props) => {
+const ReservationListByFcSeq = (props) => {
     const [reservations, setReservations] = useState([]);
+    const fcSeq = useParams().fcSeq;
   
     useEffect(() => {
-      fetch("http://localhost:8080/reservation/getAll")
+      fetch(`http://localhost:8080/reservation/getAll/${fcSeq}`)
         .then((res) => res.json())
         .then((res) => {
           console.log(1, res);
@@ -23,5 +24,5 @@ const ReservationList = (props) => {
     );
   };
   
-  export default ReservationList;
+  export default ReservationListByFcSeq;
 

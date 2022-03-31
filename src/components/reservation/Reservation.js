@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import moment from "moment";
-import { useNavigate} from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import "../../App.css";
-import ReservationList from "./ReservationList";
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import {ko} from "date-fns/esm/locale"
@@ -13,7 +12,8 @@ import addDays from "date-fns/addDays";
 
 
 const Reservation = (props) => {
-  
+
+  const fcSeq = useParams().fcSeq;
   const [startDate, setStartDate] = useState(new Date());
   const navigate = useNavigate();
   const nowTime = moment().format("YYYY-MM-DD hh:mm:ss");
@@ -36,10 +36,10 @@ const Reservation = (props) => {
     
     if (reservation.rsvtHr.length === 0) {
       alert("시간을 선택해주세요.");
-      return navigate("/reservation");
+      return navigate("/reservation/" + fcSeq);
     }
-
-    reservation.fcSeq = 0;
+    
+    reservation.fcSeq = fcSeq;
     reservation.rsvtYmd = moment(startDate).format("YYYYMMDD");
 
     fetch("http://localhost:8080/reservation/save", {
@@ -57,7 +57,7 @@ const Reservation = (props) => {
       }
   });
     console.log(reservation);
-    navigate("/reservation");
+    navigate("/facit/" + fcSeq);
   };
 
   const changeValue = (e) => {
@@ -72,14 +72,12 @@ const Reservation = (props) => {
       <Form onSubmit={addReservation}>
         <Form.Group>
 
-
           <div style={styles.BBk}>
             <label  style={styles.BBs}> 예약 날짜 선택</label>
             <br></br>
             <DatePicker name="rsvtYmd" selected={startDate} onChange={date => setStartDate(date)} minDate={addDays(new Date(), 1)} 
             maxDate={addDays(new Date(), 7)} locale={ko} disabledKeyboardNavigation inline showOtherMonths="false"/>
           </div>
-
 
             <Form.Label style={styles.BBa}>예약 시간 선택</Form.Label>
             <div style={styles.BBt}>
@@ -118,9 +116,6 @@ const Reservation = (props) => {
         </Form.Group>
         <br></br>
       </Form>
-      <div>
-        <ReservationList />
-      </div>
     </div>
   );
 }
@@ -138,10 +133,6 @@ const styles = {
       right: '36%',
       fontSize: '23px',
   },
-
-
-  
-
 
     BBt : { //시간 
 
@@ -214,9 +205,7 @@ const styles = {
     // position: 'fixed',
     position: 'absolute',
 
-    
   },
-
   
 }
   
