@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { useNavigate, useParams } from 'react-router-dom';
 // import FileSaver from 'file-saver';
 
-    const PostDetail = () => {
-    const [pstgSeq, setPstgSeq] = useState('');
+const PostDetail = () => {
+    const navigate = useNavigate();
+    const {pstgSeq} = useParams();
     const [pstgTitle, setPstgTitle] = useState('');
     const [pstgCn, setPstgCn] = useState('');
     const [pstgPblrName, setPstgPblrName] = useState('');
