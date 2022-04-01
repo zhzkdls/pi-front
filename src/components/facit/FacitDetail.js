@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import FacitDetailDatePicker from "../holyday/FacitDetailDatePicker";
+import HolydayPicker from "../holyday/HolydayPicker";
 import UseIsMount from "../UseIsMount";
 
 
@@ -23,7 +24,7 @@ function FacitDetail() {
                 setFacit(res.data);
             }    
         });
-    }, []);
+    }, [fcSeq, isMount]);
 
     return ( 
     <div style={{textAlign: "center"}}>
@@ -32,6 +33,9 @@ function FacitDetail() {
       <h3>{facit.faciNm}</h3>
       <h3>{facit.faciRoadAddr1}</h3>
       <h3>{facit.faciHomepage}</h3>
+      <h3>{facit.fmngUserTel}</h3>
+      <h3>{facit.fcobNm}</h3>
+      <HolydayPicker />
       <FacitDetailDatePicker />
       <Link to={"/reservation/" + fcSeq} className="btn btn-primary" variant="primary">예약하기</Link>
       <Link to={"/reservationList/" + fcSeq} className="btn btn-primary" variant="primary">예약현황</Link>
