@@ -4,6 +4,9 @@ import "react-datepicker/dist/react-datepicker.css";
 import { Button, Form } from 'react-bootstrap';
 import { useParams } from "react-router-dom";
 import moment from "moment";
+import DatePanel from "react-multi-date-picker/plugins/date_panel";
+
+
 
 function HolydayPicker() {
     const fcSeq = useParams().fcSeq;
@@ -30,6 +33,7 @@ function HolydayPicker() {
             body: JSON.stringify(holyDay),
             })
         }
+        console.log(holyDay);
         console.log(startDate[0]);
     };
 
@@ -37,7 +41,7 @@ function HolydayPicker() {
         <Form onSubmit={addHolyDay} className="container" style={{alignItems:"center", justifyContent: "center"}}>
             <div style={{display: "flex", flexDirection: "row", justifyContent: "space-around", alignItems: "center",}}>
                 <DatePicker value={setStartDate} onChange={date => setStartDate(date)} minDate={new Date()} 
-                format="YYYY-MM-DD" multiple="true"/>
+                format="YYYY-MM-DD" multiple="true" style={{width:"600px"}} plugins={[<DatePanel />]}/>
             </div>
             <Button variant="primary" type="submit">
                 확인

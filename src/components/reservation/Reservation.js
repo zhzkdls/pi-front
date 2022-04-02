@@ -77,7 +77,7 @@ const Reservation = (props) => {
             <label  style={styles.BBs}> 예약 날짜 선택</label>
             <br></br>
             <DatePicker name="rsvtYmd" selected={startDate} onChange={date => setStartDate(date)} minDate={addDays(new Date(), 1)} 
-            maxDate={addDays(new Date(), 7)} locale={ko} disabledKeyboardNavigation inline showOtherMonths="false"/>
+            maxDate={addDays(new Date(), 14)} locale={ko} disabledKeyboardNavigation inline showOtherMonths="false"/>
           </div>
             <Form.Label style={styles.BBa}>예약 시간 선택</Form.Label>
             <div style={styles.BBt}>
