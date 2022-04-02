@@ -1,15 +1,13 @@
 import React, {useState} from 'react';
-import moment from "moment";
-import DatePicker from 'react-datepicker';
+import DatePicker from "react-multi-date-picker";
 import "react-datepicker/dist/react-datepicker.css";
-import {ko} from "date-fns/esm/locale"
 import { Button, Form } from 'react-bootstrap';
 import { useParams } from "react-router-dom";
-
+import moment from "moment";
 
 function HolydayPicker() {
     const fcSeq = useParams().fcSeq;
-    const [startDate, setStartDate] = useState(new Date());
+    const [startDate, setStartDate] = useState([]);
 
     const [holyDay, setHolyDay] = useState({
         hldySeq:0,
@@ -21,24 +19,25 @@ function HolydayPicker() {
 
     const addHolyDay = (e) => {
         e.preventDefault();
-
-        holyDay.tcbizBgngYmd = moment(startDate).format("YYYYMMDD");
-        holyDay.fcSeq=fcSeq;
-        fetch("http://localhost:8080/hldy/save", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json; charset=utf-8",
-          },
-          body: JSON.stringify(holyDay),
-        })
-        console.log(holyDay);
+        for (let i = 0; i < startDate.length; i++) {
+            holyDay.tcbizBgngYmd = startDate[i];
+            holyDay.fcSeq=fcSeq;
+            fetch("http://localhost:8080/hldy/save", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json; charset=utf-8",
+            },
+            body: JSON.stringify(holyDay),
+            })
+        }
+        console.log(startDate[0]);
     };
 
     return ( 
         <Form onSubmit={addHolyDay} className="container" style={{alignItems:"center", justifyContent: "center"}}>
             <div style={{display: "flex", flexDirection: "row", justifyContent: "space-around", alignItems: "center",}}>
-                <DatePicker name="tcbizBgngYmd" selected={startDate} onChange={date => setStartDate(date)} minDate={new Date()} locale={ko}
-                dateFormat="yyyy-MM-dd" inline />
+                <DatePicker value={setStartDate} onChange={date => setStartDate(date)} minDate={new Date()} 
+                format="YYYY-MM-DD" multiple="true"/>
             </div>
             <Button variant="primary" type="submit">
                 확인

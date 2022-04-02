@@ -21,8 +21,8 @@ const Reservation = (props) => {
 
   const [reservation, setReservation] = useState({
     fcSeq: 0,
-    userId: "",
-    userTel: "",
+    userId: "test1",
+    userTel: "010-7777-8888",
     rsvtYmd: "",
     rsvtHr: "",
     rsvtPdt: 0,
