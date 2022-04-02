@@ -14,6 +14,21 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 function Copyright(props) {
+  const [username, setusername] = React.useState("");
+  const [userId, setUserId] = React.useState("");
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
+  const [phone, setPhone] = React.useState("");
+  // const onNameHandler = (event) => {
+  //   setName(event.currentTarget.value);
+  // };
+  // const onEmailHandler = (event) => {
+  //   setEmail(event.currentTarget.value);
+  // };
+
+  // const onPasswordHandler = (event) => {
+  //   setPassword(event.currentTarget.value);
+  // };
   return (
     <Typography
       variant="body2"
@@ -67,26 +82,70 @@ export default function SignUp() {
             onSubmit={handleSubmit}
             sx={{ mt: 3 }}
           >
-            <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
+            {/* <div class="loginregister">
+              <form>
+                <div>
+                  <input
+                    name="name"
+                    type="text"
+                    placeholder="이름"
+                    value={username}
+                    onChange={onNameHandler}
+                    class="loginregister__input"
+                  />
+                </div>
+                <div>
+                  <input
+                    name="email"
+                    type="email"
+                    placeholder="이메일"
+                    value={email}
+                    onChange={onEmailHandler}
+                    class="loginregister__input"
+                  />
+                </div>
+                <div>
+                  <input
+                    name="password"
+                    type="password"
+                    placeholder="비밀번호"
+                    value={password}
+                    onChange={onPasswordHandler}
+                    class="loginregister__input"
+                  />
+                </div>
+              </form>
+            </div> */}
+            {/* <Grid container spacing={2}>
+              <Grid item xs={12}>
                 <TextField
-                  autoComplete="given-name"
-                  name="firstName"
                   required
                   fullWidth
-                  id="firstName"
-                  label="First Name"
-                  autoFocus
+                  id="Username"
+                  label="Username"
+                  name="Username"
+                  autoComplete="Username"
                 />
               </Grid>
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12}>
                 <TextField
                   required
                   fullWidth
-                  id="lastName"
-                  label="Last Name"
-                  name="lastName"
-                  autoComplete="family-name"
+                  id="UserId"
+                  label="UserId"
+                  name="UserId"
+                  autoComplete="UserId"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  name="password"
+                  label="Password"
+                  type="password"
+                  id="password"
+                  autoComplete="new-password"
                 />
               </Grid>
               <Grid item xs={12}>
@@ -103,11 +162,12 @@ export default function SignUp() {
                 <TextField
                   required
                   fullWidth
-                  name="password"
-                  label="Password"
-                  type="password"
-                  id="password"
-                  autoComplete="new-password"
+                  id="Phone"
+                  label="Phone"
+                  name="Phone"
+                  autoComplete="Phone"
+                  value={phone}
+                  onChange={onNameHandler}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -118,7 +178,7 @@ export default function SignUp() {
                   label="I want to receive inspiration, marketing promotions and updates via email."
                 />
               </Grid>
-            </Grid>
+            </Grid> */}
             <Button
               type="submit"
               fullWidth

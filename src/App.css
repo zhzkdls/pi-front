@@ -103,7 +103,7 @@
 #category {
   position: absolute;
   top: 10px;
-  left: 10px;
+  left: 10x;
   border-radius: 5px;
   border: 1px solid #909090;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
@@ -166,7 +166,7 @@
   background-position: -10px -180px;
 }
 #category li.on .category_bg {
-  background-position-x: -46px;
+  background-position-x: -23px;
 }
 .placeinfo_wrap {
   position: absolute;
