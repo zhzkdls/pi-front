@@ -27,13 +27,13 @@ const MapContainer = ({ searchPlace }) => {
 
     kakao.maps.event.addListener(map, "idle", searchPlaces);
 
-    var mapTypeControl = new kakao.maps.MapTypeControl();
+    const mapTypeControl = new kakao.maps.MapTypeControl();
 
     // 지도의 상단 우측에 지도 타입 변경 컨트롤을 추가한다
     map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
 
     // 지도에 확대 축소 컨트롤을 생성한다
-    var zoomControl = new kakao.maps.ZoomControl();
+    const zoomControl = new kakao.maps.ZoomControl();
 
     // 지도의 우측에 확대 축소 컨트롤을 추가한다
     map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
@@ -95,9 +95,9 @@ const MapContainer = ({ searchPlace }) => {
         .getElementById(currCategory)
         .getAttribute("data-order");
 
-      for (var i = 0; i < places.length; i++) {
+      for (let i = 0; i < places.length; i++) {
         // 마커를 생성하고 지도에 표시합니다
-        var marker = addMarker(
+        let marker = addMarker(
           new kakao.maps.LatLng(places[i].y, places[i].x),
           order
         );
@@ -140,7 +140,7 @@ const MapContainer = ({ searchPlace }) => {
 
     // 지도 위에 표시되고 있는 마커를 모두 제거합니다
     function removeMarker() {
-      for (var i = 0; i < markers.length; i++) {
+      for (let i = 0; i < markers.length; i++) {
         markers[i].setMap(null);
       }
       markers = [];
@@ -148,7 +148,7 @@ const MapContainer = ({ searchPlace }) => {
 
     // 클릭한 마커에 대한 장소 상세정보를 커스텀 오버레이로 표시하는 함수입니다
     function displayPlaceInfo(place) {
-      var content =
+      let content =
         '<div class="placeinfo">' +
         '   <a class="title" href="' +
         place.place_url +
@@ -306,37 +306,28 @@ const MapContainer = ({ searchPlace }) => {
         id="myMap"
         style={{
           width: "100%",
-          height: "85vh",
+          height: "100vh",
         }}
       >
-        <div className="login">
-          <ul>
-            <li>sdlkfjsdlk</li>
-          </ul>
-        </div>
         <div>
           <ul id="category">
-            {/* <li id="BK9" data-order="0">
-            <span className="category_bg bank"></span>
-            은행
-          </li> */}
-            <li id="MT1" data-order="1">
+            <li id="MT1" data-order="0">
               <span className="category_bg mart"></span>
               마트
             </li>
-            <li id="PM9" data-order="2">
+            <li id="PM9" data-order="1">
               <span className="category_bg pharmacy"></span>
               약국
             </li>
-            <li id="OL7" data-order="3">
+            <li id="OL7" data-order="2">
               <span className="category_bg oil"></span>
               주유소
             </li>
-            <li id="CE7" data-order="4">
+            <li id="CE7" data-order="3">
               <span className="category_bg cafe"></span>
               카페
             </li>
-            <li id="PK6" data-order="5">
+            <li id="PK6" data-order="4">
               <span className="category_bg store"></span>
               주차장
             </li>

@@ -9,8 +9,8 @@ export const Home = () => {
   return (
     <>
       {/* <NavBar /> */}
-      <Main />
       <Filter />
+      <Main />
     </>
   );
 };
