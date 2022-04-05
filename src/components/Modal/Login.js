@@ -12,6 +12,8 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { KAKAO_AUTH_URL } from "../oauth/OAuth";
+import kakaologo from "../../kakao_login_medium_narrow.png";
 
 function Copyright(props) {
   return (
@@ -99,12 +101,12 @@ export default function Login() {
             >
               Sign In
             </Button>
+
+            <a href={KAKAO_AUTH_URL}>
+              <img src={kakaologo}></img>
+            </a>
             <Grid container>
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  Forgot password?
-                </Link>
-              </Grid>
+              <Grid item s></Grid>
               <Grid item>
                 <Link href="/SignUp" variant="body2">
                   {"Don't have an account? Sign Up"}
@@ -113,7 +115,7 @@ export default function Login() {
             </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 8, mb: 4 }} />
+        <Copyright sx={{ mt: 5, mb: 4 }} />
       </Container>
     </ThemeProvider>
   );

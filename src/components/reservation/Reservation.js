@@ -21,8 +21,8 @@ const Reservation = (props) => {
 
   const [reservation, setReservation] = useState({
     fcSeq: 0,
-    userId: "",
-    userTel: "",
+    userId: "test1",
+    userTel: "010-7777-8888",
     rsvtYmd: "",
     rsvtHr: "",
     rsvtPdt: 0,
@@ -33,31 +33,33 @@ const Reservation = (props) => {
   });
 
   const addReservation = (e) => {
-    
+    e.preventDefault();
     if (reservation.rsvtHr.length === 0) {
       alert("시간을 선택해주세요.");
-      return navigate("/reservation/" + fcSeq);
-    }
-    
-    reservation.fcSeq = fcSeq;
-    reservation.rsvtYmd = moment(startDate).format("YYYYMMDD");
-
-    fetch("http://localhost:8080/reservation/save", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json; charset=utf-8",
-      },
-      body: JSON.stringify(reservation),
-    })
-    .then(response => response.text())
-    .then(message => {
-      setMessage(message);
-      if(message !== "예약 완료!"){
+      navigate("/reservation/" + fcSeq);
+    }else{
+      reservation.fcSeq = fcSeq;
+      reservation.rsvtYmd = moment(startDate).format("YYYY-MM-DD");
+  
+      fetch("http://localhost:8080/reservation/save", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json; charset=utf-8",
+        },
+        body: JSON.stringify(reservation),
+      })
+      .then(response => response.text())
+      .then(message => {
+        setMessage(message);
+        if(message === "예약 완료!"){
+          alert("예약 되었습니다.");
+          navigate("/facit/" + fcSeq);
+        }else if(message !== "예약 완료!"){
           alert("이미 예약된 시간입니다.");
-      }
-  });
-    console.log(reservation);
-    navigate("/facit/" + fcSeq);
+        }
+    });
+      console.log(reservation);
+    }
   };
 
   const changeValue = (e) => {
@@ -71,14 +73,12 @@ const Reservation = (props) => {
     <div className="container">
       <Form onSubmit={addReservation}>
         <Form.Group>
-
           <div style={styles.BBk}>
             <label  style={styles.BBs}> 예약 날짜 선택</label>
             <br></br>
             <DatePicker name="rsvtYmd" selected={startDate} onChange={date => setStartDate(date)} minDate={addDays(new Date(), 1)} 
-            maxDate={addDays(new Date(), 7)} locale={ko} disabledKeyboardNavigation inline showOtherMonths="false"/>
+            maxDate={addDays(new Date(), 14)} locale={ko} disabledKeyboardNavigation inline showOtherMonths="false"/>
           </div>
-
             <Form.Label style={styles.BBa}>예약 시간 선택</Form.Label>
             <div style={styles.BBt}>
               <br></br>

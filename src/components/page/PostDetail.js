@@ -12,6 +12,8 @@ const PostDetail = () => {
     const [pstgPblrName, setPstgPblrName] = useState('');
     const [isEdit, setEdit] = useState(false);
     const [stat, setStat] = useState(1);
+    const [cnt, setCnt] = useState(0);
+    
     // const [files, setFiles] = useState([{
     //     pstg_seq: 0,
     //     fileOriName: '',
@@ -41,6 +43,7 @@ const PostDetail = () => {
             pstgCn: pstgCn,
             pstgPblrName: pstgPblrName,
             stat: 1,
+            cnt: 0,
         }
 
         return new Promise((resolve, reject) => {
@@ -94,7 +97,7 @@ const PostDetail = () => {
     const handleUpdate = () => {
         // const url = "http://localhost:8080/api/update/" + pstgSeq;
         const url = `http://localhost:8080/api/update/${pstgSeq}`;
-        const body = { pstgTitle, pstgCn, stat, pstgPblrName, pstgSeq}
+        const body = { pstgTitle, pstgCn, stat, pstgPblrName, pstgSeq, cnt}
           
         axios.post(url, body)
         .then()

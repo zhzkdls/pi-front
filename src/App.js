@@ -20,17 +20,19 @@ function App() {
     <BrowserRouter>
       <NavBara/>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/SignUp" element={<SignUp />} />
-        <Route path="/HolyDay" element={<HolydayPicker />} />
-        <Route path="/post" element={<Post />} />
-        <Route path="/write" element={<NewPost />} />
-        <Route path="/posts/:pstgSeq" element={<PostDetail />} />
-        <Route path="/reservation/:fcSeq" element={<Reservation />} />
-        <Route path="/facitlist" element={<FacitList />} />
-        <Route path="/facit/:fcSeq" element={<FacitDetail />} />
-        <Route path="/reservationList/:fcSeq" element={<ReservationListByFcSeq />} />
+        <Route path ="/" element={<Home />} />
+        <Route path ="/login" element={<Login />} />
+        <Route path ="/SignUp" element={<SignUp />} />
+        <Route path ="/HolyDay" element={<HolydayPicker />} />
+        <Route path ="/post" element={<Post />} />
+        <Route path ="/write" element={<NewPost />} />
+        <Route path ="/posts/:pstgSeq" element={<PostDetail />} />
+        <Route path ="/reservation/:fcSeq" element={<Reservation />} />
+        <Route path ="/facitlist" element={<FacitList />} />
+        <Route path ="/facit/:fcSeq" element={<FacitDetail />} />
+        <Route path ="/reservationList/:fcSeq" element={<ReservationListByFcSeq />} />
+
+       
       </Routes>
     </BrowserRouter>
   );

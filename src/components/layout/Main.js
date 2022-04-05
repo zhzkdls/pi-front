@@ -18,14 +18,14 @@ function Main() {
 
   return (
     <>
-      <form className="inputForm" onSubmit={handleSubmit}>
+      {/* <form className="inputForm" onSubmit={handleSubmit}>
         <input
           placeholder="검색어를 입력하세요"
           onChange={onChange}
           value={InputText}
         />
         <button type="submit">검색</button>
-      </form>
+      </form> */}
       <MapContainer searchPlace={Place} />
     </>
   );

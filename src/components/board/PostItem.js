@@ -4,7 +4,7 @@ import './PostItem.css'
 
 class PostItem extends Component {
     render() {
-        const { pstgSeq, pstgTitle, pstgPblrName, pstgDt } = this.props;
+        const { pstgSeq, pstgTitle, pstgPblrName, pstgDt, cnt } = this.props;
 
         return (
             <div className='postItem'>
@@ -14,6 +14,7 @@ class PostItem extends Component {
                 </div>
                 <div>{pstgPblrName}</div>
                 <div>{pstgDt}</div>
+                <div>{cnt}</div>
             </div>
         )
     }

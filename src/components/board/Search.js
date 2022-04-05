@@ -2,7 +2,7 @@ import React , { useState } from 'react';
 
 const Search = ({handleSearch}) => {
     const [pstgTitle, setPstgTitle] = useState(''); // input 창에 입력한 text
-    const [searchType, setType] = useState("pstgTitle"); // select 창에서 고른 type
+    const [searchType, setType] = useState("pstgTitle", "pstgCn"); // select 창에서 고른 type
 
     const handleInputChange = ({target}) => {
         setPstgTitle(target.value);
@@ -19,7 +19,11 @@ const Search = ({handleSearch}) => {
                 <option value="pstgCn">내용</option>
                 <option value="all">제목 + 내용</option>
             </select>
-            <input onChange={handleInputChange} style = {styles.input}></input>
+            <input 
+            onChange={handleInputChange} 
+            style = {styles.input}  
+            placeholder="검색어를 입력하세요"
+            ></input>
             <button onClick={() => handleSearch(pstgTitle, searchType)} style = {styles.searchBtn}>검색</button>
         </div>
     )
