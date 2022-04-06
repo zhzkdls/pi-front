@@ -1,31 +1,45 @@
 import React, {useEffect} from 'react';
-import $ from "jquery";
 
 const { kakao } = window;
 
 function FacitMap2(props) {
 
     const {faciPointX, faciPointY} = props.map1;
-
-
     useEffect(()=>{
         var container = document.getElementById('map');
-        var options = {
-          center: new kakao.maps.LatLng(35.11732559, 129.0157718),
-          level: 3
-        };
-        var map = new kakao.maps.Map(container, options);
+        var options;
+        var map;
+        var markerPosition;
+        var marker;
+        if(faciPointX === 0 || faciPointY === 0){
+            options = {
+                center: new kakao.maps.LatLng(35.17973316713768, 129.07505674557024),
+                level: 3
+            };
+            map = new kakao.maps.Map(container, options);
 
-        var markerPosition  = new kakao.maps.LatLng(35.11732559, 129.0157718); 
-        var marker = new kakao.maps.Marker({
-            position: markerPosition
-        });
+            markerPosition  = new kakao.maps.LatLng(35.17973316713768, 129.07505674557024); 
+            marker = new kakao.maps.Marker({
+                position: markerPosition
+            })
+        }else{
+            options = {
+                center: new kakao.maps.LatLng(faciPointY, faciPointX),
+                level: 3
+            };
+            map = new kakao.maps.Map(container, options);
+      
+            markerPosition  = new kakao.maps.LatLng(faciPointY, faciPointX); 
+            marker = new kakao.maps.Marker({
+                position: markerPosition
+            });
+        }
         marker.setMap(map);
-    }, [])
+    }, [faciPointX, faciPointY])
 
     return ( 
         <div>
-            <div id="map" style={ {width:"1000px", height:"700px"} }></div>
+            <div id="map" style={ {width:"1600px", height:"600px", margin:"0px", padding:"0px", alignItems:"center"} }></div>
         </div>
      );
 }

@@ -47,8 +47,6 @@ function FacitDetail(props) {
       <h3>{facit.faciHomepage}</h3>
       <h3>{facit.fmngUserTel}</h3>
       <h3>{facit.fcobNm}</h3>
-      <h3>{facit.faciPointX}</h3>
-      <h3>{facit.faciPointY}</h3>
       <HolydayPicker />
       <FacitDetailDatePicker />
       <Link to={"/reservation/" + fcSeq} className="btn btn-primary" variant="primary">예약하기</Link>
