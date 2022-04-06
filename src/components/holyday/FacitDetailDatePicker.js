@@ -1,10 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import {Calendar} from "react-multi-date-picker";
-import "react-datepicker/dist/react-datepicker.css";
 import {ko} from "date-fns/esm/locale"
 import { Form } from 'react-bootstrap';
 import { useParams } from "react-router-dom";
 import addDays from "date-fns/addDays";
+import moment from "moment";
+
 
 function FacitDetailDatePicker() {
     const fcSeq = useParams().fcSeq;
@@ -19,19 +20,25 @@ function FacitDetailDatePicker() {
         .then((data) => {
             console.log(data.length);
             for(let i = 0; i < data.length; i++){
-                setDisableDate(data.tcbizBgngYmd)
-                console.log(data[i].tcbizBgngYmd);
+                setDisableDate(data.ymdFormat)
+                console.log(data[i].ymdFormat);
             }
         setDisableDate(data);
         });
     }, [fcSeq]);
 
+    const customDates = disableDate;
+    const disableCustomDt = current => {
+      return !customDates.includes(current.format('YYYY-MM-DD'));
+    }
+
     return ( 
-        <Form className="container" style={{alignItems:"center"}}>
+        <Form className="container" style={{alignItems:"center", justifyContent: "center"}}>
             <div style={styles.Calen}>
-                <Calendar value={startDate} onChange={setStartDate} 
-                minDate={addDays(new Date(), 1)} maxDate={addDays(new Date(), 14)} weekDays={weekDays}  months={months}
-                disableYearPicker disableMonthPicker />
+                <Calendar value={startDate} onChange={date => setStartDate(date)} 
+                minDate={addDays(new Date(), 1)} maxDate={addDays(new Date(), 14)} 
+                disableYearPicker disableMonthPicker 
+                />
             </div>
         </Form>
      );

@@ -12,6 +12,7 @@ import NavBara from "./components/layout/NavBara";
 import FacitList from "./components/facit/FacitList";
 import FacitDetail from "./components/facit/FacitDetail";
 import ReservationListByFcSeq from "./components/reservation/ReservationListByFcSeq";
+import FacitMap2 from "./components/facit/FacitMap2";
 
 
 
@@ -31,7 +32,7 @@ function App() {
         <Route path ="/facitlist" element={<FacitList />} />
         <Route path ="/facit/:fcSeq" element={<FacitDetail />} />
         <Route path ="/reservationList/:fcSeq" element={<ReservationListByFcSeq />} />
-
+        <Route path = "/map2" element={<FacitMap2 />} />
        
       </Routes>
     </BrowserRouter>

@@ -5,8 +5,9 @@ import React, {useState} from 'react';
 
 function FacitItem(props) {
 
-    const { fcSeq, faciNm, faciGbNm, fcobNm, ftypeNm, fmngTypeGbNm, fmngCpNm, fmngCpbNm, fmngUserTel, faciRoadAddr1, faciHomepage, faciPointX, faciPointY,
+    const { fcSeq, faciNm, faciGbNm, fcobNm, ftypeNm, fmngTypeGbNm, fmngCpNm, fmngCpbNm, fmngUserTel, faciRoadAddr1, faciHomepage, 
         faciStat, totFaciArea, mdfr, nationYn, stat, updated} = props.facit;
+
     const [message, setMessage] = useState("");
 
     const deleteFacit = () => {
