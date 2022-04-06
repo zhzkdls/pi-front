@@ -17,7 +17,7 @@ function FacitList() {
   return ( 
       <div>
           {facits.map((facits) => (
-        <FacitItem key={facits.fcSeq} facit={facits}/>
+        <FacitItem key={facits.fcSeq} facit={facits} />
       ))}
       </div>
     );
