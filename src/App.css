@@ -36,16 +36,18 @@
     transform: rotate(360deg);
   }
 }
-.myMap {
-  width: 100%;
-  height: 600px;
+#myMap {
+  position:absolute;
+  left:0;right:0;top:0;bottom:0;
+  /* width: 100%;
+  height: 600px; */
   align-items: center;
   justify-content: center;
-  margin-left: auto;
+  /* margin-left: auto;
   margin-right: auto;
   border-style: solid;
-  border-width: medium;
-  border-color: #d8d8d8;
+  border-width: medium; */
+  /* border-color: #d8d8d8; */
   z-index: -1;
 }
 
@@ -102,9 +104,9 @@
 }
 #category {
   position: absolute;
-  top: 10px;
-  left: 10x;
-  border-radius: 5px;
+  top: 100px;
+  left: 10px;
+  border-radius: 0px;
   border: 1px solid #909090;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
   background: #fff;
@@ -242,8 +244,10 @@
 
 #nav {
   line-height: 60px;
-  background-color: #a89191;
-  box-shadow: 3px 3px 3px #221d1d;
+  background:rgba(255,255,255, 0.9)!important;
+  z-index:999;
+  /* background-color: #a89191;
+  box-shadow: 3px 3px 3px #221d1d; */
 }
 
 #logo {
@@ -266,8 +270,10 @@
   padding: 0;
 }
 
-
-
+/*Search box*/
+.search-box{
+  position:absolute;left:0;right:0;top:100px;z-index:999
+}
 
 
 /* ///////////// 달력 크기 조절 ///// */

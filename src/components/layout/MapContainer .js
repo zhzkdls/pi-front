@@ -30,13 +30,13 @@ const MapContainer = ({ searchPlace }) => {
     const mapTypeControl = new kakao.maps.MapTypeControl();
 
     // 지도의 상단 우측에 지도 타입 변경 컨트롤을 추가한다
-    map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
+    //map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
 
     // 지도에 확대 축소 컨트롤을 생성한다
-    const zoomControl = new kakao.maps.ZoomControl();
+    //const zoomControl = new kakao.maps.ZoomControl();
 
     // 지도의 우측에 확대 축소 컨트롤을 추가한다
-    map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+    //map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
     // 커스텀 오버레이의 컨텐츠 노드에 css class를 추가합니다
     contentNode.className = "placeinfo_wrap";
 
@@ -304,10 +304,10 @@ const MapContainer = ({ searchPlace }) => {
     <div>
       <div
         id="myMap"
-        style={{
-          width: "100%",
-          height: "100vh",
-        }}
+        // style={{
+        //   width: "100%",
+        //   height: "100vh",
+        // }}
       >
         <div>
           <ul id="category">
