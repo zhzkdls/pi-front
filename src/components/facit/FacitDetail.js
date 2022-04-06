@@ -39,16 +39,16 @@ function FacitDetail(props) {
     return ( 
     <div>
       <div className='div'>
-        <h1 style={styles.form}> 장소 : {facit.faciNm}</h1>
-        <hr />
-        <h3 style={styles.Ad}> 주소 : {facit.faciRoadAddr1}</h3>
-        <h3 style={styles.Hp}> 사이트 : {facit.faciHomepage}</h3>
-        <h3 style={styles.Tel}> 전화번호 : {facit.fmngUserTel}</h3>
-        <h3 style={styles.Nm}> 시설 : {facit.fcobNm}</h3>
-        {/* <HolydayPicker  /> */}
-        <FacitDetailDatePicker />
-        <Link to={"/reservation/" + fcSeq} style={styles.Pick} variant="primary">예약하기</Link>
-        <Link to={"/reservationList/" + fcSeq} style={styles.Pickm} variant="primary">예약현황</Link>
+          <h1 style={styles.form}> 장소 : {facit.faciNm}</h1>
+          <hr />
+          <h3 style={styles.Ad}> 주소 : {facit.faciRoadAddr1}</h3>
+          <h3 style={styles.Hp}> 사이트 : {facit.faciHomepage}</h3>
+          <h3 style={styles.Tel}> 전화번호 : {facit.fmngUserTel}</h3>
+          <h3 style={styles.Nm}> 시설 : {facit.fcobNm}</h3>
+          {/* <HolydayPicker  /> */}
+          <FacitDetailDatePicker />
+          <Link to={"/reservation/" + fcSeq} style={styles.Pick} variant="primary">예약하기</Link>
+          <Link to={"/reservationList/" + fcSeq} style={styles.Pickm} variant="primary">예약현황</Link>
       </div>
       <TabsUnstyled defaultValue={0}>
         <TabsList>
