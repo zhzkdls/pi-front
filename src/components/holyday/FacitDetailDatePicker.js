@@ -34,7 +34,7 @@ function FacitDetailDatePicker() {
 
     return ( 
         <Form className="container" style={{alignItems:"center", justifyContent: "center"}}>
-            <div style={{display: "flex", flexDirection: "row", justifyContent: "space-around", alignItems: "center",}}>
+            <div style={styles.Calen}>
                 <Calendar value={startDate} onChange={date => setStartDate(date)} 
                 minDate={addDays(new Date(), 1)} maxDate={addDays(new Date(), 14)} 
                 disableYearPicker disableMonthPicker 
@@ -44,4 +44,13 @@ function FacitDetailDatePicker() {
      );
 }
 
+const styles = {
+    Calen : {
+        position: 'absolute',
+        marginLeft: '100px',
+
+        padding: '5em', /* 여백으로 높이설정 */
+        bottom: '45%', 
+    },
+}
 export default FacitDetailDatePicker;
