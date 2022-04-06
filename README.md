@@ -1,8 +1,12 @@
 # redux
 npm install redux-saga
+
 npm install react-redux
+
 npm i redux-actions
+
 npm i styled-components
+
 npm i redux-devtools-extension
 
 ## Available Scripts
