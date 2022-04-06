@@ -7,11 +7,9 @@ import { buttonUnstyledClasses } from '@mui/base/ButtonUnstyled';
 import TabUnstyled, { tabUnstyledClasses } from '@mui/base/TabUnstyled';
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import FacitDetailDatePicker from "../holyday/FacitDetailDatePicker";
-import HolydayPicker from "../holyday/HolydayPicker";
 import UseIsMount from "../UseIsMount";
-import FacitMap from './FacitMap';
 import FacitMap2 from './FacitMap2';
 
 function FacitDetail(props) {
@@ -39,21 +37,6 @@ function FacitDetail(props) {
     }, [fcSeq, isMount]);
 
     return ( 
-<<<<<<< HEAD
-    <div style={{textAlign: "center"}}>
-      <h1>{facit.faciNm}</h1>
-      <hr />
-      <h3>{facit.faciNm}</h3>
-      <h3>{facit.faciRoadAddr1}</h3>
-      <h3>{facit.faciHomepage}</h3>
-      <h3>{facit.fmngUserTel}</h3>
-      <h3>{facit.fcobNm}</h3>
-      <HolydayPicker />
-      <FacitDetailDatePicker />
-      <Link to={"/reservation/" + fcSeq} className="btn btn-primary" variant="primary">예약하기</Link>
-      <Link to={"/reservationList/" + fcSeq} className="btn btn-primary" variant="primary">예약현황</Link>
-
-=======
     <div>
       <div className='div'>
         <h1 style={styles.form}> 장소 : {facit.faciNm}</h1>
@@ -67,7 +50,6 @@ function FacitDetail(props) {
         <Link to={"/reservation/" + fcSeq} style={styles.Pick} variant="primary">예약하기</Link>
         <Link to={"/reservationList/" + fcSeq} style={styles.Pickm} variant="primary">예약현황</Link>
       </div>
->>>>>>> 96afde8296366fc30703076cc41491ef6f20ae7f
       <TabsUnstyled defaultValue={0}>
         <TabsList>
             <Tab>이용안내</Tab>
