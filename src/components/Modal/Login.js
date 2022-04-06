@@ -115,7 +115,7 @@ export default function Login() {
             </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 5, mb: 4 }} />
+        {/* <Copyright sx={{ mt: 5, mb: 4 }} /> */}
       </Container>
     </ThemeProvider>
   );

@@ -301,7 +301,7 @@ const MapContainer = ({ searchPlace }) => {
   }, [searchPlace]);
 
   return (
-    <div>
+    <div className="wrap">
       <div
         id="myMap"
         // style={{
@@ -332,6 +332,56 @@ const MapContainer = ({ searchPlace }) => {
               주차장
             </li>
           </ul>
+        </div>
+      </div>
+
+      <div className="container my-5">
+        <div className="row">
+          <div className="col-12 col-lg-4">
+            <div className="card">              
+              <div className="card-body">
+                <h4>공지사항 제목</h4>
+                <p className="text-truncate4" style={{height: "100px"}}>
+                  공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용
+                  공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용
+                  공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용
+                  공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용
+                  공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용
+                </p>
+                <div className="text-end">2022-04-05</div>
+              </div>              
+            </div>
+          </div>
+          <div className="col-12 col-lg-4">
+            <div className="card">              
+              <div className="card-body">
+                <h4>공지사항 제목</h4>
+                <p className="text-truncate4" style={{height: "100px"}}>
+                  공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용
+                  공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용
+                  공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용
+                  공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용
+                  공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용
+                </p>
+                <div className="text-end">2022-04-03</div>
+              </div>              
+            </div>
+          </div>
+          <div className="col-12 col-lg-4">
+            <div className="card">              
+              <div className="card-body">
+                <h4>공지사항 제목</h4>
+                <p className="text-truncate4" style={{height: "100px"}}>
+                  공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용
+                  공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용
+                  공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용
+                  공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용
+                  공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용
+                </p>
+                <div className="text-end">2022-04-01</div>
+              </div>              
+            </div>
+          </div>
         </div>
       </div>
 

@@ -18,7 +18,7 @@ export default function Filter() {
     <div className="search-box">
       <div className="container">
         <div className="row">
-          <div className="col-4 offset-lg-3">
+          <div className="col-6">
               <div className="input-group">
                 <input className="form-control rounded-0"
                   placeholder="검색어를 입력하세요"
@@ -30,7 +30,7 @@ export default function Filter() {
                 </div>
               </div>
           </div>
-          <div className="col-4">
+          <div className="col-6">
             <div className="search">
               <div className="input-group">
                 <Form.Select className="rounded-0" aria-label="Default select example">
