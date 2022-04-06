@@ -2,7 +2,12 @@ import React, { useEffect, useState } from "react";
 import "../../App.css";
 const { kakao } = window;
 
-const FacitMap = ({ searchPlace }) => {
+
+
+const FacitMap = ({ searchPlace, props }) => {
+
+  // const {faciPointX, faciPointY} = props.map1;
+
   // 검색결과 배열에 담아줌
   const [Places, setPlaces] = useState([]);
   const [category, setCategory] = useState([]);
@@ -15,10 +20,12 @@ const FacitMap = ({ searchPlace }) => {
     var infowindow = new kakao.maps.InfoWindow({ zIndex: 1 });
     var markers = [];
     const container = document.getElementById("myMap");
+
     const options = {
-      center: new kakao.maps.LatLng(35.229744345195066, 129.08948986278313),
+      center: new kakao.maps.LatLng(35.11732559, 129.0157718),
       level: 3,
     };
+
     const map = new kakao.maps.Map(container, options);
     // 장소 검색 객체를 생성합니다
     const pss = new kakao.maps.services.Places(map);

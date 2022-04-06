@@ -12,21 +12,22 @@ import FacitDetailDatePicker from "../holyday/FacitDetailDatePicker";
 import HolydayPicker from "../holyday/HolydayPicker";
 import UseIsMount from "../UseIsMount";
 import FacitMap from './FacitMap';
+import FacitMap2 from './FacitMap2';
 
-
-
-
-function FacitDetail() {
+function FacitDetail(props) {
     const fcSeq = useParams().fcSeq;
     const isMount = UseIsMount;
 
     const [Place, setPlace] = useState("");
+
     const [facit, setFacit] = useState({
+        fcSeq:"",
         faciNm: "",
         faciRoadAddr1: "",
         faciHomepage: '',
+        faciPointX:"",
+        faciPointY:"",
     });
-
 
     useEffect(() => {
         axios.get(`http://localhost:8080/tbfacit/get/${fcSeq}`)
@@ -46,6 +47,8 @@ function FacitDetail() {
       <h3>{facit.faciHomepage}</h3>
       <h3>{facit.fmngUserTel}</h3>
       <h3>{facit.fcobNm}</h3>
+      <h3>{facit.faciPointX}</h3>
+      <h3>{facit.faciPointY}</h3>
       <HolydayPicker />
       <FacitDetailDatePicker />
       <Link to={"/reservation/" + fcSeq} className="btn btn-primary" variant="primary">예약하기</Link>
@@ -73,10 +76,9 @@ function FacitDetail() {
           비회원일 경우에는 실명 확인을 통하여 사용하실 수 있으며 서울시 통합 회원에 가입하시게 되면 서울시에서 제공하는 다양하고 많은 혜택을 받으실 수 있습니다.
         </p>
 
-
       </TabPanel>
         <TabPanel value={1}>
-          <FacitMap searchPlace={Place} />
+          <FacitMap2 key={facit.fcSeq} map1={facit} />
         </TabPanel>
         <TabPanel value={2}>Third content</TabPanel>
       </TabsUnstyled>

@@ -8,9 +8,6 @@ import "react-datepicker/dist/react-datepicker.css";
 import {ko} from "date-fns/esm/locale"
 import addDays from "date-fns/addDays";
 
-
-
-
 const Reservation = (props) => {
 
   const fcSeq = useParams().fcSeq;
