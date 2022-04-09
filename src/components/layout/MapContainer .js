@@ -1,4 +1,9 @@
 import React, { useEffect, useState } from "react";
+<<<<<<< HEAD
+=======
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
+>>>>>>> 0bda17053cdb010fb613c48b8da806633917a4dc
 import "../../App.css";
 const { kakao } = window;
 
@@ -323,7 +328,7 @@ const MapContainer = ({ searchPlace}) => {
       </div>
 
       <div className="container my-3 px-4 py-2 border-5 border-secondary shadow" style = {styles.notice}>
-        <div className="text-end">더보기</div>
+        <div className="text-end"><span className="me-2"><FontAwesomeIcon icon={faPlus} /></span><span>더보기</span></div>
         <div className="row">
           <div className="col-12 col-lg-4 px-lg-0">
             <div className="card border-0">              

@@ -82,8 +82,8 @@ export default function Filter() {
               </li>
             </ul> */}
           </div>
-          <div className="col-auto">
-              <div className="input-group">
+          <div className="col-12 col-lg">
+              <div className="input-group input-group-sm">
               
                 <input className="form-control"
                   placeholder="검색어를 입력하세요"
@@ -95,13 +95,24 @@ export default function Filter() {
                 
               </div>
           </div>
-        </div>
-        <div className="row">
-          
-          
-          <div className="col-12">
-            <div className="search">
-              <div className="input-group">
+          <div className="col-6 col-lg px-0">
+            <Form.Select className="" aria-label="Default select example">
+                <option>지역 선택</option>
+                <option value="1">금정구</option>
+                <option value="2">강서구</option>
+                <option value="3">기장군</option>
+                <option value="4">남구</option>
+                <option value="5">동래구</option>
+                <option value="5">동구</option>
+                <option value="6">사상구</option>
+                <option value="7">사하구</option>
+                <option value="8">서구</option>
+                <option value="3">수영구</option>
+                <option value="5">동래구</option>
+              </Form.Select>
+          </div>
+          <div className="col-6 col-lg px-0">
+                
                 <Form.Select className="" aria-label="Default select example">
                 <option>지역 선택</option>
                 <option value="금정구">금정구</option>
@@ -132,35 +143,8 @@ export default function Filter() {
                 <option value="생활체육관">생활체육관</option>
                 </Form.Select>
               </div>
-              {/* <div classNameName="input-group-append">
-                <div classNameName="input-group">
-                  <DatePicker
-                  showTimeSelect
-                  selected={startDate}
-                  onChange={(date) => setStartDate(date)}
-                  timeclassNameName={handleColor}
-                  placeholder="날짜를 선택하세요"
-                  classNameName="form-control"
-                />
-                <div classNameName="input-group-append">
-                <Button variant="warning">검색</Button>{" "}
-                </div>
-                </div>
-                
-              </div> */}
-            
-            {/* <DatePicker
-            selected={startDate}
-            onChange={(date) => setStartDate(date)}
-            minDate={setHours(setMinutes(new Date(), 0), 12)}
-            dateFormat="MM/dd/yyyy h:mm aa"
-            showTimeSelect
-          /> */}
-            
-            </div>
           </div>
         </div>
       </div>
-    </div>
   );
 }
