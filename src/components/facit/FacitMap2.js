@@ -5,6 +5,7 @@ const { kakao } = window;
 function FacitMap2(props) {
 
     const {faciPointX, faciPointY} = props.map1;
+    
     useEffect(()=>{
         var container = document.getElementById('map');
         var options;

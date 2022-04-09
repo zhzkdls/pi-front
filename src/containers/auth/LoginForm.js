@@ -18,6 +18,14 @@ const LoginForm = ({ history }) => {
     authError: auth.authError,
     user: user.user,
   }));
+
+  const [loginAttempt, setLoginAttempt] = useState({
+    userId:"",
+    userPassword:"",
+  })
+
+
+
   // 인풋 변경 이벤트 핸들러
   const onChange = (e) => {
     const { value, name } = e.target;
@@ -33,8 +41,36 @@ const LoginForm = ({ history }) => {
   // 폼 등록 이벤트 핸들러
   const onSubmit = (e) => {
     e.preventDefault();
-    const { username, password } = form;
-    dispatch(login({ username, password }));
+    const { userId, password } = form;
+    if (
+      [userId, password].length === 0
+    ) {
+      setError("빈 칸을 모두 입력하세요.");
+      return;
+    }
+
+    loginAttempt.userId = form.userId;
+    loginAttempt.userPassword = form.password;
+
+    fetch("http://localhost:8080/login/Attempt", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json; charset=utf-8",
+      },
+      body: JSON.stringify(loginAttempt),
+    })
+    .then(response => response.text())
+    .then(message => {
+      console.log(message);
+      console.log(loginAttempt.userId);
+      console.log(loginAttempt.userPassword);
+      if(message === "true"){
+        alert("아이디 비밀번호 일치");
+        navigate("/");
+      }
+  });
+
+    dispatch(login({ userId, password }));
   };
 
   // 컴포넌트가 처음 렌더링 될 때 form 을 초기화함
@@ -64,7 +100,7 @@ const LoginForm = ({ history }) => {
         console.log("localStorage is not working");
       }
     }
-  }, [history, user]);
+  }, [history, navigate, user]);
 
   return (
     <Login

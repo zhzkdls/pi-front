@@ -6,6 +6,9 @@ const MapContainer = ({ searchPlace }) => {
   // 검색결과 배열에 담아줌
   const [Places, setPlaces] = useState([]);
   const [category, setCategory] = useState([]);
+
+
+
   useEffect(() => {
     // 마커를 클릭했을 때 해당 장소의 상세정보를 보여줄 커스텀오버레이입니다
     var placeOverlay = new kakao.maps.CustomOverlay({ zIndex: 1 }),
@@ -16,9 +19,10 @@ const MapContainer = ({ searchPlace }) => {
     var markers = [];
     const container = document.getElementById("myMap");
     const options = {
-      center: new kakao.maps.LatLng(35.229744345195066, 129.08948986278313),
-      level: 3,
+      center: new kakao.maps.LatLng(35.17973316713768, 129.07505674557024),
+      level: 4,
     };
+
     const map = new kakao.maps.Map(container, options);
     // 장소 검색 객체를 생성합니다
     const pss = new kakao.maps.services.Places(map);
@@ -306,28 +310,19 @@ const MapContainer = ({ searchPlace }) => {
         id="myMap"
         style={{
           width: "100%",
-          height: "100vh",
+          height: "800px",
         }}
       >
         <div>
           <ul id="category">
-            <li id="MT1" data-order="0">
-              <span className="category_bg mart"></span>
-              마트
+            <li>
+              체육시설
             </li>
-            <li id="PM9" data-order="1">
+            <li id="PM9" data-order="2">
               <span className="category_bg pharmacy"></span>
               약국
             </li>
-            <li id="OL7" data-order="2">
-              <span className="category_bg oil"></span>
-              주유소
-            </li>
-            <li id="CE7" data-order="3">
-              <span className="category_bg cafe"></span>
-              카페
-            </li>
-            <li id="PK6" data-order="4">
+            <li id="PK6" data-order="3">
               <span className="category_bg store"></span>
               주차장
             </li>

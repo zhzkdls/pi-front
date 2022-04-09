@@ -4,6 +4,8 @@ import { changeField, initializeForm, register } from "../../modules/auth";
 import AuthForm from "../../components/auth/AuthForm";
 import { check } from "../../modules/user";
 import { useParams, useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
+
 
 const RegisterForm = ({ history }) => {
   const params = useParams();
@@ -18,6 +20,17 @@ const RegisterForm = ({ history }) => {
     authError: auth.authError,
     user: user.user,
   }));
+
+  const [member, setMember] = useState({
+    userName: "",
+    userId: "",
+    userPassword:"",
+    userEmail:"",
+    userPhone:"",
+    role:1,
+    stat:1,
+  });
+
   // 인풋 변경 이벤트 핸들러
   const onChange = (e) => {
     const { value, name } = e.target;
@@ -36,11 +49,12 @@ const RegisterForm = ({ history }) => {
     const { username, password, passwordConfirm, userId, email, phone } = form;
     // 하나라도 비어있다면
     if (
-      [username, password, passwordConfirm, userId, email, phone].includes("")
+      [username, password, passwordConfirm, userId, email, phone].length === 0
     ) {
       setError("빈 칸을 모두 입력하세요.");
       return;
     }
+
     // 비밀번호가 일치하지 않는다면
     if (password !== passwordConfirm) {
       setError("비밀번호가 일치하지 않습니다.");
@@ -50,47 +64,41 @@ const RegisterForm = ({ history }) => {
       );
       return;
     }
-    dispatch(register({ username, password }));
+
+    member.userName = form.username;
+    member.userId = form.userId;
+    member.userPassword = form.password;
+    member.userPhone = form.phone;
+    member.userEmail = form.email;
+
+    fetch("http://localhost:8080/member/save", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json; charset=utf-8",
+      },
+      body: JSON.stringify(member),
+    })
+    .then(response => response.text())
+    .then(message => {
+      if(message === "Success"){
+        alert("가입 되었습니다.");
+        alert("로그인 페이지로 이동합니다.");
+        navigate("/login");
+      }else if(message === "0"){
+        alert("해당 이메일로 가입된 계정이 있습니다.");
+      }else if(message === "1"){
+        alert("해당 아이디로 가입된 계정이 있습니다.");
+      }else if(message === "2"){
+        alert("해당 전화번호로 가입된 계정이 있습니다.");
+      }
+  });
+    dispatch(register({ username, password, email, phone }));
   };
 
   // 컴포넌트가 처음 렌더링 될 때 form 을 초기화함
   useEffect(() => {
     dispatch(initializeForm("register"));
   }, [dispatch]);
-
-  // 회원가입 성공 / 실패 처리
-  useEffect(() => {
-    if (authError) {
-      // 계정명이 이미 존재할 때
-      if (authError.response.status === 400) {
-        setError("이미 존재하는 계정명입니다.");
-        return;
-      }
-      // 기타 이유
-      setError("회원가입 실패");
-      return;
-    }
-
-    if (auth) {
-      console.log("회원가입 성공");
-      console.log(auth);
-      dispatch(check());
-    }
-  }, [auth, authError, dispatch]);
-
-  // user 값이 잘 설정되었는지 확인
-  useEffect(() => {
-    if (user) {
-      console.log("check API 성공");
-      console.log(user);
-      navigate("/"); // 홈 화면으로 이동
-      try {
-        localStorage.setItem("user", JSON.stringify(user));
-      } catch (e) {
-        console.log("localStorage is not working");
-      }
-    }
-  }, [history, user]);
 
   return (
     <AuthForm
