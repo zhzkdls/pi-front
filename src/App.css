@@ -97,6 +97,13 @@ input, select, textarea{font-size:0.8em!important}
   font-weight: bold;
 }
 
+.offcanvas-end{width:300px!important}
+/* .offcanvas-end{width:300px!important;background:rgba(33,37,41,1)!important}
+.offcanvas-title{color:#6c757d}*/
+.offcanvas-body a{color:#6c757d}
+
+.offcanvas-header .btn-close{color:#6c757d!important}
+
 .map_wrap,
 .map_wrap * {
   margin: 0;
@@ -258,6 +265,8 @@ input, select, textarea{font-size:0.8em!important}
   /* background-color: #a89191*/
   box-shadow: 3px 3px 3px #221d1d;
 }
+
+#nav .navbar a{color:#6c757d}
 
 #logo {
   vertical-align: middle;

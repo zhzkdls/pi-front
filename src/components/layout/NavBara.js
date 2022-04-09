@@ -62,23 +62,24 @@ function NavBara() {
             id="offcanvasNavbar"
             aria-labelledby="offcanvasNavbarLabel"
             placement="end"
+            backdrop="false"
           >
             <Offcanvas.Header closeButton >
               <Offcanvas.Title id="offcanvasNavbarLabel">메뉴</Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
               <Nav className="justify-content-end flex-grow-1 pe-3">
-                <Nav.Link href="/">Home</Nav.Link>
-                <Nav.Link href="/login">이용안내</Nav.Link>
-                <Nav.Link href="/post">공지사항</Nav.Link>
-                <Nav.Link href="/login">민원게시판</Nav.Link>
-                <Nav.Link href="/login">마이페이지</Nav.Link>
-                <Nav.Link href="/Reservation">예약내역</Nav.Link>
-                <Nav.Link href="/login">이용후기</Nav.Link>
-                <Nav.Link href="/login">회원정보변경</Nav.Link>
-                <Nav.Link href="/login">비밀번호변경</Nav.Link>
-                <Nav.Link href="/login">회원탈퇴</Nav.Link>
-                <Nav.Link href="/login">카카오톡 로그인</Nav.Link>
+                <Nav.Link className="border-bottom" href="/">Home</Nav.Link>
+                <Nav.Link className="border-bottom" href="/login">이용안내</Nav.Link>
+                <Nav.Link className="border-bottom" href="/post">공지사항</Nav.Link>
+                {/* <Nav.Link href="/login">민원게시판</Nav.Link>
+                <Nav.Link href="/login">마이페이지</Nav.Link> */}
+                {/* <Nav.Link href="/Reservation">예약내역</Nav.Link> */}
+                <Nav.Link className="border-bottom" href="/login">이용후기</Nav.Link>
+                <Nav.Link className="border-bottom" href="/login">회원정보</Nav.Link>
+                {/* <Nav.Link href="/login">비밀번호변경</Nav.Link>
+                <Nav.Link href="/login">회원탈퇴</Nav.Link> */}
+                <Nav.Link href="/login">로그인</Nav.Link>
               </Nav>
             </Offcanvas.Body>
           </Navbar.Offcanvas>
