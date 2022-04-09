@@ -24,7 +24,7 @@ export default function Filter() {
             <label className="btn btn-primary" htmlFor="btncheck1">스포츠</label>
 
             <input type="checkbox" className="btn-check" id="btncheck2" autoComplete="off"/>
-            <label className="btn btn-secondary" htmlFor="btncheck2">약국</label>
+            <label className="btn btn-primary" htmlFor="btncheck2">약국</label>
 
             <input type="checkbox" className="btn-check" id="btncheck3" autoComplete="off"/>
             <label className="btn btn-primary" htmlFor="btncheck3">주차장</label>
