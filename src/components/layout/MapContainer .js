@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import "../../App.css";
 const { kakao } = window;
 
@@ -11,7 +12,8 @@ const MapContainer = ({ searchPlace}) => {
   // const [faciPointY, setFaciPointY] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8081/tbfacit/getAll")
+    //fetch("http://localhost:8081/tbfacit/getAll")
+    fetch("http://192.168.0.36:8081/tbfacit/getAll")
       .then((res) => res.json())
       .then((res) => {
         console.log(1, res.data);
@@ -327,7 +329,7 @@ console.log(faciPointX[0]);
         //   height: "100vh",
         // }}
       >
-        <div>
+        {/* <div>
           <ul id="category">
             <li>
               체육시설
@@ -341,11 +343,12 @@ console.log(faciPointX[0]);
               주차장
             </li>
           </ul>
-        </div>
+        </div> */}
+
       </div>
 
       <div className="container my-5 p-3 border-5 border-secondary shadow" style = {styles.notice}>
-        <div className="text-end"><i className="fas fa-plus"></i>더보기</div>
+        <div className="text-end">더보기</div>
         <div className="row">
           <div className="col-12 col-lg-4 px-lg-0">
             <div className="card border-0">              

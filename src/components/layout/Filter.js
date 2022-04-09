@@ -17,23 +17,53 @@ export default function Filter() {
   return (
     <div className="search-box">
       <div className="container">
-        <div className="row">
-          <div className="col-6">
+        <div className="row mb-2">
+          <div className="col-auto" id="category">
+            <div class="btn-group btn-group-md" role="group" aria-label="Basic checkbox toggle button group">
+            <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off"/>
+            <label class="btn btn-primary" for="btncheck1">스포츠</label>
+
+            <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off"/>
+            <label class="btn btn-secondary" for="btncheck2">약국</label>
+
+            <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off"/>
+            <label class="btn btn-primary" for="btncheck3">주차장</label>
+          </div>
+            {/* <ul id="category">
+              <li>
+                체육시설
+              </li>
+              <li id="PM9" data-order="2">
+                <span className="category_bg pharmacy"></span>
+                약국
+              </li>
+              <li id="PK6" data-order="3">
+                <span className="category_bg store"></span>
+                주차장
+              </li>
+            </ul> */}
+          </div>
+          <div className="col-auto">
               <div className="input-group">
-                <input className="form-control rounded-0"
+              
+                <input className="form-control"
                   placeholder="검색어를 입력하세요"
                   onChange={onChange}
                   value={InputText}
                 />
-                <div className="input-group-append">
-                <button className="btn btn-primary rounded-0" type="submit">검색</button>
-                </div>
+                
+                <button className="btn btn-primary" type="submit">검색</button>
+                
               </div>
           </div>
-          <div className="col-6">
+        </div>
+        <div className="row">
+          
+          
+          <div className="col-12">
             <div className="search">
               <div className="input-group">
-                <Form.Select className="rounded-0" aria-label="Default select example">
+                <Form.Select className="" aria-label="Default select example">
                 <option>서비스 선택</option>
                 <option value="1">축구장</option>
                 <option value="2">야구장</option>
@@ -48,7 +78,7 @@ export default function Filter() {
                 <option value="11">조정카누장</option>
                 <option value="12">생활체육관</option>
                 </Form.Select>
-                <Form.Select className="rounded-0" aria-label="Default select example">
+                <Form.Select className="" aria-label="Default select example">
                 <option>지역 선택</option>
                 <option value="1">금정구</option>
                 <option value="2">강서구</option>

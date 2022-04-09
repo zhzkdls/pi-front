@@ -108,15 +108,15 @@
   height: 350px;
 }
 #category {
-  position: absolute;
+  /* position: absolute;
   top: 112px;
-  left: 50px;
-  border-radius: 0px;
+  left: 50px; */
+  /* border-radius: 0px;
   border: 1px solid #909090;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
   background: #fff;
   overflow: hidden;
-  z-index: 2;
+  z-index: 2; */
 }
 #login {
   float: right;
@@ -251,9 +251,7 @@
   /* position:absolute; */
   left:0;top:0;right:0;
   /* line-height: 60px; */
-
   background:rgba(225,225,225, 1)!important;
-
   z-index:999;
   /* background-color: #a89191*/
   box-shadow: 3px 3px 3px #221d1d;
