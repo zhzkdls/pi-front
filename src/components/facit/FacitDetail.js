@@ -28,7 +28,7 @@ function FacitDetail(props) {
     });
 
     useEffect(() => {
-        axios.get(`http://localhost:8080/tbfacit/get/${fcSeq}`)
+        axios.get(`http://localhost:8081/tbfacit/get/${fcSeq}`)
         .then((res) => {
             if (isMount) {
                 setFacit(res.data);
