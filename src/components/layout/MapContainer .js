@@ -17,7 +17,7 @@ const MapContainer = ({ searchPlace }) => {
     const container = document.getElementById("myMap");
     const options = {
       center: new kakao.maps.LatLng(35.229744345195066, 129.08948986278313),
-      level: 3,
+      level: 8,
     };
     const map = new kakao.maps.Map(container, options);
     // 장소 검색 객체를 생성합니다
@@ -336,6 +336,7 @@ const MapContainer = ({ searchPlace }) => {
       </div>
 
       <div className="container my-5">
+        <div className="text-end"></div>
         <div className="row">
           <div className="col-12 col-lg-4">
             <div className="card">              
