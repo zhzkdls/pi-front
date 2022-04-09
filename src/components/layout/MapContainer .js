@@ -336,7 +336,7 @@ const faciPointY = facits.map(facits => facits.faciPointY);
 
       </div>
 
-      <div className="container my-5 p-3 border-5 border-secondary shadow" style = {styles.notice}>
+      <div className="container my-3 px-4 py-2 border-5 border-secondary shadow" style = {styles.notice}>
         <div className="text-end">더보기</div>
         <div className="row">
           <div className="col-12 col-lg-4 px-lg-0">
@@ -416,7 +416,7 @@ const styles = {
       backgroundColor: '#fff',
       position: 'absolute',
       left: '50%',
-      bottom: '0',
+      bottom: '50px',
       transform: 'translate(-50%,0)',
       borderRadius: '15px'
       
