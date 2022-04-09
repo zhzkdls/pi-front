@@ -2,6 +2,8 @@
   font-family: 'Noto Sans KR', sans-serif;
 }
 
+input, select, textarea{font-size:0.8em!important}
+
 .App {
   text-align: center;
 }
@@ -281,6 +283,7 @@
 .search-box{
   position:absolute;left:50%;top:112px;z-index:999;
   transform: translate(-50%, 0);
+  min-width: 800px;
 }
 
 .text-truncate2 {
