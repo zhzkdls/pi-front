@@ -3,6 +3,9 @@ import { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import DatePicker from "react-multi-date-picker";
 import "../../App.css";
+
+
+
 export default function Filter() {
   const [startDate, setStartDate] = useState(new Date());
   const [InputText, setInputText] = useState("");
@@ -17,20 +20,37 @@ export default function Filter() {
 
   const [cname, setCname] = useState("btn btn-primary");
 
-  const onChecked = (e) => {
-    if(cname === "btn btn-primary"){
-      setCname("btn btn-secondary");
-    }else{
-      setCname("btn btn-primary");
+  const [isActive1, setisActive1]=useState(true);
+  const [isActive2, setisActive2]=useState(true);
+  const [isActive3, setisActive3]=useState(true);
+
+  const onChangecName1 = () => {
+    if(isActive2 === false || isActive3 === false){
+      setisActive1(false);
+      setisActive2(true);
+      setisActive3(true);
     }
-  }
-
-  const [isActive, setActive] = useState(false);
-
-  const toggleClass = () => {
-    setActive(!isActive);
+    setisActive1(false);
   };
 
+  const onChangecName2 = () => {
+    if(isActive1 === false || isActive3 === false){
+      setisActive1(true);
+      setisActive2(false);
+      setisActive3(true);
+    }
+    setisActive2(false);
+  };
+
+  const onChangecName3 = () => {
+    if(isActive1 === false || isActive2 === false){
+      setisActive1(true);
+      setisActive2(true);
+      setisActive3(false);
+    }
+    setisActive3(false);
+  };
+  
   return (
     <div className="search-box">
       <div className="container">
@@ -38,14 +58,14 @@ export default function Filter() {
 
           <div className="col-auto" id="category">
             <div className="btn-group btn-group-md" role="group" aria-label="Basic checkbox toggle button group">
-            <input type="checkbox" className="btn-check" id="btncheck1" autoComplete="off" onChange={toggleClass}/>
-            <label className={'btn btn-' + (isActive ? 'primary' : 'secondary')} htmlFor="btncheck1">스포츠</label>
+            <input type="checkbox" className="btn-check" id="btncheck1" autoComplete="off" onChange={onChangecName1}/>
+            <label className={'btn btn-' + (isActive1 ? 'primary' : 'secondary')} htmlFor="btncheck1">스포츠</label>
 
-            <input type="checkbox" className="btn-check" id="btncheck2" autoComplete="off" onChange={toggleClass}/>
-            <label className={'btn btn-' + (isActive ? 'primary' : 'secondary')} htmlFor="btncheck2">약국</label>
+            <input type="checkbox" className="btn-check" id="btncheck2" autoComplete="off" onChange={onChangecName2}/>
+            <label className={'btn btn-' + (isActive2 ? 'primary' : 'secondary')} htmlFor="btncheck2">약국</label>
 
-            <input type="checkbox" className="btn-check" id="btncheck3" autoComplete="off" onChange={toggleClass}/>
-            <label className={'btn btn-' + (isActive ? 'primary' : 'secondary')} htmlFor="btncheck3">주차장</label>
+            <input type="checkbox" className="btn-check" id="btncheck3" autoComplete="off" onChange={onChangecName3}/>
+            <label className={'btn btn-' + (isActive3 ? 'primary' : 'secondary')} htmlFor="btncheck3">주차장</label>
           </div>
 
             {/* <ul id="category">
@@ -83,33 +103,33 @@ export default function Filter() {
             <div className="search">
               <div className="input-group">
                 <Form.Select className="" aria-label="Default select example">
-                <option>서비스 선택</option>
-                <option value="1">축구장</option>
-                <option value="2">야구장</option>
-                <option value="3">테니스장</option>
-                <option value="4">하키장</option>
-                <option value="5">골프연습장</option>
-                <option value="6">사격장</option>
-                <option value="7">수영장</option>
-                <option value="8">씨름장</option>
-                <option value="9">육상경기장</option>
-                <option value="10">게이트볼장</option>
-                <option value="11">조정카누장</option>
-                <option value="12">생활체육관</option>
+                <option>지역 선택</option>
+                <option value="금정구">금정구</option>
+                <option value="강서구">강서구</option>
+                <option value="기장군">기장군</option>
+                <option value="남구">남구</option>
+                <option value="동래구">동래구</option>
+                <option value="동구">동구</option>
+                <option value="사상구">사상구</option>
+                <option value="사하구">사하구</option>
+                <option value="서구">서구</option>
+                <option value="수영구">수영구</option>
+                <option value="동래구">동래구</option>
                 </Form.Select>
                 <Form.Select className="" aria-label="Default select example">
-                <option>지역 선택</option>
-                <option value="1">금정구</option>
-                <option value="2">강서구</option>
-                <option value="3">기장군</option>
-                <option value="4">남구</option>
-                <option value="5">동래구</option>
-                <option value="5">동구</option>
-                <option value="6">사상구</option>
-                <option value="7">사하구</option>
-                <option value="8">서구</option>
-                <option value="3">수영구</option>
-                <option value="5">동래구</option>
+                <option>서비스 선택</option>
+                <option value="축구장">축구장</option>
+                <option value="야구장">야구장</option>
+                <option value="테니스장">테니스장</option>
+                <option value="하키장">하키장</option>
+                <option value="골프연습장">골프연습장</option>
+                <option value="사격장">사격장</option>
+                <option value="수영장">수영장</option>
+                <option value="씨름장">씨름장</option>
+                <option value="육상경기장">육상경기장</option>
+                <option value="게이트볼장">게이트볼장</option>
+                <option value="조정카누장">조정카누장</option>
+                <option value="생활체육관">생활체육관</option>
                 </Form.Select>
               </div>
               {/* <div classNameName="input-group-append">

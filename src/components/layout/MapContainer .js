@@ -3,24 +3,10 @@ import "../../App.css";
 const { kakao } = window;
 
 const MapContainer = ({ searchPlace}) => {
-  // 검색결과 배열에 담아줌
+
   const [Places, setPlaces] = useState([]);
   const [category, setCategory] = useState([]);
-  const [facits, setFacits] = useState([]);
-  // const [faciPointX, setFaciPointX] = useState([]);
-  // const [faciPointY, setFaciPointY] = useState([]);
-
-  useEffect(() => {
-    fetch("http://localhost:8081/tbfacit/getAll")
-    // fetch("http://192.168.0.36:8081/tbfacit/getAll")
-      .then((res) => res.json())
-      .then((res) => {
-        setFacits(res);
-      });
-  }, []);
-
-const faciPointX = facits.map(facits => facits.faciPointX);
-const faciPointY = facits.map(facits => facits.faciPointY);
+  
 
   useEffect(() => {
     // 마커를 클릭했을 때 해당 장소의 상세정보를 보여줄 커스텀오버레이입니다
