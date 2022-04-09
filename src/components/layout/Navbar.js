@@ -1,13 +1,6 @@
 import React from "react";
 import {
-  Button,
-  FormControl,
-  Nav,
-  Navbar,
-  Offcanvas,
-  Container,
-  NavDropdown,
-  Form,
+  Button, FormControl, Nav, Navbar, Offcanvas, Container, NavDropdown, Form
 } from "react-bootstrap";
 import "bootstrap/dist/js/bootstrap";
 import "bootstrap/dist/css/bootstrap.css";
