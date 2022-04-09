@@ -1,3 +1,7 @@
+* {
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
 .App {
   text-align: center;
 }
@@ -247,10 +251,10 @@
   /* position:absolute; */
   left:0;top:0;right:0;
   /* line-height: 60px; */
-  background:rgba(0,0,0, 1)!important;
+  background:rgba(255,255,255, 1)!important;
   z-index:999;
-  /* background-color: #a89191;
-  box-shadow: 3px 3px 3px #221d1d; */
+  /* background-color: #a89191*/
+  box-shadow: 3px 3px 3px #221d1d;
 }
 
 #logo {

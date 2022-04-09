@@ -71,7 +71,8 @@ const RegisterForm = ({ history }) => {
     member.userPhone = form.phone;
     member.userEmail = form.email;
 
-    fetch("http://localhost:8080/member/save", {
+    //fetch("http://localhost:8080/member/save", {
+      fetch("http://192.168.0.36:8080/member/save", {  
       method: "POST",
       headers: {
         "Content-Type": "application/json; charset=utf-8",

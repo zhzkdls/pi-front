@@ -23,7 +23,7 @@ function NavBara() {
     setInputText("");
   };
   return (
-    <div id="nav">
+    <div id="nav" className="shadow">
       <Navbar expand={false}>
         <Container fluid>
           <Link to={"/"}>

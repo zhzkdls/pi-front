@@ -9,7 +9,7 @@ import ModalUnstyled from "@mui/base/ModalUnstyled";
 import "../../App.css";
 function NavBar() {
   return (
-    <div id="nav">
+    <div id="nav" className="shadow">
       <Navbar bg="light" expand={false}>
         <Container fluid>
           <Link to={"/"}>
