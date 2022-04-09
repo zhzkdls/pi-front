@@ -19,8 +19,8 @@ const MapContainer = ({ searchPlace }) => {
     var markers = [];
     const container = document.getElementById("myMap");
     const options = {
-      center: new kakao.maps.LatLng(35.17973316713768, 129.07505674557024),
-      level: 4,
+      center: new kakao.maps.LatLng(35.229744345195066, 129.08948986278313),
+      level: 8,
     };
 
     const map = new kakao.maps.Map(container, options);
@@ -331,6 +331,7 @@ const MapContainer = ({ searchPlace }) => {
       </div>
 
       <div className="container my-5">
+        <div className="text-end"></div>
         <div className="row">
           <div className="col-12 col-lg-4">
             <div className="card">              

@@ -39,9 +39,10 @@ function NavBara() {
             <button type="submit">검색</button>
           </form> */}
           <div className="d-flex justify-content-end">
-            <Nav.Link href="/login">Login</Nav.Link>
+            
             <Nav.Link href="#action1">Home</Nav.Link>
-            <Nav.Link href="#action2">Link</Nav.Link>
+            
+            <Nav.Link href="#action2">커뮤니티</Nav.Link>
             <NavDropdown title="Link" id="navbarScrollingDropdown">
               <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
               <NavDropdown.Item href="#action4">
@@ -52,6 +53,7 @@ function NavBara() {
                 Something else here
               </NavDropdown.Item>
             </NavDropdown>
+            <Nav.Link href="/login">Login</Nav.Link>
             <Nav.Link href="#" disabled>
               Link
             </Nav.Link>
