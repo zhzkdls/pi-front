@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import "../../App.css";
 function Footer() {
   return (
-    <div id="footer" className="bg-dark py-5 mt-5">
+    <div id="footer" className="bg-dark py-5">
       <div className="container">
         <div className="row">
           <div className="col-12">            

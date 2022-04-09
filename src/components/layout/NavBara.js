@@ -24,7 +24,7 @@ function NavBara() {
   };
   return (
     <div id="nav">
-      <Navbar expand={false}>
+      <Navbar fixed="top" bg="white" className="container mx-auto my-3 py-3 rounded-4 shadow" expand={false}>
         <Container fluid>
           <Link to={"/"}>
             <img src="./img/logo3.png" alt="부산광역시 통합예약시스템" id="logo" className="me-3" />
@@ -37,7 +37,7 @@ function NavBara() {
             />
             <button type="submit">검색</button>
           </form> */}
-          <div className="d-flex justify-content-end">
+          <div className="d-flex justify-content-center">
             
             <Nav.Link href="#action1">Home</Nav.Link>
             
@@ -57,13 +57,13 @@ function NavBara() {
               Link
             </Nav.Link>
           </div>
-          <Navbar.Toggle aria-controls="offcanvasNavbar" />
+          <Navbar.Toggle className="border-0" aria-controls="offcanvasNavbar" />
           <Navbar.Offcanvas
             id="offcanvasNavbar"
             aria-labelledby="offcanvasNavbarLabel"
             placement="end"
           >
-            <Offcanvas.Header closeButton>
+            <Offcanvas.Header closeButton >
               <Offcanvas.Title id="offcanvasNavbarLabel">메뉴</Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>

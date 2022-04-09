@@ -1,3 +1,7 @@
+* {
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
 .App {
   text-align: center;
 }
@@ -105,8 +109,8 @@
 }
 #category {
   position: absolute;
-  top: 10px;
-  left: 10px;
+  top: 112px;
+  left: 50px;
   border-radius: 0px;
   border: 1px solid #909090;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
@@ -247,10 +251,12 @@
   /* position:absolute; */
   left:0;top:0;right:0;
   /* line-height: 60px; */
+
   background:rgba(225,225,225, 1)!important;
+
   z-index:999;
-  /* background-color: #a89191;
-  box-shadow: 3px 3px 3px #221d1d; */
+  /* background-color: #a89191*/
+  box-shadow: 3px 3px 3px #221d1d;
 }
 
 #logo {
@@ -275,7 +281,7 @@
 
 /*Search box*/
 .search-box{
-  position:absolute;left:50%;top:76px;z-index:999;
+  position:absolute;left:50%;top:112px;z-index:999;
   transform: translate(-50%, 0);
 }
 
@@ -335,6 +341,7 @@
  }
 
 
+ .rounded-4{border-radius: 15px!important;}
  
 .div {
   margin-bottom: 550px;

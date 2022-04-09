@@ -334,14 +334,14 @@ const faciPointY = facits.map(facits => facits.faciPointY);
         </div>
       </div>
 
-      <div className="container my-5">
-        <div className="text-end"></div>
+      <div className="container my-5 p-3 border-5 border-secondary shadow" style = {styles.notice}>
+        <div className="text-end"><i className="fas fa-plus"></i>더보기</div>
         <div className="row">
-          <div className="col-12 col-lg-4">
-            <div className="card">              
+          <div className="col-12 col-lg-4 px-lg-0">
+            <div className="card border-0">              
               <div className="card-body">
-                <h4>공지사항 제목</h4>
-                <p className="text-truncate4" style={{height: "100px"}}>
+                <h5 className="font-weight-700 mb-3">공지사항 제목</h5>
+                <p className="text-truncate2 text-secondary" style={{height: "52px"}}>
                   공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용
                   공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용
                   공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용
@@ -352,11 +352,11 @@ const faciPointY = facits.map(facits => facits.faciPointY);
               </div>              
             </div>
           </div>
-          <div className="col-12 col-lg-4">
-            <div className="card">              
+          <div className="col-12 col-lg-4 px-lg-0 border-start border-end">
+            <div className="card border-0">              
               <div className="card-body">
-                <h4>공지사항 제목</h4>
-                <p className="text-truncate4" style={{height: "100px"}}>
+              <h5 className="font-weight-700 mb-3">공지사항 제목</h5>
+                <p className="text-truncate2 text-secondary" style={{height: "52px"}}>
                   공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용
                   공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용
                   공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용
@@ -367,11 +367,11 @@ const faciPointY = facits.map(facits => facits.faciPointY);
               </div>              
             </div>
           </div>
-          <div className="col-12 col-lg-4">
-            <div className="card">              
+          <div className="col-12 col-lg-4 px-lg-0">
+            <div className="card border-0">              
               <div className="card-body">
-                <h4>공지사항 제목</h4>
-                <p className="text-truncate4" style={{height: "100px"}}>
+              <h5 className="font-weight-700 mb-3">공지사항 제목</h5>
+                <p className="text-truncate2 text-secondary" style={{height: "52px"}}>
                   공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용
                   공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용
                   공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용
@@ -408,5 +408,17 @@ const faciPointY = facits.map(facits => facits.faciPointY);
     </div>
   );
 };
+
+const styles = {
+  notice: {
+      backgroundColor: '#fff',
+      position: 'absolute',
+      left: '50%',
+      bottom: '0',
+      transform: 'translate(-50%,0)',
+      borderRadius: '15px'
+      
+  }
+}
 
 export default MapContainer;
