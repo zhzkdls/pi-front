@@ -19,15 +19,15 @@ export default function Filter() {
       <div className="container">
         <div className="row mb-2">
           <div className="col-auto" id="category">
-            <div class="btn-group btn-group-md" role="group" aria-label="Basic checkbox toggle button group">
-            <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off"/>
-            <label class="btn btn-primary" for="btncheck1">스포츠</label>
+            <div className="btn-group btn-group-md" role="group" aria-label="Basic checkbox toggle button group">
+            <input type="checkbox" className="btn-check" id="btncheck1" autoComplete="off"/>
+            <label className="btn btn-primary" htmlFor="btncheck1">스포츠</label>
 
-            <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off"/>
-            <label class="btn btn-secondary" for="btncheck2">약국</label>
+            <input type="checkbox" className="btn-check" id="btncheck2" autoComplete="off"/>
+            <label className="btn btn-secondary" htmlFor="btncheck2">약국</label>
 
-            <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off"/>
-            <label class="btn btn-primary" for="btncheck3">주차장</label>
+            <input type="checkbox" className="btn-check" id="btncheck3" autoComplete="off"/>
+            <label className="btn btn-primary" htmlFor="btncheck3">주차장</label>
           </div>
             {/* <ul id="category">
               <li>
