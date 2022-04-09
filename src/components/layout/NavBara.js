@@ -24,20 +24,20 @@ function NavBara() {
   };
   return (
     <div id="nav">
-      <Navbar bg="light" expand={false}>
+      <Navbar expand={false}>
         <Container fluid>
           <Link to={"/"}>
             <img src="./img/GO.png" alt="Xbox Logo" id="logo" />
             <span id="logoText">Go Home</span>
           </Link>
-          <form className="inputForm" onSubmit={handleSubmit}>
+          {/* <form className="inputForm" onSubmit={handleSubmit}>
             <input
               placeholder="검색어를 입력하세요"
               onChange={onChange}
               value={InputText}
             />
             <button type="submit">검색</button>
-          </form>
+          </form> */}
           <div className="d-flex justify-content-end">
             <Nav.Link href="/login">Login</Nav.Link>
             <Nav.Link href="#action1">Home</Nav.Link>

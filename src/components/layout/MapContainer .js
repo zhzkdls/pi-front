@@ -34,13 +34,13 @@ const MapContainer = ({ searchPlace }) => {
     const mapTypeControl = new kakao.maps.MapTypeControl();
 
     // 지도의 상단 우측에 지도 타입 변경 컨트롤을 추가한다
-    map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
+    //map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
 
     // 지도에 확대 축소 컨트롤을 생성한다
-    const zoomControl = new kakao.maps.ZoomControl();
+    //const zoomControl = new kakao.maps.ZoomControl();
 
     // 지도의 우측에 확대 축소 컨트롤을 추가한다
-    map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+    //map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
     // 커스텀 오버레이의 컨텐츠 노드에 css class를 추가합니다
     contentNode.className = "placeinfo_wrap";
 
@@ -305,13 +305,13 @@ const MapContainer = ({ searchPlace }) => {
   }, [searchPlace]);
 
   return (
-    <div>
+    <div className="wrap">
       <div
         id="myMap"
-        style={{
-          width: "100%",
-          height: "800px",
-        }}
+        // style={{
+        //   width: "100%",
+        //   height: "100vh",
+        // }}
       >
         <div>
           <ul id="category">
@@ -327,6 +327,56 @@ const MapContainer = ({ searchPlace }) => {
               주차장
             </li>
           </ul>
+        </div>
+      </div>
+
+      <div className="container my-5">
+        <div className="row">
+          <div className="col-12 col-lg-4">
+            <div className="card">              
+              <div className="card-body">
+                <h4>공지사항 제목</h4>
+                <p className="text-truncate4" style={{height: "100px"}}>
+                  공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용
+                  공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용
+                  공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용
+                  공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용
+                  공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용
+                </p>
+                <div className="text-end">2022-04-05</div>
+              </div>              
+            </div>
+          </div>
+          <div className="col-12 col-lg-4">
+            <div className="card">              
+              <div className="card-body">
+                <h4>공지사항 제목</h4>
+                <p className="text-truncate4" style={{height: "100px"}}>
+                  공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용
+                  공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용
+                  공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용
+                  공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용
+                  공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용
+                </p>
+                <div className="text-end">2022-04-03</div>
+              </div>              
+            </div>
+          </div>
+          <div className="col-12 col-lg-4">
+            <div className="card">              
+              <div className="card-body">
+                <h4>공지사항 제목</h4>
+                <p className="text-truncate4" style={{height: "100px"}}>
+                  공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용
+                  공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용
+                  공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용
+                  공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용
+                  공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용
+                </p>
+                <div className="text-end">2022-04-01</div>
+              </div>              
+            </div>
+          </div>
         </div>
       </div>
 

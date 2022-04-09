@@ -36,17 +36,20 @@
     transform: rotate(360deg);
   }
 }
-.myMap {
+
+#myMap {
+  /*position:absolute;
+  left:0;right:0;top:0;bottom:0;*/
   width: 100%;
-  height: 600px;
+  height: 100vh;
   align-items: center;
   justify-content: center;
-  margin-left: auto;
+  /* margin-left: auto;
   margin-right: auto;
   border-style: solid;
-  border-width: medium;
-  border-color: #d8d8d8;
-  z-index: -1;
+  border-width: medium; */
+  /* border-color: #d8d8d8; */
+  z-index:0;
 }
 
 .search {
@@ -103,8 +106,8 @@
 #category {
   position: absolute;
   top: 10px;
-  left: 10x;
-  border-radius: 5px;
+  left: 10px;
+  border-radius: 0px;
   border: 1px solid #909090;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
   background: #fff;
@@ -241,9 +244,13 @@
 
 
 #nav {
-  line-height: 60px;
-  background-color: #a89191;
-  box-shadow: 3px 3px 3px #221d1d;
+  /* position:absolute; */
+  left:0;top:0;right:0;
+  /* line-height: 60px; */
+  background:rgba(0,0,0, 1)!important;
+  z-index:999;
+  /* background-color: #a89191;
+  box-shadow: 3px 3px 3px #221d1d; */
 }
 
 #logo {
@@ -264,6 +271,33 @@
   float: right;
   margin: 0;
   padding: 0;
+}
+
+/*Search box*/
+.search-box{
+  position:absolute;left:50%;top:76px;z-index:999;
+  transform: translate(-50%, 0);
+}
+
+.text-truncate2 {
+  --max-lines: 2;
+  max-height: calc(var(--lh) * var(--max-lines));
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.text-truncate3 {
+  --max-lines: 3;
+  max-height: calc(var(--lh) * var(--max-lines));
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.text-truncate4 {
+  --max-lines: 4;
+  max-height: calc(var(--lh) * var(--max-lines));
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 

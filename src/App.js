@@ -10,10 +10,16 @@ import NavBara from "./components/layout/NavBara";
 import FacitList from "./components/facit/FacitList";
 import FacitDetail from "./components/facit/FacitDetail";
 import ReservationListByFcSeq from "./components/reservation/ReservationListByFcSeq";
+<<<<<<< HEAD
 import FacitMap2 from "./components/facit/FacitMap2";
 import LoginPage from "./components/page/LoginPage";
 import RegisterPage from "./components/page/RegisterPage";
 import KakaoRedirectHandler from "./components/oauth/KakaoRedirectHandler";
+=======
+import Footer from "./components/layout/Footer";
+
+
+>>>>>>> 556a4671ad83afd5
 
 function App() {
   return (
@@ -37,6 +43,7 @@ function App() {
         <Route path="/map2" element={<FacitMap2 />} />
         <Route path="/oauth/callback/kakao" element={KakaoRedirectHandler} />
       </Routes>
+      <Footer/>
     </BrowserRouter>
   );
 }
