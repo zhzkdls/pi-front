@@ -14,14 +14,12 @@ const MapContainer = ({ searchPlace}) => {
     fetch("http://localhost:8081/tbfacit/getAll")
       .then((res) => res.json())
       .then((res) => {
-        console.log(1, res.data);
         setFacits(res);
       });
   }, []);
 
 const faciPointX = facits.map(facits => facits.faciPointX);
 const faciPointY = facits.map(facits => facits.faciPointY);
-console.log(faciPointX[0]);
 
   useEffect(() => {
     // 마커를 클릭했을 때 해당 장소의 상세정보를 보여줄 커스텀오버레이입니다
@@ -47,15 +45,6 @@ console.log(faciPointX[0]);
 
     const mapTypeControl = new kakao.maps.MapTypeControl();
 
-    // 지도의 상단 우측에 지도 타입 변경 컨트롤을 추가한다
-    //map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
-
-    // 지도에 확대 축소 컨트롤을 생성한다
-    //const zoomControl = new kakao.maps.ZoomControl();
-
-    // 지도의 우측에 확대 축소 컨트롤을 추가한다
-    //map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
-    // 커스텀 오버레이의 컨텐츠 노드에 css class를 추가합니다
     contentNode.className = "placeinfo_wrap";
 
     // 커스텀 오버레이의 컨텐츠 노드에 mousedown, touchstart 이벤트가 발생했을때
@@ -157,12 +146,12 @@ console.log(faciPointX[0]);
     }
 
     // 지도 위에 표시되고 있는 마커를 모두 제거합니다
-    function removeMarker() {
-      for (let i = 0; i < markers.length; i++) {
+  function removeMarker() {
+    for ( var i = 0; i < markers.length; i++ ) {
         markers[i].setMap(null);
-      }
-      markers = [];
-    }
+    }   
+    markers = [];
+  }
 
     // 클릭한 마커에 대한 장소 상세정보를 커스텀 오버레이로 표시하는 함수입니다
     function displayPlaceInfo(place) {
@@ -329,14 +318,15 @@ console.log(faciPointX[0]);
       >
         <div>
           <ul id="category">
-            <li>
+            <li data-order="1">
+            <span className="category_bg pharmacy"></span>
               체육시설
             </li>
             <li id="PM9" data-order="2">
               <span className="category_bg pharmacy"></span>
               약국
             </li>
-            <li id="PK6" data-order="3">
+            <li id="PK8" data-order="3">
               <span className="category_bg store"></span>
               주차장
             </li>
