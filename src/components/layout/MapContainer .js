@@ -417,7 +417,7 @@ const styles = {
       backgroundColor: '#fff',
       position: 'absolute',
       left: '50%',
-      bottom: '0',
+      bottom: '50px',
       transform: 'translate(-50%,0)',
       borderRadius: '15px'
       
