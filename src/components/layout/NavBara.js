@@ -27,8 +27,8 @@ function NavBara() {
       <Navbar fixed="top" bg="white" className="container mx-auto my-3 py-3 rounded-4 shadow" expand={false}>
         <Container fluid>
           <Link to={"/"}>
-            <img src="./img/GO.png" alt="Xbox Logo" id="logo" />
-            <span id="logoText">Go Home</span>
+            <img src="./img/logo2.png" alt="부산광역시" id="logo" className="me-3" />
+            <img src="./img/logo1.png" alt="통합예약시스템" id="logo"  style={{height:"20px"}}/>
           </Link>
           {/* <form className="inputForm" onSubmit={handleSubmit}>
             <input

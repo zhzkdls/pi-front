@@ -1,6 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Home } from "./components/page/Home";
-
 import Reservation from "./components/reservation/Reservation";
 import HolydayPicker from "./components/holyday/HolydayPicker";
 import PostDetail from "./components/page/PostDetail";

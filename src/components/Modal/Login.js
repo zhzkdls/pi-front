@@ -14,6 +14,7 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { KAKAO_AUTH_URL } from "../oauth/OAuth";
 import kakaologo from "../../kakao_login_medium_narrow.png";
+import KakaoLogin from 'react-kakao-login';
 
 function Copyright(props) {
   return (

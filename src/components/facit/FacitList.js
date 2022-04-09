@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import MapContainer from "../layout/MapContainer ";
 import FacitItem from "./FacitItem";
 
 function FacitList() {
@@ -6,7 +7,7 @@ function FacitList() {
   const [facits, setFacits] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8080/tbfacit/getAll")
+    fetch("http://localhost:8081/tbfacit/getAll")
       .then((res) => res.json())
       .then((res) => {
         console.log(1, res);

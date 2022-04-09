@@ -2,12 +2,26 @@ import React, { useEffect, useState } from "react";
 import "../../App.css";
 const { kakao } = window;
 
-const MapContainer = ({ searchPlace }) => {
+const MapContainer = ({ searchPlace}) => {
   // 검색결과 배열에 담아줌
   const [Places, setPlaces] = useState([]);
   const [category, setCategory] = useState([]);
+  const [facits, setFacits] = useState([]);
+  // const [faciPointX, setFaciPointX] = useState([]);
+  // const [faciPointY, setFaciPointY] = useState([]);
 
+  useEffect(() => {
+    fetch("http://localhost:8081/tbfacit/getAll")
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(1, res.data);
+        setFacits(res);
+      });
+  }, []);
 
+const faciPointX = facits.map(facits => facits.faciPointX);
+const faciPointY = facits.map(facits => facits.faciPointY);
+console.log(faciPointX[0]);
 
   useEffect(() => {
     // 마커를 클릭했을 때 해당 장소의 상세정보를 보여줄 커스텀오버레이입니다
