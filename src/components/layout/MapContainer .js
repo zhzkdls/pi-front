@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import "../../App.css";
 const { kakao } = window;
 
@@ -12,8 +11,8 @@ const MapContainer = ({ searchPlace}) => {
   // const [faciPointY, setFaciPointY] = useState([]);
 
   useEffect(() => {
-    //fetch("http://localhost:8081/tbfacit/getAll")
-    fetch("http://192.168.0.36:8081/tbfacit/getAll")
+    fetch("http://localhost:8081/tbfacit/getAll")
+    // fetch("http://192.168.0.36:8081/tbfacit/getAll")
       .then((res) => res.json())
       .then((res) => {
         setFacits(res);

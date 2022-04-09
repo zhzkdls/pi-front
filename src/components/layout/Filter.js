@@ -1,3 +1,4 @@
+import { render } from "@testing-library/react";
 import { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import DatePicker from "react-multi-date-picker";
@@ -10,35 +11,53 @@ export default function Filter() {
     setInputText(e.target.value);
   };
 
-
   const handleColor = (time) => {
     return time.getHours() > 12 ? "text-success" : "text-error";
   };
+
+  const [cname, setCname] = useState("btn btn-primary");
+
+  const onChecked = (e) => {
+    if(cname === "btn btn-primary"){
+      setCname("btn btn-secondary");
+    }else{
+      setCname("btn btn-primary");
+    }
+  }
+
+  const [isActive, setActive] = useState(false);
+
+  const toggleClass = () => {
+    setActive(!isActive);
+  };
+
   return (
     <div className="search-box">
       <div className="container">
         <div className="row mb-2">
+
           <div className="col-auto" id="category">
-            <div class="btn-group btn-group-md" role="group" aria-label="Basic checkbox toggle button group">
-            <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off"/>
-            <label class="btn btn-primary" for="btncheck1">스포츠</label>
+            <div className="btn-group btn-group-md" role="group" aria-label="Basic checkbox toggle button group">
+            <input type="checkbox" className="btn-check" id="btncheck1" autoComplete="off" onChange={toggleClass}/>
+            <label className={'btn btn-' + (isActive ? 'primary' : 'secondary')} htmlFor="btncheck1">스포츠</label>
 
-            <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off"/>
-            <label class="btn btn-secondary" for="btncheck2">약국</label>
+            <input type="checkbox" className="btn-check" id="btncheck2" autoComplete="off" onChange={toggleClass}/>
+            <label className={'btn btn-' + (isActive ? 'primary' : 'secondary')} htmlFor="btncheck2">약국</label>
 
-            <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off"/>
-            <label class="btn btn-primary" for="btncheck3">주차장</label>
+            <input type="checkbox" className="btn-check" id="btncheck3" autoComplete="off" onChange={toggleClass}/>
+            <label className={'btn btn-' + (isActive ? 'primary' : 'secondary')} htmlFor="btncheck3">주차장</label>
           </div>
+
             {/* <ul id="category">
               <li>
                 체육시설
               </li>
               <li id="PM9" data-order="2">
-                <span className="category_bg pharmacy"></span>
+                <span classNameName="category_bg pharmacy"></span>
                 약국
               </li>
               <li id="PK6" data-order="3">
-                <span className="category_bg store"></span>
+                <span classNameName="category_bg store"></span>
                 주차장
               </li>
             </ul> */}
@@ -93,17 +112,17 @@ export default function Filter() {
                 <option value="5">동래구</option>
                 </Form.Select>
               </div>
-              {/* <div className="input-group-append">
-                <div className="input-group">
+              {/* <div classNameName="input-group-append">
+                <div classNameName="input-group">
                   <DatePicker
                   showTimeSelect
                   selected={startDate}
                   onChange={(date) => setStartDate(date)}
-                  timeClassName={handleColor}
+                  timeclassNameName={handleColor}
                   placeholder="날짜를 선택하세요"
-                  className="form-control"
+                  classNameName="form-control"
                 />
-                <div className="input-group-append">
+                <div classNameName="input-group-append">
                 <Button variant="warning">검색</Button>{" "}
                 </div>
                 </div>
