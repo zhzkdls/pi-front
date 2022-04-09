@@ -331,7 +331,7 @@ const MapContainer = ({ searchPlace }) => {
       </div>
 
       <div className="container my-5 p-3 border-5 border-secondary shadow" style = {styles.notice}>
-        <div className="text-end">더보기</div>
+        <div className="text-end"><i className="fas fa-plus"></i>더보기</div>
         <div className="row">
           <div className="col-12 col-lg-4 px-lg-0">
             <div className="card border-0">              
