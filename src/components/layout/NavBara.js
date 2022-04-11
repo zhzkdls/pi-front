@@ -29,14 +29,6 @@ function NavBara() {
           <Link to={"/"}>
             <img src="./img/logo5.png" alt="부산광역시 통합예약시스템" id="logo" className="me-3" />
           </Link>
-          {/* <form className="inputForm" onSubmit={handleSubmit}>
-            <input
-              placeholder="검색어를 입력하세요"
-              onChange={onChange}
-              value={InputText}
-            />
-            <button type="submit">검색</button>
-          </form> */}
           <div className="d-flex justify-content-center">
             
             <Nav.Link href="#action1">Home</Nav.Link>
@@ -64,12 +56,14 @@ function NavBara() {
             placement="end"
             backdrop="false"
           >
-            <Offcanvas.Header closeButton >
-              <Offcanvas.Title id="offcanvasNavbarLabel">메뉴</Offcanvas.Title>
+            <Offcanvas.Header closeButton>
+              <Link to={"/"}>
+                <img src="./img/logo4.png" alt="부산광역시 통합예약시스템" id="logo" className="me-3" 
+                style={{height:"30px"}}/>
+              </Link>
             </Offcanvas.Header>
             <Offcanvas.Body>
               <Nav className="justify-content-end flex-grow-1 pe-3">
-                <Nav.Link className="border-bottom" href="/">Home</Nav.Link>
                 <Nav.Link className="border-bottom" href="/login">이용안내</Nav.Link>
                 <Nav.Link className="border-bottom" href="/post">공지사항</Nav.Link>
                 {/* <Nav.Link href="/login">민원게시판</Nav.Link>

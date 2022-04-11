@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from "react";
-<<<<<<< HEAD
-=======
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
->>>>>>> 0bda17053cdb010fb613c48b8da806633917a4dc
 import "../../App.css";
 const { kakao } = window;
 

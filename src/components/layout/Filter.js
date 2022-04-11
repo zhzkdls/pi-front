@@ -57,7 +57,7 @@ export default function Filter() {
         <div className="row mb-2">
 
           <div className="col-auto" id="category">
-            <div className="btn-group btn-group-md" role="group" aria-label="Basic checkbox toggle button group">
+            <div className="btn-group btn-group-sm" role="group" aria-label="Basic checkbox toggle button group">
             <input type="checkbox" className="btn-check" id="btncheck1" autoComplete="off" onChange={onChangecName1}/>
             <label className={'btn btn-' + (isActive1 ? 'primary' : 'secondary')} htmlFor="btncheck1">스포츠</label>
 
@@ -111,22 +111,7 @@ export default function Filter() {
                 <option value="5">동래구</option>
               </Form.Select>
           </div>
-          <div className="col-6 col-lg px-0">
-                
-                <Form.Select className="" aria-label="Default select example">
-                <option>지역 선택</option>
-                <option value="금정구">금정구</option>
-                <option value="강서구">강서구</option>
-                <option value="기장군">기장군</option>
-                <option value="남구">남구</option>
-                <option value="동래구">동래구</option>
-                <option value="동구">동구</option>
-                <option value="사상구">사상구</option>
-                <option value="사하구">사하구</option>
-                <option value="서구">서구</option>
-                <option value="수영구">수영구</option>
-                <option value="동래구">동래구</option>
-                </Form.Select>
+          <div className="col-6 col-lg px-0">    
                 <Form.Select className="" aria-label="Default select example">
                 <option>서비스 선택</option>
                 <option value="축구장">축구장</option>
