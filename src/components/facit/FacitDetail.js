@@ -11,6 +11,7 @@ import { Link, useParams } from "react-router-dom";
 import FacitDetailDatePicker from "../holyday/FacitDetailDatePicker";
 import UseIsMount from "../UseIsMount";
 import FacitMap2 from './FacitMap2';
+import Comment from '../comment/Comment';
 
 function FacitDetail(props) {
     const fcSeq = useParams().fcSeq;
@@ -86,10 +87,7 @@ function FacitDetail(props) {
           <br/>
           <hr />
             <form >
-              <div className="input-group mt-2">
-                <textarea type="text" placeholder="이용후기를 입력 해주세요" className="form-control col-10"  />
-                <button type="submit" className="input-group-text pointer btn-primary">평가입력</button>
-              </div>
+              <Comment/>
             </form>
           </TabPanel>
       </TabsUnstyled>

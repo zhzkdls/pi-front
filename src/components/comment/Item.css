@@ -1,0 +1,25 @@
+.handle {
+    width: 90px;
+    border: 1px solid #ccc;
+    background: #fff;
+    position: absolute;
+    right: 50px;
+    top: 50px;
+    text-align: center;
+}
+
+.handle a {
+    display: block;
+    text-decoration: none;
+}
+
+.list-group-item .centence {
+    padding: 10px 50px;
+}
+
+.user {
+    font-size: 25px;
+}
+.pik {
+    font-size: 2.25rem;
+}
