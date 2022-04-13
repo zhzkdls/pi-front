@@ -1,98 +1,56 @@
-import { render } from "@testing-library/react";
 import { useState } from "react";
-import { Button, Form } from "react-bootstrap";
-import DatePicker from "react-multi-date-picker";
+import { Form } from "react-bootstrap";
 import "../../App.css";
 
-
-
-export default function Filter() {
-  const [startDate, setStartDate] = useState(new Date());
+export default function Filter({faci, toggleFaci, pharmacy, togglePharmacy, parking, toggleParking}) {
   const [InputText, setInputText] = useState("");
 
   const onChange = (e) => {
     setInputText(e.target.value);
   };
 
-  const handleColor = (time) => {
-    return time.getHours() > 12 ? "text-success" : "text-error";
-  };
-
-  const [cname, setCname] = useState("btn btn-primary");
-
-  const [isActive1, setisActive1]=useState(true);
-  const [isActive2, setisActive2]=useState(true);
-  const [isActive3, setisActive3]=useState(true);
-
-  const onChangecName1 = () => {
-    if(isActive2 === false || isActive3 === false){
-      setisActive1(false);
-      setisActive2(true);
-      setisActive3(true);
-    }
-    setisActive1(false);
-  };
-
-  const onChangecName2 = () => {
-    if(isActive1 === false || isActive3 === false){
-      setisActive1(true);
-      setisActive2(false);
-      setisActive3(true);
-    }
-    setisActive2(false);
-  };
-
-  const onChangecName3 = () => {
-    if(isActive1 === false || isActive2 === false){
-      setisActive1(true);
-      setisActive2(true);
-      setisActive3(false);
-    }
-    setisActive3(false);
-  };
+  const isCheckFaci = () => {
+    toggleFaci(!faci);
+    togglePharmacy(false);
+    toggleParking(false);
+  }
+  const isCheckPharmacy = () => {
+    toggleFaci(false);
+    togglePharmacy(!pharmacy);
+    toggleParking(false);
+  }
+  const isCheckParking = () => {
+    toggleFaci(false);
+    togglePharmacy(false);
+    toggleParking(!parking);
+  }
   
   return (
     <div className="search-box">
       <div className="container">
         <div className="row mb-2">
-
           <div className="col-auto" id="category">
             <div className="btn-group btn-group-sm" role="group" aria-label="Basic checkbox toggle button group">
-            <input type="checkbox" className="btn-check" id="btncheck1" autoComplete="off" onChange={onChangecName1}/>
-            <label className={'btn btn-' + (isActive1 ? 'primary' : 'secondary')} htmlFor="btncheck1">스포츠</label>
 
-            <input type="checkbox" className="btn-check" id="btncheck2" autoComplete="off" onChange={onChangecName2}/>
-            <label className={'btn btn-' + (isActive2 ? 'primary' : 'secondary')} htmlFor="btncheck2">약국</label>
+              <input type="checkbox" className="btn-check" id="btncheck1" autoComplete="off" onClick={isCheckFaci}/>
+              <label className={'btn btn-' + (faci ? 'primary' : 'secondary')} htmlFor="btncheck1">체육시설</label>
 
-            <input type="checkbox" className="btn-check" id="btncheck3" autoComplete="off" onChange={onChangecName3}/>
-            <label className={'btn btn-' + (isActive3 ? 'primary' : 'secondary')} htmlFor="btncheck3">주차장</label>
-          </div>
+              <input type="checkbox" className="btn-check" id="btncheck2" autoComplete="off" onClick={isCheckPharmacy}/>
+              <label className={'btn btn-' + (pharmacy ? 'primary' : 'secondary')} htmlFor="btncheck2">약국</label>
 
-            {/* <ul id="category">
-              <li>
-                체육시설
-              </li>
-              <li id="PM9" data-order="2">
-                <span classNameName="category_bg pharmacy"></span>
-                약국
-              </li>
-              <li id="PK6" data-order="3">
-                <span classNameName="category_bg store"></span>
-                주차장
-              </li>
-            </ul> */}
+              <input type="checkbox" className="btn-check" id="btncheck3" autoComplete="off" onClick={isCheckParking}/>
+              <label className={'btn btn-' + (parking ? 'primary' : 'secondary')} htmlFor="btncheck3">주차장</label>
+
+            </div>
           </div>
           <div className="col-12 col-lg">
               <div className="input-group input-group-sm">
-              
                 <input className="form-control"
                   placeholder="검색어를 입력하세요"
                   onChange={onChange}
                   value={InputText}
                 />
-                
                 <button className="btn btn-primary" type="submit">검색</button>
-                
               </div>
           </div>
           <div className="col-6 col-lg px-0">

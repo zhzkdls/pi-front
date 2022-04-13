@@ -69,8 +69,8 @@ function NavBara() {
                 {/* <Nav.Link href="/login">민원게시판</Nav.Link>
                 <Nav.Link href="/login">마이페이지</Nav.Link> */}
                 {/* <Nav.Link href="/Reservation">예약내역</Nav.Link> */}
-                <Nav.Link className="border-bottom" href="/login">이용후기</Nav.Link>
-                <Nav.Link className="border-bottom" href="/login">회원정보</Nav.Link>
+                {/* <Nav.Link className="border-bottom" href="/login">이용후기</Nav.Link> */}
+                {/* <Nav.Link className="border-bottom" href="/login">회원정보</Nav.Link> */}
                 {/* <Nav.Link href="/login">비밀번호변경</Nav.Link>
                 <Nav.Link href="/login">회원탈퇴</Nav.Link> */}
                 <Nav.Link href="/login">로그인</Nav.Link>

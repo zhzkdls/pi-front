@@ -1,24 +1,32 @@
 import React, {useState, useEffect} from "react";
 import Filter from "../layout/Filter";
 import MapContainer from "../layout/MapContainer ";
+import MapContainer2 from "../layout/MapContainer2";
 
 export const Home = () => {
-  const [Place, setPlace] = useState("");
-  const [facit, setFacit] = useState([]);
-
-  useEffect(() => {
-    fetch("http://localhost:8081/tbfacit/getAll")
-      .then((res) => res.json())
-      .then((res) => {
-
-        setFacit(res);
-      });
-  }, []);
-
+  const [Place, setPlace] = useState();
+  const [faci, setFaci] = useState(false);  // 메뉴의 초기값을 false로 설정
+  const [pharmacy, setPharmacy] = useState(false);  // 메뉴의 초기값을 false로 설정
+  const [parking, setParking] = useState(false);  // 메뉴의 초기값을 false로 설정
+  
+  const toggleFaci = (faci) => {
+    setFaci(faci); // on,off 개념 boolean
+    console.log("Home faci", faci);
+  }
+  const togglePharmacy = (pharmacy) => {
+    setPharmacy(pharmacy); // on,off 개념 boolean
+    console.log("Home pharmacy", pharmacy);
+  }
+  const toggleParking = (parking) => {
+    setParking(parking); // on,off 개념 boolean
+    console.log("Home parking", parking);
+  }
+  
   return (
     <>
-      <Filter />
-        <MapContainer searchPlace={Place}/>
+      <Filter faci={faci} toggleFaci={toggleFaci} pharmacy={pharmacy} togglePharmacy={togglePharmacy} parking={parking} toggleParking={toggleParking}/>
+      {/* <MapContainer2 faci={faci} toggleFaci={toggleFaci} pharmacy={pharmacy} togglePharmacy={togglePharmacy} parking={parking} toggleParking={toggleParking} searchPlace={Place}/> */}
+      <MapContainer faci={faci} pharmacy={pharmacy} parking={parking} searchPlace={Place} />
     </>
   );
 };
