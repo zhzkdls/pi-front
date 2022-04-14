@@ -18,12 +18,14 @@ const MapContainer = ({ searchPlace, faci, pharmacy, parking}) => {
     });
 
     // 마커를 클릭했을 때 해당 장소의 상세정보를 보여줄 커스텀오버레이입니다
-    var placeOverlay = new kakao.maps.CustomOverlay({ zIndex: 1 }),
+    let placeOverlay = new kakao.maps.CustomOverlay({ zIndex: 1 }),
       contentNode = document.createElement("div"), // 커스텀 오버레이의 컨텐츠 엘리먼트 입니다
       currCategory = ""; // 현재 선택된 카테고리를 가지고 있을 변수입니다
-    var infowindow = new kakao.maps.InfoWindow({ zIndex: 1 });
-    var facimarkers = [], markers = [];
+    let infowindow = new kakao.maps.InfoWindow({ zIndex: 1 });
+    let facimarkers = [], markers = [];
     let marker;
+    let bounds = new kakao.maps.LatLngBounds();
+
     const container = document.getElementById("myMap");
     const options = {
       center: new kakao.maps.LatLng(35.17973316713768, 129.07505674557024),
@@ -31,7 +33,6 @@ const MapContainer = ({ searchPlace, faci, pharmacy, parking}) => {
     };
 
     const map = new kakao.maps.Map(container, options);
-    map.setZoomable(false);
     // 장소 검색 객체를 생성합니다
     const pss = new kakao.maps.services.Places(map);
 
@@ -61,7 +62,6 @@ const MapContainer = ({ searchPlace, faci, pharmacy, parking}) => {
     }
 
     if(pharmacy === true){
-      currCategory = 'PM9';
       dataorder = "2";
       searchPlaces();
     }else{
@@ -70,7 +70,6 @@ const MapContainer = ({ searchPlace, faci, pharmacy, parking}) => {
     }
 
     if(parking === true){
-      currCategory = 'PK6';
       dataorder = "3";
       searchPlaces();
     }else{
@@ -107,10 +106,6 @@ const MapContainer = ({ searchPlace, faci, pharmacy, parking}) => {
       if (status === kakao.maps.services.Status.OK) {
         // 정상적으로 검색이 완료됐으면 지도에 마커를 표출합니다
         displayPlaces(data);
-      } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
-        // 검색결과가 없는경우 해야할 처리가 있다면 이곳에 작성해 주세요
-      } else if (status === kakao.maps.services.Status.ERROR) {
-        // 에러로 인해 검색결과가 나오지 않은 경우 해야할 처리가 있다면 이곳에 작성해 주세요
       }
     }
 
@@ -118,7 +113,7 @@ const MapContainer = ({ searchPlace, faci, pharmacy, parking}) => {
     function displayPlaces(places) {
       // 몇번째 카테고리가 선택되어 있는지 얻어옵니다
       // 이 순서는 스프라이트 이미지에서의 위치를 계산하는데 사용됩니다
-      var order = dataorder;
+      let order = dataorder;
 
       for (let i = 0; i < places.length; i++) {
         // 마커를 생성하고 지도에 표시합니다
@@ -136,9 +131,9 @@ const MapContainer = ({ searchPlace, faci, pharmacy, parking}) => {
 
     // 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
     function addMarker(position, order) {
-      var imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_category.png';
+      let imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_category.png';
       // 마커 이미지 url, 스프라이트 이미지를 씁니다
-      var imageSize = new kakao.maps.Size(30, 30), // 마커 이미지의 크기
+      let imageSize = new kakao.maps.Size(30, 30), // 마커 이미지의 크기
         imgOptions = {
           spriteSize: new kakao.maps.Size(72, 208), // 스프라이트 이미지의 크기
           spriteOrigin: new kakao.maps.Point(46, order * 36), // 스프라이트 이미지 중 사용할 영역의 좌상단 좌표
@@ -156,17 +151,16 @@ const MapContainer = ({ searchPlace, faci, pharmacy, parking}) => {
 
       marker.setMap(map); // 지도 위에 마커를 표출합니다
       markers.push(marker); // 배열에 생성된 마커를 추가합니다
-
       return marker;
     }
 
-    // 지도 위에 표시되고 있는 마커를 모두 제거합니다
-    function removeMarker() {
-      for ( var i = 0; i < markers.length; i++ ) {
-          markers.push(null);
-      }   
-      markers = [];
-    }
+      // 지도 위에 표시되고 있는 마커를 모두 제거합니다
+      function removeMarker() {
+        for ( var i = 0; i < markers.length; i++ ) {
+            markers[i].setMap(null);
+        }   
+        markers = [];
+      }
 
     // 클릭한 마커에 대한 장소 상세정보를 커스텀 오버레이로 표시하는 함수입니다
     function displayPlaceInfo(place) {

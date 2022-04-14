@@ -30,24 +30,9 @@ function NavBara() {
             <img src="./img/logo5.png" alt="부산광역시 통합예약시스템" id="logo" className="me-3" />
           </Link>
           <div className="d-flex justify-content-center">
-            
-            <Nav.Link href="#action1">Home</Nav.Link>
-            
-            <Nav.Link href="#action2">커뮤니티</Nav.Link>
-            <NavDropdown title="Link" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action4">
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action5">
-                Something else here
-              </NavDropdown.Item>
-            </NavDropdown>
+            <Nav.Link href="#action2">이용안내</Nav.Link>
+            <Nav.Link href="/post">공지사항</Nav.Link>
             <Nav.Link href="/login">Login</Nav.Link>
-            <Nav.Link href="#" disabled>
-              Link
-            </Nav.Link>
           </div>
           <Navbar.Toggle className="border-0" aria-controls="offcanvasNavbar" />
           <Navbar.Offcanvas
