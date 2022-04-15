@@ -18,7 +18,6 @@ import { Card } from 'react-bootstrap';
 function FacitDetail(props) {
     const fcSeq = useParams().fcSeq;
     const isMount = UseIsMount;
-
     const [Place, setPlace] = useState("");
 
     const [facit, setFacit] = useState({
