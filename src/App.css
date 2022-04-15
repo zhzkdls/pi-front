@@ -331,7 +331,7 @@ input, select, textarea{font-size:0.8em!important}
   font-size: 2.5rem !important; 
  }
 .react-datepicker__header {
-  padding-top: 9px !important; 
+  padding-top: 32px !important; 
   padding-right: 10px !important; 
  }
 .react-datepicker__navigation {

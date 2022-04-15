@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Button, Card, Form } from "react-bootstrap";
 import moment from "moment";
 import { useNavigate, useParams } from "react-router-dom";
 import "../../App.css";
@@ -65,13 +65,61 @@ const Reservation = (props) => {
     <div className="container">
       <Form onSubmit={addReservation}>
         <Form.Group>
+          
           <div style={styles.BBk}>
-            <label  style={styles.BBs}> 예약 날짜 선택</label>
+          {/* <Card.Header style={styles.BBs}>예약 날짜 선택</Card.Header> */}
+            {/* <label  style={styles.BBs}> 예약 날짜 선택</label> */}
             <br></br>
             <DatePicker name="rsvtYmd" selected={startDate} onChange={date => setStartDate(date)} minDate={addDays(new Date(), 1)} 
             maxDate={addDays(new Date(), 14)} locale={ko} disabledKeyboardNavigation inline showOtherMonths="false"/>
           </div>
-            <Form.Label style={styles.BBa}>예약 시간 선택</Form.Label>
+
+          <div>
+            <Card border="dark" style={styles.form}>
+              <Card.Header>예약 시간 선택</Card.Header>
+              <Card.Body>
+                <Card.Text>
+                {/* <Form.Label>예약 시간 선택</Form.Label> */}
+                  <div>
+                    <br></br>
+                    <input type="radio" name="rsvtHr" value="09:00~10:00" onChange={changeValue}/>
+                    09:00~10:00
+                    <br></br>
+                    <input type="radio" name="rsvtHr" value="10:00~11:00" onChange={changeValue}/>
+                    10:00~11:00
+                    <br></br>
+                    <input type="radio" name="rsvtHr" value="11:00~12:00" onChange={changeValue}/>
+                    11:00~12:00
+                    <br></br>
+                    <input type="radio" name="rsvtHr" value="12:00~13:00" onChange={changeValue}/>
+                    12:00~13:00
+                    <br></br>
+                    <input type="radio" name="rsvtHr" value="13:00~14:00" onChange={changeValue}/>
+                    13:00~14:00
+                    <br></br>
+                    <input type="radio" name="rsvtHr" value="14:00~15:00" onChange={changeValue}/>
+                    14:00~15:00
+                    <br></br>
+                    <input type="radio" name="rsvtHr" value="15:00~16:00" onChange={changeValue}/>
+                    15:00~16:00
+                    <br></br>
+                    <input type="radio" name="rsvtHr" value="16:00~17:00" onChange={changeValue}/>
+                    16:00~17:00
+                    <br></br>
+                    <input type="radio" name="rsvtHr" value="17:00~18:00" onChange={changeValue}/>
+                    17:00~18:00
+                    <br></br>
+                  <Button style={styles.Bto} variant="primary" type="submit">
+                    예약
+                  </Button>
+                </div>
+                </Card.Text>
+              </Card.Body>
+            </Card>
+          </div>
+          <br />
+
+            {/* <Form.Label style={styles.BBa}>예약 시간 선택</Form.Label>
             <div style={styles.BBt}>
               <br></br>
               <input type="radio" name="rsvtHr" value="09:00~10:00" onChange={changeValue}/>
@@ -104,7 +152,7 @@ const Reservation = (props) => {
             <Button style={styles.Bto} variant="primary" type="submit">
               예약
             </Button>
-          </div>
+          </div> */}
         </Form.Group>
         <br></br>
       </Form>
@@ -113,6 +161,19 @@ const Reservation = (props) => {
 }
 
 const styles = {
+  form : {
+    position: 'absolute',
+    marginTop: '200px',
+    marginLeft: '950px',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    textAlign: 'center',
+    padding: '1em',
+    width: '20rem',
+    fontSize: '1.53rem',
+
+},
 
   Bto : { //예약 버튼
       position: 'absolute',
@@ -181,9 +242,9 @@ const styles = {
   BBk : { //달력
     
     padding: '2em', /* 여백으로 높이설정 */
-    marginTop: '3%',
+    marginTop: '5%',
     right: '37%',
-    bottom: '15%',
+    bottom: '20%',
     borderRadius: '30px',
     color: '#000000',
     
