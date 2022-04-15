@@ -108,11 +108,7 @@ const AuthForm = ({ type, form, onChange, onSubmit, error }) => {
         </ButtonWithMarginTop>
       </form>
       <Footer>
-        {type === "login" ? (
-          <Link to="/register">회원가입</Link>
-        ) : (
-          <Link to="/login">로그인</Link>
-        )}
+        {type === "login" ? (<Link to="/register">회원가입</Link>) : (<Link to="/login">로그인</Link> )}
       </Footer>
     </AuthFormBlock>
   );

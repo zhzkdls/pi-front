@@ -2,12 +2,25 @@ import { useState } from "react";
 import { Form } from "react-bootstrap";
 import "../../App.css";
 
-export default function Filter({faci, toggleFaci, pharmacy, togglePharmacy, parking, toggleParking}) {
+export default function Filter({faci, toggleFaci, pharmacy, togglePharmacy, parking, toggleParking, searchFaci, isSelectedLoSe, fillsearched}) {
+
   const [InputText, setInputText] = useState("");
+  let faciSearcher;
+  let btnnm = "검색";
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    if(InputText.length === 0){
+      alert("검색어를 입력하세요");
+    }else{
+      searchFaci(InputText);
+    }
+  };
 
   const onChange = (e) => {
     setInputText(e.target.value);
-  };
+    console.log(InputText);
+  }
 
   const isCheckFaci = () => {
     toggleFaci(!faci);
@@ -23,6 +36,13 @@ export default function Filter({faci, toggleFaci, pharmacy, togglePharmacy, park
     toggleFaci(false);
     togglePharmacy(false);
     toggleParking(!parking);
+  }
+
+  if(fillsearched === true){
+    btnnm = "지우기";
+    fillsearched = false;
+  }else{
+    btnnm = "검색";
   }
   
   return (
@@ -43,49 +63,55 @@ export default function Filter({faci, toggleFaci, pharmacy, togglePharmacy, park
 
             </div>
           </div>
-          <div className="col-12 col-lg">
-              <div className="input-group input-group-sm">
-                <input className="form-control"
+
+          <Form className="col-12 col-lg" onSubmit={onSubmit} >
+              <div className="input-group input-group-sm" >
+                <input 
                   placeholder="검색어를 입력하세요"
                   onChange={onChange}
                   value={InputText}
                 />
+                  <button className="btn btn-primary" type="submit">{btnnm}</button>
+              </div>
+          </Form> 
+
+          {/* <Form className="col-12 col-lg" onSubmit={onSelectLS}>
+            <div className="input-group input-group-sm">
+              <div className="col-6 col-lg px-0">
+                <Form.Select aria-label="Default select example" onChange={onLocation}>
+                    <option>지역 선택</option>
+                    <option value="금정구">금정구</option>
+                    <option value="강서구">강서구</option>
+                    <option value="기장군">기장군</option>
+                    <option value="남구">남구</option>
+                    <option value="동래구">동래구</option>
+                    <option value="동구">동구</option>
+                    <option value="사상구">사상구</option>
+                    <option value="사하구">사하구</option>
+                    <option value="서구">서구</option>
+                    <option value="수영구">수영구</option>
+                  </Form.Select>
+              </div>
+              <div className="col-6 col-lg px-0 ">    
+                    <Form.Select aria-label="Default select example" onChange={onService}>
+                    <option>서비스 선택</option>
+                    <option value="축구장">축구장</option>
+                    <option value="야구장">야구장</option>
+                    <option value="테니스장">테니스장</option>
+                    <option value="하키장">하키장</option>
+                    <option value="골프연습장">골프연습장</option>
+                    <option value="사격장">사격장</option>
+                    <option value="수영장">수영장</option>
+                    <option value="씨름장">씨름장</option>
+                    <option value="육상경기장">육상경기장</option>
+                    <option value="게이트볼장">게이트볼장</option>
+                    <option value="조정카누장">조정카누장</option>
+                    <option value="생활체육관">생활체육관</option>
+                    </Form.Select>
+                </div>
                 <button className="btn btn-primary" type="submit">검색</button>
               </div>
-          </div>
-          <div className="col-6 col-lg px-0">
-            <Form.Select className="" aria-label="Default select example">
-                <option>지역 선택</option>
-                <option value="1">금정구</option>
-                <option value="2">강서구</option>
-                <option value="3">기장군</option>
-                <option value="4">남구</option>
-                <option value="5">동래구</option>
-                <option value="5">동구</option>
-                <option value="6">사상구</option>
-                <option value="7">사하구</option>
-                <option value="8">서구</option>
-                <option value="3">수영구</option>
-                <option value="5">동래구</option>
-              </Form.Select>
-          </div>
-          <div className="col-6 col-lg px-0">    
-                <Form.Select className="" aria-label="Default select example">
-                <option>서비스 선택</option>
-                <option value="축구장">축구장</option>
-                <option value="야구장">야구장</option>
-                <option value="테니스장">테니스장</option>
-                <option value="하키장">하키장</option>
-                <option value="골프연습장">골프연습장</option>
-                <option value="사격장">사격장</option>
-                <option value="수영장">수영장</option>
-                <option value="씨름장">씨름장</option>
-                <option value="육상경기장">육상경기장</option>
-                <option value="게이트볼장">게이트볼장</option>
-                <option value="조정카누장">조정카누장</option>
-                <option value="생활체육관">생활체육관</option>
-                </Form.Select>
-              </div>
+            </Form> */}
           </div>
         </div>
       </div>

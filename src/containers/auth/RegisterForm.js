@@ -27,7 +27,7 @@ const RegisterForm = ({ history }) => {
     userPassword:"",
     userEmail:"",
     userPhone:"",
-    role:1,
+    role:"User",
     stat:1,
   });
 
@@ -71,14 +71,7 @@ const RegisterForm = ({ history }) => {
     member.userPhone = form.phone;
     member.userEmail = form.email;
 
-    //fetch("http://localhost:8080/member/save", {
-      fetch("http://192.168.0.36:8080/member/save", {  
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json; charset=utf-8",
-      },
-      body: JSON.stringify(member),
-    })
+    axios.post("http://localhost:8080/member/save", member)
     .then(response => response.text())
     .then(message => {
       if(message === "Success"){
