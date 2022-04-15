@@ -51,7 +51,7 @@ function FacitDetail(props) {
                 <h2> 주소 : {facit.faciRoadAddr1}</h2><br/>
                 <h2> 사이트 : {facit.faciHomepage}</h2><br/>
                 <h2> 전화번호 : {facit.fmngUserTel}</h2><br/>
-                <h2> 시설 : {facit.fcobNm}</h2><br/>
+                <h2> 시설 : {facit.fcobNm}</h2>
                 </Card.Text>
               </Card.Body>
             </Card>
@@ -206,7 +206,7 @@ const styles = {
     color: '#FFFFFF',
     background: '#007FFF',
     borderRadius: '10px',
-    bottom: '25%',   
+    bottom: '22%',   
     textDecoration: 'none'
   },
 
@@ -223,7 +223,7 @@ const styles = {
     color: '#FFFFFF',
     background: '#007FFF',
     borderRadius: '10px',
-    bottom: '25%',   
+    bottom: '22%',   
     textDecoration: 'none'
   },
 }
