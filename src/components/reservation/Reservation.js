@@ -7,6 +7,7 @@ import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import {ko} from "date-fns/esm/locale"
 import addDays from "date-fns/addDays";
+import axios from "axios";
 
 const Reservation = (props) => {
 
@@ -37,15 +38,9 @@ const Reservation = (props) => {
     }else{
       reservation.fcSeq = fcSeq;
       reservation.rsvtYmd = moment(startDate).format("YYYY-MM-DD");
-  
-      fetch("http://localhost:8080/reservation/save", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json; charset=utf-8",
-        },
-        body: JSON.stringify(reservation),
-      })
-      .then(response => response.text())
+      
+      axios.post("http://localhost:8081/reservation/save", reservation)
+      .then(response => response.data)
       .then(message => {
         setMessage(message);
         if(message === "예약 완료!"){

@@ -2,12 +2,17 @@ import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import "../../App.css";
+import { Link } from "react-router-dom";
+
+
 const { kakao } = window;
 
-const MapContainer = ({ searchPlace, faci, pharmacy, parking}) => {
+const MapContainer = ({ searchPlace, faci, pharmacy, parking, faciSearch, fillsearched, setFillSearched}) => {
 
   const [Places, setPlaces] = useState([]);
   const [facit, setFacit] = useState([]);
+  const searchedFacit = [];
+  let itda = false;
   let dataorder = "";
 
   useEffect(() => {
@@ -21,15 +26,14 @@ const MapContainer = ({ searchPlace, faci, pharmacy, parking}) => {
     let placeOverlay = new kakao.maps.CustomOverlay({ zIndex: 1 }),
       contentNode = document.createElement("div"), // 커스텀 오버레이의 컨텐츠 엘리먼트 입니다
       currCategory = ""; // 현재 선택된 카테고리를 가지고 있을 변수입니다
-    let infowindow = new kakao.maps.InfoWindow({ zIndex: 1 });
-    let facimarkers = [], markers = [];
+    let searchedfaciMarkers = [], facimarkers = [], markers = [];
+    let facimarker;
     let marker;
-    let bounds = new kakao.maps.LatLngBounds();
 
     const container = document.getElementById("myMap");
     const options = {
       center: new kakao.maps.LatLng(35.17973316713768, 129.07505674557024),
-      level: 5,
+      level: 6,
     };
 
     const map = new kakao.maps.Map(container, options);
@@ -49,15 +53,43 @@ const MapContainer = ({ searchPlace, faci, pharmacy, parking}) => {
 
     if(faci === true){
       for (let i = 0; i < facit.length; i++) {
-          let facimarker = new kakao.maps.Marker({
+          facimarker = new kakao.maps.Marker({
             map:map,
-            position: new kakao.maps.LatLng(facit[i].faciPointY, facit[i].faciPointX)
+            position: new kakao.maps.LatLng(facit[i].faciPointY, facit[i].faciPointX),
+            clickable: true,
+            title:facit.faciNm
           });
           facimarkers.push(facimarker);
       }
     }else{
       for (let j = 0; j < facit.length; j++) {
         facimarkers.push(null);
+      }
+    }
+
+    if(fillsearched === true){
+      for (let i = 0; i < facit.length; i++) {
+        if(facit[i].fcobNm.includes(faciSearch) || facit[i].faciNm.includes(faciSearch) || facit[i].faciRoadAddr1.includes(faciSearch)){
+          searchedFacit.push(facit[i]);
+        }
+      }
+      itda = true;
+    }
+
+    if(itda === true){
+      for (let i = 0; i < searchedFacit.length; i++) {
+        facimarker = new kakao.maps.Marker({
+          map:map,
+          position: new kakao.maps.LatLng(searchedFacit[i].faciPointY, searchedFacit[i].faciPointX),
+          clickable: true,
+          title:searchedFacit.faciNm
+        });
+        searchedfaciMarkers.push(facimarker);
+      }
+      itda = false;
+    }else{
+      for (let j = 0; j < searchedFacit.length; j++) {
+        searchedfaciMarkers.push(null);
       }
     }
 
@@ -206,7 +238,10 @@ const MapContainer = ({ searchPlace, faci, pharmacy, parking}) => {
       placeOverlay.setPosition(new kakao.maps.LatLng(place.y, place.x));
       placeOverlay.setMap(map);
     }
-  }, [searchPlace, faci, pharmacy, parking]);
+
+
+
+  }, [searchPlace, faci, pharmacy, parking, fillsearched, itda]);
 
   return (
     <div className="wrap">
@@ -230,7 +265,12 @@ const MapContainer = ({ searchPlace, faci, pharmacy, parking}) => {
       </div>
 
       <div className="container my-3 px-4 py-2 border-5 border-secondary shadow" style = {styles.notice}>
-        <div className="text-end"><span className="me-2"><FontAwesomeIcon icon={faPlus} /></span><span>더보기</span></div>
+        <div className="text-end">
+          <span className="me-2">
+          <FontAwesomeIcon icon={faPlus} />
+          </span>
+            <Link to={"/post"} style={{color:"black"}}><span>더보기</span></Link>
+        </div>
         <div className="row">
           <div className="col-12 col-lg-4 px-lg-0">
             <div className="card border-0">              

@@ -7,6 +7,10 @@ import "bootstrap/dist/css/bootstrap.css";
 import { Link } from "react-router-dom";
 import ModalUnstyled from "@mui/base/ModalUnstyled";
 import "../../App.css";
+
+
+
+
 function NavBar() {
   return (
     <div id="nav" className="shadow">

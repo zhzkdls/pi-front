@@ -5,28 +5,36 @@ import MapContainer2 from "../layout/MapContainer2";
 
 export const Home = () => {
   const [Place, setPlace] = useState();
+
   const [faci, setFaci] = useState(false);  // 메뉴의 초기값을 false로 설정
   const [pharmacy, setPharmacy] = useState(false);  // 메뉴의 초기값을 false로 설정
   const [parking, setParking] = useState(false);  // 메뉴의 초기값을 false로 설정
+
+  const [faciSearch, setFaciSearch] = useState();
+  const [fillsearched, setFillSearched] = useState(false);
   
   const toggleFaci = (faci) => {
     setFaci(faci); // on,off 개념 boolean
-    console.log("Home faci", faci);
   }
   const togglePharmacy = (pharmacy) => {
     setPharmacy(pharmacy); // on,off 개념 boolean
-    console.log("Home pharmacy", pharmacy);
   }
   const toggleParking = (parking) => {
     setParking(parking); // on,off 개념 boolean
-    console.log("Home parking", parking);
   }
   
+  const searchFaci = (faciSearch) =>{
+    setFaciSearch(faciSearch);
+    setFillSearched(!fillsearched);
+  }
+
   return (
     <>
-      <Filter faci={faci} toggleFaci={toggleFaci} pharmacy={pharmacy} togglePharmacy={togglePharmacy} parking={parking} toggleParking={toggleParking}/>
+      <Filter faci={faci} toggleFaci={toggleFaci} pharmacy={pharmacy} togglePharmacy={togglePharmacy} parking={parking}
+        toggleParking={toggleParking} searchFaci = {searchFaci} fillsearched = {fillsearched}/>
       {/* <MapContainer2 faci={faci} toggleFaci={toggleFaci} pharmacy={pharmacy} togglePharmacy={togglePharmacy} parking={parking} toggleParking={toggleParking} searchPlace={Place}/> */}
-      <MapContainer faci={faci} pharmacy={pharmacy} parking={parking} searchPlace={Place} />
+      <MapContainer faci={faci} pharmacy={pharmacy} parking={parking} searchPlace={Place} faciSearch = {faciSearch} fillsearched = {fillsearched} 
+      setFillSearched = {setFillSearched}/>
     </>
   );
 };

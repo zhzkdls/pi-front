@@ -4,6 +4,7 @@ import { useParams, useLocation, useNavigate } from "react-router-dom";
 import { changeField, initializeForm, login } from "../../modules/auth";
 import Login from "../../components/auth/Login";
 import { check } from "../../modules/user";
+import axios from "axios";
 
 const LoginForm = ({ history }) => {
   const params = useParams();
@@ -52,13 +53,7 @@ const LoginForm = ({ history }) => {
     loginAttempt.userId = form.userId;
     loginAttempt.userPassword = form.password;
 
-    fetch("http://localhost:8080/login/Attempt", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json; charset=utf-8",
-      },
-      body: JSON.stringify(loginAttempt),
-    })
+    axios.post("http://localhost:8080/login/Attempt", loginAttempt)
     .then(response => response.text())
     .then(message => {
       console.log(message);
