@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import "../../App.css";
+import BoardSummary from "../board/BoardSummary";
 const { kakao } = window;
 
 const MapContainer = ({ searchPlace, faci, pharmacy, parking}) => {
-
+  
   const [Places, setPlaces] = useState([]);
   const [facit, setFacit] = useState([]);
   let dataorder = "";
@@ -236,8 +237,8 @@ const MapContainer = ({ searchPlace, faci, pharmacy, parking}) => {
       </div>
 
       <div className="container my-3 px-4 py-2 border-5 border-secondary shadow" style = {styles.notice}>
-        <div className="text-end"><span className="me-2"><FontAwesomeIcon icon={faPlus} /></span><span>더보기</span></div>
-        <div className="row">
+        {/* <button className="text-end"><span className="me-2"><FontAwesomeIcon icon={faPlus} /></span><span>더보기</span></button> */}
+        {/* <div className="row">
           <div className="col-12 col-lg-4 px-lg-0">
             <div className="card border-0">              
               <div className="card-body">
@@ -283,7 +284,8 @@ const MapContainer = ({ searchPlace, faci, pharmacy, parking}) => {
               </div>              
             </div>
           </div>
-        </div>
+        </div> */}
+        <BoardSummary/>
       </div>
 
       <div id="result-list">

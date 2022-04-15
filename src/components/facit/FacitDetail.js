@@ -12,6 +12,8 @@ import FacitDetailDatePicker from "../holyday/FacitDetailDatePicker";
 import UseIsMount from "../UseIsMount";
 import FacitMap2 from './FacitMap2';
 import Comment from '../comment/Comment';
+import { Card } from 'react-bootstrap';
+
 
 function FacitDetail(props) {
     const fcSeq = useParams().fcSeq;
@@ -39,25 +41,44 @@ function FacitDetail(props) {
 
     return ( 
     <div>
-      <div className='div'>
-          <h1 style={styles.form}> 장소 : {facit.faciNm}</h1>
+      <div style={styles.div} className='div'>
+          <div>
+            {/* <Card border="dark" style={{ width: '28rem' }}> */}
+            <Card border="dark" style={styles.form}>
+              <Card.Header>체육시설</Card.Header>
+              <Card.Body>
+                {/* <Card.Title>체육시설</Card.Title> */}
+                <Card.Text>
+                <h3 > 장소 : {facit.faciNm}</h3>
+                <h3 > 주소 : {facit.faciRoadAddr1}</h3>
+                <h3 > 사이트 : {facit.faciHomepage}</h3>
+                <h3 > 전화번호 : {facit.fmngUserTel}</h3>
+                <h3 > 시설 : {facit.fcobNm}</h3>
+                </Card.Text>
+              </Card.Body>
+            </Card>
+          </div>
+          <br />
+
+          {/* <h2 style={styles.form}> 장소 : {facit.faciNm}</h2>
           <hr />
           <h3 style={styles.Ad}> 주소 : {facit.faciRoadAddr1}</h3>
           <h3 style={styles.Hp}> 사이트 : {facit.faciHomepage}</h3>
           <h3 style={styles.Tel}> 전화번호 : {facit.fmngUserTel}</h3>
-          <h3 style={styles.Nm}> 시설 : {facit.fcobNm}</h3>
-          {/* <HolydayPicker  /> */}
+          <h3 style={styles.Nm}> 시설 : {facit.fcobNm}</h3> */}
+          
           <FacitDetailDatePicker />
           <Link to={"/reservation/" + fcSeq} style={styles.Pick} variant="primary">예약하기</Link>
           <Link to={"/reservationList/" + fcSeq} style={styles.Pickm} variant="primary">예약현황</Link>
       </div>
-      <TabsUnstyled defaultValue={0}>
+      <TabsUnstyled defaultValue={2}>
         <TabsList>
             <Tab>이용안내</Tab>
             <Tab>장소안내</Tab>
             <Tab>이용후기</Tab>
         </TabsList>
-        <TabPanel value={0}> <strong>필수 준수사항</strong>
+        <TabPanel value={0}> 
+        <strong>필수 준수사항</strong>
         <br/><br/>
         <hr />
         <p>
@@ -164,67 +185,72 @@ const TabsList = styled(TabsListUnstyled)`
 `;
 
 const styles = {
+  div : {
+    color: '#483D8B',
+  },
+
   form : {
       position: 'absolute',
-      marginTop: '2%',
-      marginLeft: '1140px',
+      marginTop: '150px',
+      marginLeft: '1060px',
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'center',
-      alignItems: 'center',
+      padding: '1em',
+      width: '32rem',
 
   },
 
-  Ad : {
-    position: 'absolute',
-    padding: '1em', /* 여백으로 높이설정 */
-    marginTop: '5%',
-    marginLeft: '1120px',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
+  // Ad : {
+  //   position: 'absolute',
+  //   padding: '1em', /* 여백으로 높이설정 */
+  //   marginTop: '140px',
+  //   marginLeft: '1080px',
+  //   display: 'flex',
+  //   flexDirection: 'column',
+  //   justifyContent: 'center',
+  //   alignItems: 'center'
+  // },
 
-  Hp : {
-    position: 'absolute',
-    padding: '1em', /* 여백으로 높이설정 */
-    marginTop: '8%',
-    marginLeft: '1120px',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
+  // Hp : {
+  //   position: 'absolute',
+  //   padding: '1em', /* 여백으로 높이설정 */
+  //   marginTop: '220px',
+  //   marginLeft: '1080px',
+  //   display: 'flex',
+  //   flexDirection: 'column',
+  //   justifyContent: 'center',
+  //   alignItems: 'center'
+  // },
 
-  Tel : {
-    position: 'absolute',
-    padding: '2em', /* 여백으로 높이설정 */
-    marginTop: '11%',
-    marginLeft: '1100px',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
+  // Tel : {
+  //   position: 'absolute',
+  //   padding: '2em', /* 여백으로 높이설정 */
+  //   marginTop: '270px',
+  //   marginLeft: '1050px',
+  //   display: 'flex',
+  //   flexDirection: 'column',
+  //   justifyContent: 'center',
+  //   alignItems: 'center'
+  // },
 
-  Nm : {
-    position: 'absolute',
-    padding: '3em', /* 여백으로 높이설정 */
-    marginTop: '14%',
-    marginLeft: '1080px',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
+  // Nm : {
+  //   position: 'absolute',
+  //   padding: '3em', /* 여백으로 높이설정 */
+  //   marginTop: '320px',
+  //   marginLeft: '1020px',
+  //   display: 'flex',
+  //   flexDirection: 'column',
+  //   justifyContent: 'center',
+  //   alignItems: 'center'
+  // },
 
   Pick : {
     position: 'absolute',
     padding: '1em', /* 여백으로 높이설정 */
     width: '8%',
     display: 'flex',
-    marginLeft: '1170px',
+    marginLeft: '1150px',
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
@@ -233,6 +259,7 @@ const styles = {
     background: '#007FFF',
     borderRadius: '10px',
     bottom: '35%',   
+    textDecoration: 'none'
   },
 
   Pickm : {
@@ -249,6 +276,7 @@ const styles = {
     background: '#007FFF',
     borderRadius: '10px',
     bottom: '35%',   
+    textDecoration: 'none'
   },
 }
 

@@ -25,26 +25,6 @@ const CommentAdd = () => {
             })
     }
 
-     // 모든 게시글 내용 불러오기 
-    const getPost = () => {
-        const url = `http://localhost:8080/comments/getAll/`;
-        const body = {
-            content: content,
-            userId: userId,
-            stat: 1,
-        }
-
-        return new Promise((resolve, reject) => {
-            axios.get(url, body)
-            .then(res => {
-                resolve(res.data);
-            })
-            .catch(error => {
-                reject(error);
-            })
-        })
-    }
-
         return (
             <div className="col-md-111">
                 <form className="form-horizontal">

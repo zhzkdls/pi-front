@@ -36,6 +36,7 @@ const styles = {
     },
     searchBtn: {
         marginLeft: '5px',
+        marginBottom: '50%',
         border: 'none',
         fontSize: 'medium',
         borderRadius: '3px',
@@ -49,6 +50,7 @@ const styles = {
         marginRight: '5px',
         
         
-    }
+    },
+   
 }
 export default Search;

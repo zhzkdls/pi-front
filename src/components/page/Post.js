@@ -69,8 +69,8 @@ class Post extends Component {
     addBtn: {
       padding: '.6em', /* 여백으로 높이설정 */
       position: 'fixed',
-      right: '10%',
-      bottom: '82%',
+      right: '17%',
+      bottom: '81%',
       border: 'none',
       fontSize: 'medium',
       borderRadius: '6px',

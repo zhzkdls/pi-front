@@ -8,7 +8,10 @@ export const Home = () => {
   const [faci, setFaci] = useState(false);  // 메뉴의 초기값을 false로 설정
   const [pharmacy, setPharmacy] = useState(false);  // 메뉴의 초기값을 false로 설정
   const [parking, setParking] = useState(false);  // 메뉴의 초기값을 false로 설정
-  
+
+ 
+
+
   const toggleFaci = (faci) => {
     setFaci(faci); // on,off 개념 boolean
     console.log("Home faci", faci);

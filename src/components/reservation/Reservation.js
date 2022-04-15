@@ -138,11 +138,9 @@ const styles = {
       marginTop: '3%',
       fontSize: '34px',
 
-      right: '10%',
-      bottom: '15%',
+      right: '15%',
+      bottom: '20%',
       borderRadius: '30px',
-      color: '#000000',
-      background: '#ecebf3',
       
 
   },
@@ -156,12 +154,10 @@ const styles = {
     
     padding: '1em', /* 여백으로 높이설정 */
     position: 'fixed',
-    right: '12%',
-    bottom: '79%',
+    right: '17%',
+    bottom: '77%',
     fontSize: '22px',
     borderRadius: '20px',
-    color: '#ffffff',
-    background: '#687693',
     width: '10%',
     height: '70px',
     
@@ -177,12 +173,10 @@ const styles = {
     
     padding: '1em', /* 여백으로 높이설정 */
     position: 'fixed',
-    right: '60%',
-    bottom: '80%',
+    right: '55%',
+    bottom: '77%',
     fontSize: '22px',
     borderRadius: '20px',
-    color: '#ffffff',
-    background: '#687693  ',
     width: '10%',
     height: '70px',
     
@@ -197,7 +191,6 @@ const styles = {
     bottom: '15%',
     borderRadius: '30px',
     color: '#000000',
-    background: '#ecebf3',
     
     // position: 'fixed',
     position: 'absolute',

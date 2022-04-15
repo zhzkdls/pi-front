@@ -102,7 +102,7 @@ const styles = {
     form : {
         position: 'absolute',
         width: '100%',
-        marginTop: '5%',
+        marginTop: '9%',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
@@ -114,7 +114,7 @@ const styles = {
         justifyContent: 'center',
         padding: '9px',
         alignItems: 'center',
-        marginTop: '2px',
+        marginTop: '30px',
     },
     label: {
         flex: 0.4,
@@ -127,22 +127,20 @@ const styles = {
     textarea: {
         width: '60%',
         height: '300px',
-        marginTop: '10px'
+        marginTop: '30px'
     },
     okBtn: {
         width: '70px',
-        marginBottom: '50%',
         marginLeft: '10px',
         border: 'none',
         fontSize: 'medium',
         borderRadius: '3px',
         color: '#f8f9fa',
         background: '#367ED1',
-        padding: '.3em', /* 여백으로 높이설정 */
+        padding: '.5em', /* 여백으로 높이설정 */
     },
     cancelBtn: {
         width: '70px',
-        marginTop: '20px',
         marginLeft: '10px',
         border: '1px solid black',
         fontSize: 'medium',

@@ -6,11 +6,7 @@ import axios from 'axios';
 class Comment extends Component {
 
     state = {
-        comments:[
-            {userId:'쌈디',content:'잘하자?'},
-            {userId:'아이린',content:'그러게?'},
-            {userId:'김하영',content:'합격?'},
-        ]
+        comments:[]
     }
     
     componentDidMount() {
@@ -28,23 +24,35 @@ class Comment extends Component {
         .catch(error => {
           console.log(error);
         });
-      }
+      } 
+
+    
+    // 삭제를 클릭을 할떄 이벤트 발생(원래 코드)
+    delComment = (index) => {
+      const { comments } = this.state
+      comments.splice(index,1)
+      this.setState({comments})
+    }
   
 
-    addComment = (comment)=>{
-        const { comments } = this.state
-        //여기 comments여러 그룹에 데이터를 새로 추가하다.
-        comments.unshift(comment)
-        //상태 업데이트
-        this.setState({comments})
+   
+    // 삭제를 클릭을 할떄 axios 실행(공지사항에서 가져온 코드)
+    handleDelComment = ()=>{
+      // 여기서 어떤 걸 써야될까?
+      const postUrl = `http://localhost:8080/comments/delete/${id}`;
+      axios.post(postUrl)
+      .then(res => {
+          window.location.href="/facit/:fcSeq"
+      })
+      .catch(error => {
+        console.log(error);
+      })
     }
-    delComment = (index)=>{
-        const { comments } = this.state
-        comments.splice(index,1)
-        this.setState({comments})
-    }
+
+
     render() {
         const { comments } = this.state
+        console.log(comments);
         return (
             <div>
                 <header className="site-header jumbotron">
@@ -56,7 +64,7 @@ class Comment extends Component {
                     </div>
                 </header>
                 <div className="container">
-                    <CommentAdd addComment={ this.addComment } />
+                    <CommentAdd />
                     <CommentList comments={ comments } delComment={ this.delComment } />
                 </div>
             </div>

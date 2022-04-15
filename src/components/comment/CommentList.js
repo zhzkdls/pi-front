@@ -11,9 +11,15 @@ class CommentList extends Component {
             <div className="col-md-8">
                 <h3 className="reply"></h3>
                 <h2 style={{display}}>이용후기가 없습니다. 윗쪽을 클릭하여 이용후기를 등록 하세요.</h2>
-                <ul className="list-group mx-auto my-1 py-3 rounded-5 shadow">
+                <ul className="list-group mx-auto shadow">
                     {
-                        comments.map((item,index)=><CommentItem key={index} comment={item} index={index} delComment={delComment} />)
+                        comments.map((item,index)=>
+                        <CommentItem 
+                        key={index} 
+                        comment={item} 
+                        index={index} 
+                        delComment={delComment}
+                        />)
                     }
                 </ul>
             </div>

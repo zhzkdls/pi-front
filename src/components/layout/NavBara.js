@@ -31,10 +31,17 @@ function NavBara() {
           </Link>
           <div className="d-flex justify-content-center">
             
-            <Nav.Link href="#action1">Home</Nav.Link>
+            <Nav.Link href="#action1"></Nav.Link>
+            <Nav.Link href="#action1"></Nav.Link>
+            <Nav.Link href="#action1"></Nav.Link>
+            <Nav.Link href="#action1"></Nav.Link>
+            <Nav.Link href="#action1"></Nav.Link>
+            <Nav.Link href="#action1"></Nav.Link>
+            <Nav.Link href="#action1"></Nav.Link>
             
-            <Nav.Link href="#action2">커뮤니티</Nav.Link>
-            <NavDropdown title="Link" id="navbarScrollingDropdown">
+            <Nav.Link href="/post" >공지사항</Nav.Link>
+
+            {/* <NavDropdown title="Link" id="navbarScrollingDropdown">
               <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
               <NavDropdown.Item href="#action4">
                 Another action
@@ -43,7 +50,7 @@ function NavBara() {
               <NavDropdown.Item href="#action5">
                 Something else here
               </NavDropdown.Item>
-            </NavDropdown>
+            </NavDropdown> */}
             <Nav.Link href="/login">Login</Nav.Link>
             <Nav.Link href="#" disabled>
               Link
@@ -64,7 +71,7 @@ function NavBara() {
             </Offcanvas.Header>
             <Offcanvas.Body>
               <Nav className="justify-content-end flex-grow-1 pe-3">
-                <Nav.Link className="border-bottom" href="/login">이용안내</Nav.Link>
+                <Nav.Link className="border-bottom" href="/facit/:fcSeq">이용안내</Nav.Link>
                 <Nav.Link className="border-bottom" href="/post">공지사항</Nav.Link>
                 {/* <Nav.Link href="/login">민원게시판</Nav.Link>
                 <Nav.Link href="/login">마이페이지</Nav.Link> */}
