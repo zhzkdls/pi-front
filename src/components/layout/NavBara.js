@@ -29,13 +29,9 @@ function NavBara() {
           <Link to={"/"}>
             <img src="../img/logo5.png" alt="부산광역시 통합예약시스템" id="logo" className="me-3" />
           </Link>
-<<<<<<< HEAD
-          <div className="d-flex justify-content-center">
-=======
           <div className="d-flex justify-content-center" style={styles.move}>
->>>>>>> e4add0c9b7c009fae97f504c9d0dcd576aeccc41
-            <Nav.Link href="/post">공지사항</Nav.Link>
-            <Nav.Link href="/login">Login</Nav.Link>
+            <Nav.Link href="/post" style={{color:"white"}}>공지사항</Nav.Link>
+            <Nav.Link href="/login" style={{color:"white"}}>Login</Nav.Link>
           </div>
           <Navbar.Toggle className="border-0" aria-controls="offcanvasNavbar" />
           <Navbar.Offcanvas
