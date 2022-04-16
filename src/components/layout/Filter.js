@@ -65,6 +65,7 @@ export default function Filter({faci, toggleFaci, pharmacy, togglePharmacy, park
                   placeholder="검색어를 입력하세요"
                   onChange={onChange}
                   value={InputText}
+                  className="form-control"
                 />
                   <button className="btn btn-primary" type="submit">{btnnm}</button>
               </div>

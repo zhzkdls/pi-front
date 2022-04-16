@@ -16,7 +16,11 @@ const MapContainer = ({ searchPlace, faci, pharmacy, parking, faciSearch, fillse
   let dataorder = "";
 
   useEffect(() => {
+<<<<<<< HEAD
     // 체육시설 불러오기
+=======
+    //fetch("http://localhost:8081/tbfacit/getAll")
+>>>>>>> 879c3a4255c9f2be9e43cc0c41f4637b13525323
     fetch("http://192.168.0.36:8081/tbfacit/getAll")
     .then((res) => res.json())
     .then((res) => {
@@ -30,6 +34,7 @@ const MapContainer = ({ searchPlace, faci, pharmacy, parking, faciSearch, fillse
     let searchedfaciMarkers = [], facimarkers = [], markers = [];
     let facimarker;
     let marker;
+    let overlays = [];
 
     const container = document.getElementById("myMap");
     const options = {
@@ -53,20 +58,119 @@ const MapContainer = ({ searchPlace, faci, pharmacy, parking, faciSearch, fillse
     placeOverlay.setContent(contentNode);
 
     if(faci === true){
+      
       for (let i = 0; i < facit.length; i++) {
+
+        
+
+        
+        var content = '<div class="overlaybox">' +
+        '    <div class="boxtitle">체육시설 정보<button type="button" class="btn-close float-end text-secondary" id="close" onclick="makeOutListener()"></button></div>' +
+        '    <div class="first">' +
+        
+        '        <div class="facititle text">'+facit[i].faciNm+'</div>' +
+        '    </div>' +
+        '    <ul>' +
+        '        <li class="up">' +
+        
+        '            <span class="title">종류 : '+facit[i].fcobNm+'</span>' +
+        '            <span class="arrow up"></span>' +
+        '        </li>' +
+        '        <li>' +
+        
+        '            <span class="title">연락처 : '+facit[i].fmngUserTel+'</span>' +
+        '            <span class="arrow up"></span>' +
+        
+        '        </li>' +
+        '        <li>' +
+        
+        '            <span class="title">'+facit[i].faciRoadAddr1+'</span>' +
+        '            <span class="arrow up"></span>' +
+        
+        '        </li>' +        
+        '    </ul>' +
+        '</div>';
+
+        
+        var imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png', // 마커이미지의 주소입니다    
+            imageSize = new kakao.maps.Size(64, 69), // 마커이미지의 크기입니다
+            imageOption = {offset: new kakao.maps.Point(27, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+
+        // 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
+        var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
+            markerPosition = new kakao.maps.LatLng(facit[i].faciPointY, facit[i].faciPointX); // 마커가 표시될 위치입니다
+
           facimarker = new kakao.maps.Marker({
             map:map,
             position: new kakao.maps.LatLng(facit[i].faciPointY, facit[i].faciPointX),
-            clickable: true,
-            title:facit.faciNm
+            //clickable: true,
+            //content: content,
+            image: markerImage,
+            title:facit[i].faciNm,
           });
+
+
+          
+
+          // 커스텀 오버레이를 생성합니다
+          var customOverlay = new kakao.maps.CustomOverlay({
+              position: new kakao.maps.LatLng(facit[i].faciPointY, facit[i].faciPointX),
+              content: content,
+              xAnchor: 0.44,
+              // yAnchor: 0.91
+              yAnchor:1.09
+          });
+
+          
+              
+
+          kakao.maps.event.addListener(facimarker, 'click', makeOverListener(map, facimarker, customOverlay));
+          kakao.maps.event.addListener(map, 'click', makeOutListener(map, facimarker, customOverlay));
+
+                   
+          overlays.push(customOverlay);
+
           facimarkers.push(facimarker);
       }
+
+      
+     
+      // 인포윈도우를 표시하는 클로저를 만드는 함수입니다 
+      function makeOverListener(map, marker, customOverlay) {
+        return function() {
+          
+          for(var i = 0; i < overlays.length; i++){
+            overlays[i].setMap(null);
+          }
+
+          customOverlay.setMap(map);
+         
+          // 지도 중심을 이동 시킵니다
+          map.setCenter(marker.getPosition());
+
+        };
+      }
+
+      function makeOutListener() {
+        return function() {
+          
+          for(var i = 0; i < overlays.length; i++){
+            overlays[i].setMap(null);
+          }
+
+        };
+      }
+
+      
+
+      
     }else{
       for (let j = 0; j < facit.length; j++) {
         facimarkers.push(null);
       }
     }
+
+    
 
     if(fillsearched === true){
       for (let i = 0; i < facit.length; i++) {
@@ -135,6 +239,7 @@ const MapContainer = ({ searchPlace, faci, pharmacy, parking, faciSearch, fillse
     }
 
     // 장소검색이 완료됐을 때 호출되는 콜백함수 입니다
+    //const pagination = 1
     function placesSearchCB(data, status, pagination) {
       if (status === kakao.maps.services.Status.OK) {
         // 정상적으로 검색이 완료됐으면 지도에 마커를 표출합니다
@@ -241,6 +346,7 @@ const MapContainer = ({ searchPlace, faci, pharmacy, parking, faciSearch, fillse
     }
 
 
+  
 
   }, [searchPlace, faci, pharmacy, parking, fillsearched, itda]);
 
