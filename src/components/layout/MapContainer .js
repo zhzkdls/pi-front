@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 const { kakao } = window;
 
-const MapContainer = ({ searchPlace, faci, pharmacy, parking, faciSearch, fillsearched}) => {
+const MapContainer = ({ searchPlace, faci, pharmacy, parking, faciSearch}) => {
 
   const [Places, setPlaces] = useState([]);
   const [facit, setFacit] = useState([]);
@@ -113,13 +113,12 @@ const MapContainer = ({ searchPlace, faci, pharmacy, parking, faciSearch, fillse
 
           kakao.maps.event.addListener(facimarker, 'click', makeOverListener(map, facimarker, customOverlay));
           kakao.maps.event.addListener(map, 'click', makeOutListener(map, facimarker, customOverlay));
+
                    
           overlays.push(customOverlay);
 
           facimarkers.push(facimarker);
       }
-
-      
      
       // 인포윈도우를 표시하는 클로저를 만드는 함수입니다 
       function makeOverListener(map, marker, customOverlay) {
@@ -133,31 +132,33 @@ const MapContainer = ({ searchPlace, faci, pharmacy, parking, faciSearch, fillse
          
           // 지도 중심을 이동 시킵니다
           map.setCenter(marker.getPosition());
+
         };
       }
 
       function makeOutListener() {
         return function() {
-          
           for(var i = 0; i < overlays.length; i++){
             overlays[i].setMap(null);
           }
-
         };
       }
+
     }else{
-      for (let j = 0; j < facimarkers.length; j++) {
-        facimarkers[i].setMap(null);
-      }
+      removeMarker(facimarkers);
     }
 
-    if(faciSearch !== null ){
+    if(!faciSearch === null){
       for (let i = 0; i < facit.length; i++) {
-        if(facit[i].fcobNm.includes(faciSearch) || facit[i].faciNm.includes(faciSearch) || facit[i].faciRoadAddr1.includes(faciSearch)){
+        if( facit[i].fcobNm.includes(faciSearch) || facit[i].faciNm.includes(faciSearch) || facit[i].faciRoadAddr1.includes(faciSearch)){
           searchedFacit.push(facit[i]);
         }
       }
+      removeMarker(markers);
       itda = true;
+      pharmacy = false;
+      parking = false;
+      faci = false;
     }
 
     if(itda === true){
@@ -168,29 +169,26 @@ const MapContainer = ({ searchPlace, faci, pharmacy, parking, faciSearch, fillse
           clickable: true,
           title:searchedFacit.faciNm
         });
-        facimarkers.push(facimarker);
+        searchedfaciMarkers.push(facimarker);
       }
+      removeMarker(markers);
       itda = false;
     }else{
-      for (let j = 0; j < facimarkers.length; j++) {
-        facimarkers[i].setMap(null);
-      }
+      removeMarker(searchedfaciMarkers);
     }
 
     if(pharmacy === true){
       dataorder = "2";
-      searchPlaces();
+      searchPlaces(markers);
     }else{
-      currCategory = '';
-      removeMarker();
+      removeMarker(markers);
     }
 
     if(parking === true){
       dataorder = "3";
-      searchPlaces();
+      searchPlaces(markers);
     }else{
-      currCategory = '';
-      removeMarker();
+      removeMarker(markers);
     }
 
     // 엘리먼트에 이벤트 핸들러를 등록하는 함수입니다
@@ -209,6 +207,7 @@ const MapContainer = ({ searchPlace, faci, pharmacy, parking, faciSearch, fillse
 
       // 지도에 표시되고 있는 마커를 제거합니다
       removeMarker();
+
       if(pharmacy === true){
         pss.categorySearch('PM9', placesSearchCB, { useMapBounds: true });
       }
@@ -272,11 +271,12 @@ const MapContainer = ({ searchPlace, faci, pharmacy, parking, faciSearch, fillse
     }
 
       // 지도 위에 표시되고 있는 마커를 모두 제거합니다
-      function removeMarker() {
-        for ( var i = 0; i < markers.length; i++ ) {
-            markers[i].setMap(null);
+      function removeMarker(markerList = []) {
+        currCategory = '';
+        for ( var i = 0; i < markerList.length; i++ ) {
+          markerList[i].setMap(null);
         }   
-        markers = [];
+        markerList = [];
       }
 
     // 클릭한 마커에 대한 장소 상세정보를 커스텀 오버레이로 표시하는 함수입니다
@@ -323,33 +323,11 @@ const MapContainer = ({ searchPlace, faci, pharmacy, parking, faciSearch, fillse
       placeOverlay.setPosition(new kakao.maps.LatLng(place.y, place.x));
       placeOverlay.setMap(map);
     }
-
-
-  
-
   }, [searchPlace, faci, pharmacy, parking, itda, faciSearch]);
 
   return (
     <div className="wrap">
-      <div id="myMap" style={{ width: "100%", height: "100vh",}} >
-        {/* <div>
-          <ul id="category">
-            <li data-order="1">
-            <span className="category_bg pharmacy"></span>
-              체육시설
-            </li>
-            <li id="PM9" data-order="2">
-              <span className="category_bg pharmacy"></span>
-              약국
-            </li>
-            <li id="PK8" data-order="3">
-              <span className="category_bg store"></span>
-              주차장
-            </li>
-          </ul>
-        </div> */}
-      </div>
-
+      <div id="myMap" style={{ width: "100%", height: "100vh",}} > </div>
       <div className="container my-3 px-4 py-2 border-5 border-secondary shadow" style = {styles.notice}>
         <div className="text-end">
           <span className="me-2">
