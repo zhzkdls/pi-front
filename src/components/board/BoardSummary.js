@@ -1,61 +1,43 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { Component } from 'react';
+import axios from 'axios';
+import BoardSummaryList from './BoardSummaryList';
 
-const BoardSummary = () => {
+class BoardSummary extends Component {
+    state = {
+      posts : []
+    }
     
+    componentDidMount() {
+      this.handleGetList("http://localhost:8080/api/getAll");
+    }
+     // 게시글 목록 불러오기 
+     handleGetList = (url) => {
 
-    return ( 
-        <div>
-           <Link to={"/post"}><button> + 더보기</button></Link>
-            <div className="row">
-                <div className="col-12 col-lg-4 px-lg-0">
-                    <div className="card border-0">              
-                    <div className="card-body">
-                        <h5 className="font-weight-700 mb-3">공지사항 제목</h5>
-                        <p className="text-truncate2 text-secondary" style={{height: "52px"}}>
-                        공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용
-                        공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용
-                        공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용
-                        공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용
-                        공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용
-                        </p>
-                        <div className="text-end">2022-04-05</div>
-                    </div>              
-                    </div>
-                </div>
-                <div className="col-12 col-lg-4 px-lg-0 border-start border-end">
-                    <div className="card border-0">              
-                    <div className="card-body">
-                    <h5 className="font-weight-700 mb-3">공지사항 제목</h5>
-                        <p className="text-truncate2 text-secondary" style={{height: "52px"}}>
-                        공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용
-                        공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용
-                        공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용
-                        공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용
-                        공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용
-                        </p>
-                        <div className="text-end">2022-04-03</div>
-                    </div>              
-                    </div>
-                </div>
-                <div className="col-12 col-lg-4 px-lg-0">
-                    <div className="card border-0">              
-                    <div className="card-body">
-                    <h5 className="font-weight-700 mb-3">공지사항 제목</h5>
-                        <p className="text-truncate2 text-secondary" style={{height: "52px"}}>
-                        공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용
-                        공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용
-                        공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용
-                        공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용
-                        공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용
-                        </p>
-                        <div className="text-end">2022-04-01</div>
-                    </div>              
-                    </div>
-                </div>
+        axios.get(url)
+        .then(res => {
+          this.setState({
+            posts: res.data
+          })
+        })
+        .catch(error => {
+          console.log(error);
+        });
+      } 
+
+      // 리렌더링을 할 지 말지 결정 (기본값은 true)
+    shouldComponentUpdate(nextProps, nextState) {
+        return this.state.posts !== nextState.posts;
+      }
+      render () {
+        const { posts } = this.state;
+        console.log(posts);
+
+        return (
+            <div>
+                <BoardSummaryList posts={posts}/>
             </div>
-        </div>
-     );
+        );
+    }
 }
 
 export default BoardSummary;

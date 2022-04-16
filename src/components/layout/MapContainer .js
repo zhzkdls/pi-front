@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import "../../App.css";
 import { Link } from "react-router-dom";
+import BoardSummary from "../board/BoardSummary";
 
 
 const { kakao } = window;
@@ -16,7 +17,7 @@ const MapContainer = ({ searchPlace, faci, pharmacy, parking, faciSearch, fillse
   let dataorder = "";
 
   useEffect(() => {
-    fetch("http://localhost:8081/tbfacit/getAll")
+    fetch("http://192.168.0.36:8081/tbfacit/getAll")
     .then((res) => res.json())
     .then((res) => {
         setFacit(res)
@@ -246,22 +247,6 @@ const MapContainer = ({ searchPlace, faci, pharmacy, parking, faciSearch, fillse
   return (
     <div className="wrap">
       <div id="myMap" style={{ width: "100%", height: "100vh",}} >
-        {/* <div>
-          <ul id="category">
-            <li data-order="1">
-            <span className="category_bg pharmacy"></span>
-              체육시설
-            </li>
-            <li id="PM9" data-order="2">
-              <span className="category_bg pharmacy"></span>
-              약국
-            </li>
-            <li id="PK8" data-order="3">
-              <span className="category_bg store"></span>
-              주차장
-            </li>
-          </ul>
-        </div> */}
       </div>
 
       <div className="container my-3 px-4 py-2 border-5 border-secondary shadow" style = {styles.notice}>
@@ -271,7 +256,7 @@ const MapContainer = ({ searchPlace, faci, pharmacy, parking, faciSearch, fillse
           </span>
             <Link to={"/post"} style={{color:"black"}}><span>더보기</span></Link>
         </div>
-        <div className="row">
+        {/* <div className="row">
           <div className="col-12 col-lg-4 px-lg-0">
             <div className="card border-0">              
               <div className="card-body">
@@ -317,8 +302,8 @@ const MapContainer = ({ searchPlace, faci, pharmacy, parking, faciSearch, fillse
               </div>              
             </div>
           </div>
-        </div> 
-        {/* <BoardSummary/> */}
+        </div>  */}
+        <BoardSummary/>
       </div>
 
       <div id="result-list">

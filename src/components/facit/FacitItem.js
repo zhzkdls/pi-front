@@ -27,7 +27,7 @@ function FacitItem(props) {
 
     return ( 
         <div>
-<Table striped bordered hover variant="dark" style={{textAlign: "center", margin: "0px", padding: "0px"}}>
+            <Table striped bordered hover variant="dark" style={{textAlign: "center", margin: "0px", padding: "0px"}}>
             <tbody>
                 <tr>
                 <td>{fcSeq}</td>

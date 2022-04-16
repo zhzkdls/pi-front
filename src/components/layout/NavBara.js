@@ -66,7 +66,6 @@ const styles = {
       marginLeft: '950px',
       display: 'flex',
       fontSize: '1.53rem',
-
   },
 }
   
