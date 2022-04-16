@@ -45,7 +45,6 @@ function FacitDetail(props) {
             <Card border="dark" style={styles.form}>
               <Card.Header>체육시설</Card.Header>
               <Card.Body>
-                {/* <Card.Title>체육시설</Card.Title> */}
                 <Card.Text>
                 <h2> 장소 : {facit.faciNm}</h2><br/>
                 <h2> 주소 : {facit.faciRoadAddr1}</h2><br/>
@@ -62,7 +61,7 @@ function FacitDetail(props) {
           <Link to={"/reservation/" + fcSeq} style={styles.Pick} variant="primary">예약하기</Link>
           <Link to={"/reservationList/" + fcSeq} style={styles.Pickm} variant="primary">예약현황</Link>
       </div>
-      <TabsUnstyled defaultValue={2}>
+      <TabsUnstyled defaultValue={''}>
         <TabsList>
             <Tab>이용안내</Tab>
             <Tab>장소안내</Tab>
@@ -75,7 +74,7 @@ function FacitDetail(props) {
         <p>
           모든 서비스의 이용은 담당 기관의 규정에 따릅니다. 각 시설의 규정 및 허가조건을 반드시 준수하여야 합니다.
           각 관리기관의 시설물과 부대시설을 이용함에 있어 담당자들과 협의 후 사용합니다.
-          각 관리기관의 사고 발생시 서울시청에서는 어떠한 책임도 지지않습니다.
+          각 관리기관의 사고 발생시 부산시청에서는 어떠한 책임도 지지않습니다.
           시설이용료 납부는 각 관리기관에서 규정에 준합니다.
           본 사이트와 각 관리기관의 규정을 위반할 시에는 시설이용 취소 및 시설이용 불허의 조치를 취할 수 있습니다.
           접수 시간을 기준으로 브라우저에서 새로고침을 하면 변경된 정보를 볼 수 있습니다.
@@ -123,12 +122,12 @@ const blue = {
 
 const Tab = styled(TabUnstyled)`
   font-family: IBM Plex Sans, sans-serif;
-  color: white;
   cursor: pointer;
   font-size: 1.275rem;
   font-weight: bold;
+  color: white;
   background-color: transparent;
-  width: 100%;
+  width: 20%;
   padding: 12px 16px;
   margin: 6px 6px;
   border: none;
@@ -137,25 +136,19 @@ const Tab = styled(TabUnstyled)`
   justify-content: center;
 
   &:hover {
-    background-color: ${blue[400]};
+    background-color: ${blue[800]};
   }
 
-  &:focus {
-    color: #fff;
-    border-radius: 3px;
-    outline: 2px solid ${blue[200]};
-    outline-offset: 2px;
-  }
 
   &.${tabUnstyledClasses.selected} {
     background-color: ${blue[50]};
     color: ${blue[600]};
   }
 
-  &.${buttonUnstyledClasses.disabled} {
+  /* &.${buttonUnstyledClasses.disabled} {
     opacity: 0.5;
     cursor: not-allowed;
-  }
+  } */
 `;
 
 const TabPanel = styled(TabPanelUnstyled)`

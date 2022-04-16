@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import "../../App.css";
 import { Link } from "react-router-dom";
+import BoardSummary from "../board/BoardSummary";
 
 
 const { kakao } = window;
@@ -16,7 +17,15 @@ const MapContainer = ({ searchPlace, faci, pharmacy, parking, faciSearch}) => {
   let dataorder = "";
 
   useEffect(() => {
+<<<<<<< HEAD
     //fetch("http://localhost:8081/tbfacit/getAll")
+=======
+
+    // 체육시설 불러오기
+
+    //fetch("http://localhost:8081/tbfacit/getAll")
+
+>>>>>>> 69069dcab5ddf9f8b5a70c8ea488a81f7705ac6d
     fetch("http://192.168.0.36:8081/tbfacit/getAll")
     .then((res) => res.json())
     .then((res) => {
@@ -55,6 +64,7 @@ const MapContainer = ({ searchPlace, faci, pharmacy, parking, faciSearch}) => {
 
     if(faci === true){
       
+<<<<<<< HEAD
       for (let i = 0; i < facit.length; i++) {
         
         var content = '<div class="overlaybox">' +
@@ -144,10 +154,15 @@ const MapContainer = ({ searchPlace, faci, pharmacy, parking, faciSearch}) => {
         };
       }
 
+=======
+      displayFaciMarker(facit);
+      
+>>>>>>> 69069dcab5ddf9f8b5a70c8ea488a81f7705ac6d
     }else{
       removeMarker(facimarkers);
     }
 
+<<<<<<< HEAD
     if(!faciSearch === null){
       for (let i = 0; i < facit.length; i++) {
         if( facit[i].fcobNm.includes(faciSearch) || facit[i].faciNm.includes(faciSearch) || facit[i].faciRoadAddr1.includes(faciSearch)){
@@ -175,7 +190,47 @@ const MapContainer = ({ searchPlace, faci, pharmacy, parking, faciSearch}) => {
       itda = false;
     }else{
       removeMarker(searchedfaciMarkers);
+=======
+    
+
+    if(fillsearched === true){
+      //searchedFacit.clear();
+      console.log(facit.length);
+      for (let i = 0; i < facit.length; i++) {
+        if(facit[i].fcobNm.includes(faciSearch) || facit[i].faciNm.includes(faciSearch) || facit[i].faciRoadAddr1.includes(faciSearch)){
+        //if(facit[i].fcobNm.indexOf(faciSearch) > -1 || facit[i].faciNm.indexOf(faciSearch) > -1 || facit[i].faciRoadAddr1.indexOf(faciSearch) > -1){  
+          searchedFacit.push(facit[i]);
+        }
+      }
+
+      console.log(searchedFacit.length);
+      for (let j = 0; j < searchedFacit.length; j++) {
+             facimarkers.push(null);
+      }
+
+      displayFaciMarker(searchedFacit);
+
+      //itda = true;
+
+>>>>>>> 69069dcab5ddf9f8b5a70c8ea488a81f7705ac6d
     }
+
+    // if(itda === true){
+    //   for (let i = 0; i < searchedFacit.length; i++) {
+    //     facimarker = new kakao.maps.Marker({
+    //       map:map,
+    //       position: new kakao.maps.LatLng(searchedFacit[i].faciPointY, searchedFacit[i].faciPointX),
+    //       clickable: true,
+    //       title:searchedFacit.faciNm
+    //     });
+    //     searchedfaciMarkers.push(facimarker);
+    //   }
+    //   itda = false;
+    // }else{
+    //   for (let j = 0; j < searchedFacit.length; j++) {
+    //     searchedfaciMarkers.push(null);
+    //   }
+    // }
 
     if(pharmacy === true){
       dataorder = "2";
@@ -276,7 +331,12 @@ const MapContainer = ({ searchPlace, faci, pharmacy, parking, faciSearch}) => {
         for ( var i = 0; i < markerList.length; i++ ) {
           markerList[i].setMap(null);
         }   
+<<<<<<< HEAD
         markerList = [];
+=======
+        markers = [];
+
+>>>>>>> 69069dcab5ddf9f8b5a70c8ea488a81f7705ac6d
       }
 
     // 클릭한 마커에 대한 장소 상세정보를 커스텀 오버레이로 표시하는 함수입니다
@@ -323,11 +383,145 @@ const MapContainer = ({ searchPlace, faci, pharmacy, parking, faciSearch}) => {
       placeOverlay.setPosition(new kakao.maps.LatLng(place.y, place.x));
       placeOverlay.setMap(map);
     }
+<<<<<<< HEAD
   }, [searchPlace, faci, pharmacy, parking, itda, faciSearch]);
 
   return (
     <div className="wrap">
       <div id="myMap" style={{ width: "100%", height: "100vh",}} > </div>
+=======
+
+    //시설마커표시
+    function displayFaciMarker(list){
+
+        console.log("list = " + list.length);
+
+      for (let i = 0; i < list.length; i++) {
+
+        console.log(list[i].faciNm);
+
+        var content = '<div class="overlaybox">' +
+        '    <div class="boxtitle">체육시설 정보<button type="button" class="btn-close float-end text-secondary" id="close" onclick="makeOutListener()"></button></div>' +
+        '    <div class="first">' +
+        
+        '        <div class="facititle text">'+list[i].faciNm+'</div>' +
+        '    </div>' +
+        '    <ul>' +
+        '        <li class="up">' +
+        
+        '            <span class="title">종류 : '+list[i].fcobNm+'</span>' +
+        '            <span class="arrow up"></span>' +
+        '        </li>' +
+        '        <li>' +
+        
+        '            <span class="title">연락처 : '+list[i].fmngUserTel+'</span>' +
+        '            <span class="arrow up"></span>' +
+        
+        '        </li>' +
+        '        <li>' +
+        
+        '            <span class="title">'+list[i].faciRoadAddr1+'</span>' +
+        '            <span class="arrow up"></span>' +
+        
+        '        </li>' +        
+        '    </ul>' +
+        '</div>';
+
+        
+        var imageSrc = "";
+        
+        if(list[i].ftypeNm == "축구장"){
+          imageSrc = '../img/marker03.png';
+        }else if(list[i].ftypeNm == "야구장"){
+          imageSrc = '../img/marker07.png';
+        }else if(list[i].ftypeNm == "테니스장"){
+          imageSrc = '../img/marker06.png';
+        }else if(list[i].ftypeNm == "배드민턴장"){
+          imageSrc = '../img/marker02.png';
+        }else if(list[i].ftypeNm == "간이운동장"){
+            imageSrc = '../img/marker09.png';
+        }else if(list[i].ftypeNm == "수영장"){
+              imageSrc = '../img/marker08.png';
+        }else{
+          imageSrc = '../img/marker01.png';
+        }
+        var  imageSize = new kakao.maps.Size(64, 69), // 마커이미지의 크기입니다
+            imageOption = {offset: new kakao.maps.Point(27, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+
+        // 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
+        var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
+            markerPosition = new kakao.maps.LatLng(list[i].faciPointY, list[i].faciPointX); // 마커가 표시될 위치입니다
+
+          facimarker = new kakao.maps.Marker({
+            map:map,
+            position: new kakao.maps.LatLng(list[i].faciPointY, list[i].faciPointX),
+            //clickable: true,
+            //content: content,
+            image: markerImage,
+            title:list[i].faciNm,
+          });
+
+
+          
+
+          // 커스텀 오버레이를 생성합니다
+          var customOverlay = new kakao.maps.CustomOverlay({
+              position: new kakao.maps.LatLng(list[i].faciPointY, list[i].faciPointX),
+              content: content,
+              xAnchor: 0.44,
+              // yAnchor: 0.91
+              yAnchor:1.09
+          });
+
+          
+              
+
+          kakao.maps.event.addListener(facimarker, 'click', makeOverListener(map, facimarker, customOverlay));
+          kakao.maps.event.addListener(map, 'click', makeOutListener(map, facimarker, customOverlay));
+
+                   
+          overlays.push(customOverlay);
+          facimarkers.push(facimarker);
+          
+      }
+    }
+
+    // 인포윈도우를 표시하는 클로저를 만드는 함수입니다 
+    function makeOverListener(map, marker, customOverlay) {
+      return function() {
+        
+        for(var i = 0; i < overlays.length; i++){
+          overlays[i].setMap(null);
+        }
+
+        customOverlay.setMap(map);
+       
+        // 지도 중심을 이동 시킵니다
+        map.setCenter(marker.getPosition());
+
+      };
+    }
+
+    function makeOutListener() {
+      return function() {
+        
+        for(var i = 0; i < overlays.length; i++){
+          overlays[i].setMap(null);
+        }
+
+      };
+    }
+
+  
+
+  }, [searchPlace, faci, pharmacy, parking, fillsearched, itda]);
+
+  return (
+    <div className="wrap">
+      <div id="myMap" style={{ width: "100%", height: "100vh",}} >
+      </div>
+
+>>>>>>> 69069dcab5ddf9f8b5a70c8ea488a81f7705ac6d
       <div className="container my-3 px-4 py-2 border-5 border-secondary shadow" style = {styles.notice}>
         <div className="text-end">
           <span className="me-2">
@@ -335,7 +529,7 @@ const MapContainer = ({ searchPlace, faci, pharmacy, parking, faciSearch}) => {
           </span>
             <Link to={"/post"} style={{color:"black"}}><span>더보기</span></Link>
         </div>
-        <div className="row">
+        {/* <div className="row">
           <div className="col-12 col-lg-4 px-lg-0">
             <div className="card border-0">              
               <div className="card-body">
@@ -381,8 +575,8 @@ const MapContainer = ({ searchPlace, faci, pharmacy, parking, faciSearch}) => {
               </div>              
             </div>
           </div>
-        </div> 
-        {/* <BoardSummary/> */}
+        </div>  */}
+        <BoardSummary/>
       </div>
 
       <div id="result-list">

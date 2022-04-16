@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
-// import FileSaver from 'file-saver';
 
 const PostDetail = () => {
     const navigate = useNavigate();
@@ -12,13 +11,7 @@ const PostDetail = () => {
     const [pstgPblrName, setPstgPblrName] = useState('');
     const [isEdit, setEdit] = useState(false);
     const [stat, setStat] = useState(1);
-    const [cnt, setCnt] = useState(0);
     
-    // const [files, setFiles] = useState([{
-    //     pstg_seq: 0,
-    //     fileOriName: '',
-    //     fileName: ''
-    // }]);
 
     useEffect(() => {
         getPost().then(data => {
@@ -26,24 +19,16 @@ const PostDetail = () => {
             setPstgCn(data.pstgCn);
             setPstgPblrName(data.pstgPblrName);
         });
-        // getFiles().then(data => {
-        //     // 파일 존재하는 경우 
-        //     if(data.length !== 0) {
-        //         setFiles(data);
-        //     }
-        // });
     }, [pstgSeq]);
 
     // 해당 게시글 내용 불러오기 
     const getPost = () => {
-        // const url = "http://localhost:8080/api/find/" + pstg_seq;
         const url = `http://localhost:8080/api/find/${pstgSeq}`;
         const body = {
             pstgTitle: pstgTitle,
             pstgCn: pstgCn,
             pstgPblrName: pstgPblrName,
             stat: 1,
-            cnt: 0,
         }
 
         return new Promise((resolve, reject) => {
@@ -57,20 +42,6 @@ const PostDetail = () => {
         })
     }
 
-    // 해당 게시글에 포함된 첨부파일 불러오기 
-    // const getFiles = () => {
-    //     const url = "http://localhost:8080/api/getFile/" + pstg_seq;
-
-    //     return new Promise((resolve, reject) => {
-    //         axios.get(url)
-    //         .then(res => {
-    //             resolve(res.data);
-    //         })
-    //         .catch(error => {
-    //             reject(error);
-    //         })
-    //     })
-    // }
 
     // 게시글 삭제
     const handleDelete = () => {
@@ -85,19 +56,13 @@ const PostDetail = () => {
           console.log(error);
         })
 
-        // // const fileUrl = "http://localhost:8080/api/delete/" + pstg_seq;
-        // const fileUrl = `http://localhost:8080/api/delete/${pstg_seq}`;
-        // axios.get(fileUrl)
-        // .then(res => {
-        //     // window.location.href="/"
-        // }).catch();
     }
 
     // 게시글 수정
     const handleUpdate = () => {
         // const url = "http://localhost:8080/api/update/" + pstgSeq;
         const url = `http://localhost:8080/api/update/${pstgSeq}`;
-        const body = { pstgTitle, pstgCn, stat, pstgPblrName, pstgSeq, cnt}
+        const body = { pstgTitle, pstgCn, stat, pstgPblrName, pstgSeq}
           
         axios.post(url, body)
         .then()
@@ -108,24 +73,10 @@ const PostDetail = () => {
         setEdit(false);
     }
 
-    // 첨부파일 다운로드
-    // const downloadFile = (pstg_seq) => {
-    //     const url = "http://localhost:8080/api/download/" + files[pstg_seq].fileName;
-
-    //     axios.get(url, {
-    //         headers: { responseType: 'arraybuffer' }
-    //     }).then(res => {
-    //         console.log(res);
-    //         let file = new File([res], files[pstg_seq].fileOriName)
-    //         FileSaver.saveAs(file);
-    //     })
-    //     .catch(error => {
-    //         console.log(error);
-    //     })
-    // }
+  
 
     return (
-        <div style={styles.form}>
+        <div  style={styles.form}>
             <div style={styles.container}>
                 <label style={styles.label}>제목</label>
                 {
@@ -147,11 +98,7 @@ const PostDetail = () => {
                 isEdit === false ? <div style={styles.textarea}>{pstgCn}</div>
                 :  <textarea style={styles.textarea} onChange={(e) => setPstgCn(e.target.value)} value={pstgCn}></textarea>
             }
-            {/* {
-                files.map((file, i) => 
-                    <button key={i} style={styles.downloadBtn} type="file" onClick={() => downloadFile(i)}>{file.fileOriName}</button>
-                )
-            } */}
+           
             <div>
                 {
                     isEdit === false ? (

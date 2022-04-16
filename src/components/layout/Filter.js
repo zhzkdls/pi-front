@@ -34,8 +34,8 @@ export default function Filter({faci, toggleFaci, pharmacy, togglePharmacy, park
   }
 
   if(fillsearched === true){
-    btnnm = "지우기";
-    fillsearched = false;
+    //btnnm = "지우기";
+    //fillsearched = false;
   }else{
     btnnm = "검색";
   }

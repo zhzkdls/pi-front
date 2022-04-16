@@ -11,14 +11,13 @@ class PostList extends Component {
         const { posts } = this.props;
 
         const postList = posts.map(
-            ({pstgSeq, pstgTitle, pstgPblrName, pstgDt, pstgCn, cnt}) => (
+            ({pstgSeq, pstgTitle, pstgPblrName, pstgDt, pstgCn}) => (
                 <PostItem
                     pstgSeq = {pstgSeq}
                     pstgTitle = {pstgTitle}
                     pstgPblrName = {pstgPblrName}
                     pstgCn = {pstgCn}
                     pstgDt = {pstgDt}
-                    cnt = {cnt}
                     key = {pstgSeq}
                 />
             )
@@ -31,7 +30,6 @@ class PostList extends Component {
                     <p>제목</p>
                     <p>작성자</p>
                     <p>작성일</p>
-                    <p>조회수</p>
                 </div>
                 {postList}
             </div>
@@ -43,7 +41,7 @@ const styles = {
     header: {
         color: '#343a40',
         display: 'grid',
-        gridTemplateColumns: 'repeat(5, 1fr)',
+        gridTemplateColumns: 'repeat(4, 1fr)',
         padding: '3px',
         borderBottom: '4px solid lightgray',
         textAlign: 'center',

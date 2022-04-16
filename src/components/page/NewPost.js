@@ -7,20 +7,6 @@ const NewPost = () => {
     const [pstgPblrName, setPstgPblrName] = useState(""); // 작성자
     const [pstgCn, setPstgCn] = useState(""); // 내용
     const [stat, setStat] = useState(1); //삭제할떄 상태 값
-    const [cnt, setCnt] = useState(0); // 최초 조회수 상태 값 
-
-    // const [files, setFile] = useState(null); // 첨부파일
-    
-    
-
-    // const handleFiles = (e) => {
-    //     if(files === null) {
-    //         setFile([e.target.files[0]]);
-    //     }
-    //     else {
-    //         setFile([...files, e.target.files[0]]);
-    //     }
-    // }
     
 
     const handleSubmit = () => {
@@ -31,9 +17,7 @@ const NewPost = () => {
                 pstgCn: pstgCn,
                 pstgPblrName: pstgPblrName,
                 stat: 1,
-                cnt: 0,
             }
-            // console.log(files);
 
             axios.post("http://localhost:8080/api/posts", body)
             .then(async res => {
@@ -47,23 +31,7 @@ const NewPost = () => {
         }
     }
 
-    // const uploadFiles = (boardId) => {
-    //     console.log('들어옴');
-    //     const formData = new FormData(); // 업로드할 파일
-    //     formData.append("pstg_seq", parseInt(boardId));
-    //     files.forEach(file => formData.append("files", file));
-
-    //     return new Promise((resolve, reject) => {
-    //         axios.post("http://localhost:8080/api/upload", formData)
-    //         .then(res => {
-    //             resolve(res.data);
-    //         })
-    //         .catch(error => {
-    //             alert(error);
-    //             reject();
-    //         })
-    //     })
-    // }
+   
     
     return (
         <div style={styles.form} encType="multipart/form-data">
@@ -82,14 +50,7 @@ const NewPost = () => {
             
             <textarea style={styles.textarea} onChange={(e) => setPstgCn(e.target.value)} value={pstgCn}></textarea>
             
-            {/* <div style={styles.container}>
-                <label style={styles.label}>첨부파일</label>
-                <input style={styles.input} type="file" name="file" onChange={handleFiles}></input>
-            </div>
-            <div style={styles.container}>
-                <label style={styles.label}>첨부파일</label>
-                <input style={styles.input} type="file" name="file" onChange={handleFiles}></input>
-            </div> */}
+           
             <div>
                 <button style={styles.okBtn} onClick={handleSubmit} >등록</button>
                 <Link to="/post" style={styles.cancelBtn}>취소</Link>
