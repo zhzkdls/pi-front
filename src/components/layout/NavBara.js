@@ -60,14 +60,8 @@ function NavBara() {
 const styles = {
     move : {
       position: 'absolute',
-<<<<<<< HEAD
-      marginLeft: '950px',
-      display: 'flex',
-      fontSize: '1.53rem',
-=======
       right: '100px'
 
->>>>>>> f32af48afc6a9094f65b47b1833b38acfea04d72
   },
 }
   

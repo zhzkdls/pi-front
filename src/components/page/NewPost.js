@@ -7,7 +7,6 @@ const NewPost = () => {
     const [pstgPblrName, setPstgPblrName] = useState(""); // 작성자
     const [pstgCn, setPstgCn] = useState(""); // 내용
     const [stat, setStat] = useState(1); //삭제할떄 상태 값
-    const [cnt, setCnt] = useState(0); // 최초 조회수 상태 값 
     
 
     const handleSubmit = () => {
@@ -18,7 +17,6 @@ const NewPost = () => {
                 pstgCn: pstgCn,
                 pstgPblrName: pstgPblrName,
                 stat: 1,
-                cnt: 0,
             }
 
             axios.post("http://localhost:8080/api/posts", body)

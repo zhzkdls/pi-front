@@ -49,7 +49,7 @@ class Post extends Component {
         <div>
           <PostList posts={posts}></PostList>
           <div style={styles.container}>
-            <Search handleSearch = {handleSearch}></Search>
+            {/* <Search handleSearch = {handleSearch}></Search> */}
             <Link to="/write" style={styles.addBtn}> 등록</Link>
           </div>
         </div>

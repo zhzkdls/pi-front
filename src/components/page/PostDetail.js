@@ -11,7 +11,6 @@ const PostDetail = () => {
     const [pstgPblrName, setPstgPblrName] = useState('');
     const [isEdit, setEdit] = useState(false);
     const [stat, setStat] = useState(1);
-    const [cnt, setCnt] = useState(0);
     
 
     useEffect(() => {
@@ -30,7 +29,6 @@ const PostDetail = () => {
             pstgCn: pstgCn,
             pstgPblrName: pstgPblrName,
             stat: 1,
-            cnt: 0,
         }
 
         return new Promise((resolve, reject) => {
@@ -64,7 +62,7 @@ const PostDetail = () => {
     const handleUpdate = () => {
         // const url = "http://localhost:8080/api/update/" + pstgSeq;
         const url = `http://localhost:8080/api/update/${pstgSeq}`;
-        const body = { pstgTitle, pstgCn, stat, pstgPblrName, pstgSeq, cnt}
+        const body = { pstgTitle, pstgCn, stat, pstgPblrName, pstgSeq}
           
         axios.post(url, body)
         .then()

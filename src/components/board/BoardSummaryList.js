@@ -25,26 +25,17 @@ class BoardSummaryList extends Component {
         )
         return (
             <div className="d-flex " >
-            <div className='shadow' style = {styles.container}>
-                <h3 style = {styles.title}>공지사항</h3>
-                <div style= {styles.header}>
+            <div style = {styles.container}>
                 {BoardSummaryList}
-                </div>
             </div>
 
-            <div className='shadow' style = {styles.container}>
-                <h3 style = {styles.title}>공지사항</h3>
-                <div style= {styles.header}>
+            <div style = {styles.container}>
                 {BoardSummaryList}
-                </div>
             </div>
 
-            <div className='shadow' style = {styles.container}>
-                <h3 style = {styles.title}>공지사항</h3>
-                <div style= {styles.header}>
+            <div style = {styles.container}>
                 {BoardSummaryList}
                 </div>
-            </div>
             </div>
 
             
@@ -53,24 +44,14 @@ class BoardSummaryList extends Component {
 }
 
 const styles = {
-    header: {
-        gridTemplateColumns: 'repeat(3, 1fr)',
-        borderBottom: '4px solid lightgray',
-        textAlign: 'center',
-        fontSize: '18px',
-        width: '100%',
-    },
-
     container: {
         marginLeft: '20px',
         textAlign: 'center',
         width: '68%',
         borderBottom: '2px solid lightgray',
+       
     },
-    title: {
-        marginTop: '2px',
-        marginBottom: '40px',
-    },
+   
 }
 
 export default BoardSummaryList;
