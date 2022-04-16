@@ -71,15 +71,15 @@ const MapContainer = ({ searchPlace, faci, pharmacy, parking, faciSearch, fillse
 
     if(fillsearched === true){
       //searchedFacit.clear();
-      //console.log(searchedFacit.length);
+      console.log(facit.length);
       for (let i = 0; i < facit.length; i++) {
         if(facit[i].fcobNm.includes(faciSearch) || facit[i].faciNm.includes(faciSearch) || facit[i].faciRoadAddr1.includes(faciSearch)){
-          
+        //if(facit[i].fcobNm.indexOf(faciSearch) > -1 || facit[i].faciNm.indexOf(faciSearch) > -1 || facit[i].faciRoadAddr1.indexOf(faciSearch) > -1){  
           searchedFacit.push(facit[i]);
         }
       }
 
-      //console.log(searchedFacit);
+      console.log(searchedFacit.length);
       for (let j = 0; j < searchedFacit.length; j++) {
              facimarkers.push(null);
       }
@@ -257,7 +257,12 @@ const MapContainer = ({ searchPlace, faci, pharmacy, parking, faciSearch, fillse
 
     //시설마커표시
     function displayFaciMarker(list){
+
+        console.log("list = " + list.length);
+
       for (let i = 0; i < list.length; i++) {
+
+        console.log(list[i].faciNm);
 
         var content = '<div class="overlaybox">' +
         '    <div class="boxtitle">체육시설 정보<button type="button" class="btn-close float-end text-secondary" id="close" onclick="makeOutListener()"></button></div>' +
@@ -290,19 +295,19 @@ const MapContainer = ({ searchPlace, faci, pharmacy, parking, faciSearch, fillse
         var imageSrc = "";
         
         if(list[i].ftypeNm == "축구장"){
-          imageSrc = '../img/marker03.png'
+          imageSrc = '../img/marker03.png';
         }else if(list[i].ftypeNm == "야구장"){
-          imageSrc = '../img/marker07.png'
+          imageSrc = '../img/marker07.png';
         }else if(list[i].ftypeNm == "테니스장"){
-          imageSrc = '../img/marker06.png'
+          imageSrc = '../img/marker06.png';
         }else if(list[i].ftypeNm == "배드민턴장"){
-          imageSrc = '../img/marker02.png'
+          imageSrc = '../img/marker02.png';
         }else if(list[i].ftypeNm == "간이운동장"){
-            imageSrc = '../img/marker09.png'  
+            imageSrc = '../img/marker09.png';
         }else if(list[i].ftypeNm == "수영장"){
-              imageSrc = '../img/marker08.png'
+              imageSrc = '../img/marker08.png';
         }else{
-          imageSrc = '../img/marker01.png'
+          imageSrc = '../img/marker01.png';
         }
         var  imageSize = new kakao.maps.Size(64, 69), // 마커이미지의 크기입니다
             imageOption = {offset: new kakao.maps.Point(27, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
