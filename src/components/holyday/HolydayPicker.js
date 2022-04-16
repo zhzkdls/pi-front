@@ -10,8 +10,6 @@ import "react-multi-date-picker/styles/layouts/mobile.css"
 function HolydayPicker() {
     const fcSeq = useParams().fcSeq;
     const [startDate, setStartDate] = useState([]);
-    const weekDays = ["일", "월", "화", "수", "목", "금", "토"];
-    const months = ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"];
 
     const [holyDay, setHolyDay] = useState({
         hldySeq:0,
@@ -26,7 +24,7 @@ function HolydayPicker() {
         for (let i = 0; i < startDate.length; i++) {
             holyDay.tcbizBgngYmd = startDate[i];
             holyDay.fcSeq=fcSeq;
-            fetch("http://localhost:8080/hldy/save", {
+            fetch("http://localhost:8081/hldy/save", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json; charset=utf-8",

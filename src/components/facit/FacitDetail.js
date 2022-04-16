@@ -18,7 +18,6 @@ import { Card } from 'react-bootstrap';
 function FacitDetail(props) {
     const fcSeq = useParams().fcSeq;
     const isMount = UseIsMount;
-
     const [Place, setPlace] = useState("");
 
     const [facit, setFacit] = useState({
@@ -31,7 +30,7 @@ function FacitDetail(props) {
     });
 
     useEffect(() => {
-        axios.get(`http://localhost:8081/tbfacit/get/${fcSeq}`)
+        axios.get(`http://192.168.0.36:8081/tbfacit/get/${fcSeq}`)
         .then((res) => {
             if (isMount) {
                 setFacit(res.data);

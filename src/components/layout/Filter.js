@@ -10,16 +10,11 @@ export default function Filter({faci, toggleFaci, pharmacy, togglePharmacy, park
 
   const onSubmit = (e) => {
     e.preventDefault();
-    if(InputText.length === 0){
-      alert("검색어를 입력하세요");
-    }else{
-      searchFaci(InputText);
-    }
+    searchFaci(InputText);
   };
 
   const onChange = (e) => {
     setInputText(e.target.value);
-    console.log(InputText);
   }
 
   const isCheckFaci = () => {
@@ -70,6 +65,7 @@ export default function Filter({faci, toggleFaci, pharmacy, togglePharmacy, park
                   placeholder="검색어를 입력하세요"
                   onChange={onChange}
                   value={InputText}
+                  className="form-control"
                 />
                   <button className="btn btn-primary" type="submit">{btnnm}</button>
               </div>
