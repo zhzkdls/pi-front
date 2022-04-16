@@ -7,8 +7,6 @@ import { check } from "../../modules/user";
 import axios from "axios";
 
 const LoginForm = ({ history }) => {
-  const params = useParams();
-  const location = useLocation();
   const navigate = useNavigate();
 
   const [error, setError] = useState(null);
@@ -46,7 +44,7 @@ const LoginForm = ({ history }) => {
     if (
       [userId, password].length === 0
     ) {
-      setError("빈 칸을 모두 입력하세요.");
+      setError("아이디 혹은 비밀번호를 입력해 주세요.");
       return;
     }
 
@@ -54,37 +52,24 @@ const LoginForm = ({ history }) => {
     loginAttempt.userPassword = form.password;
 
     axios.post("http://localhost:8080/login/Attempt", loginAttempt)
-    .then(response => response.text())
+    .then(response => response.data)
     .then(message => {
       console.log(message);
-      console.log(loginAttempt.userId);
-      console.log(loginAttempt.userPassword);
-      if(message === "true"){
+      if(message === true){
         alert("아이디 비밀번호 일치");
         navigate("/");
+      }else{
+        alert("아이디 혹은 비밀번호를 확인해주세요.")
       }
   });
 
-    dispatch(login({ userId, password }));
+    // dispatch(login({ userId, password }));
   };
 
   // 컴포넌트가 처음 렌더링 될 때 form 을 초기화함
   useEffect(() => {
     dispatch(initializeForm("login"));
   }, [dispatch]);
-
-  useEffect(() => {
-    if (authError) {
-      console.log("오류 발생");
-      console.log(authError);
-      setError("로그인 실패");
-      return;
-    }
-    if (auth) {
-      console.log("로그인 성공");
-      dispatch(check());
-    }
-  }, [auth, authError, dispatch]);
 
   useEffect(() => {
     if (user) {

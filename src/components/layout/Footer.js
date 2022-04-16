@@ -2,6 +2,7 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
 import "../../App.css";
+
 function Footer() {
   return (
     <div id="footer" className="fixed-bottom mb-1">

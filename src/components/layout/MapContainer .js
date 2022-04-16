@@ -16,7 +16,8 @@ const MapContainer = ({ searchPlace, faci, pharmacy, parking, faciSearch, fillse
   let dataorder = "";
 
   useEffect(() => {
-    fetch("http://localhost:8081/tbfacit/getAll")
+    // 체육시설 불러오기
+    fetch("http://192.168.0.36:8081/tbfacit/getAll")
     .then((res) => res.json())
     .then((res) => {
         setFacit(res)
