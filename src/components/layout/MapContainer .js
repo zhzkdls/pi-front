@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 const { kakao } = window;
 
-const MapContainer = ({ searchPlace, faci, pharmacy, parking, faciSearch, fillsearched, setFillSearched}) => {
+const MapContainer = ({ searchPlace, faci, pharmacy, parking, faciSearch, fillsearched}) => {
 
   const [Places, setPlaces] = useState([]);
   const [facit, setFacit] = useState([]);
@@ -16,11 +16,7 @@ const MapContainer = ({ searchPlace, faci, pharmacy, parking, faciSearch, fillse
   let dataorder = "";
 
   useEffect(() => {
-<<<<<<< HEAD
-    // 체육시설 불러오기
-=======
     //fetch("http://localhost:8081/tbfacit/getAll")
->>>>>>> 879c3a4255c9f2be9e43cc0c41f4637b13525323
     fetch("http://192.168.0.36:8081/tbfacit/getAll")
     .then((res) => res.json())
     .then((res) => {
@@ -60,9 +56,6 @@ const MapContainer = ({ searchPlace, faci, pharmacy, parking, faciSearch, fillse
     if(faci === true){
       
       for (let i = 0; i < facit.length; i++) {
-
-        
-
         
         var content = '<div class="overlaybox">' +
         '    <div class="boxtitle">체육시설 정보<button type="button" class="btn-close float-end text-secondary" id="close" onclick="makeOutListener()"></button></div>' +
@@ -109,9 +102,6 @@ const MapContainer = ({ searchPlace, faci, pharmacy, parking, faciSearch, fillse
             title:facit[i].faciNm,
           });
 
-
-          
-
           // 커스텀 오버레이를 생성합니다
           var customOverlay = new kakao.maps.CustomOverlay({
               position: new kakao.maps.LatLng(facit[i].faciPointY, facit[i].faciPointX),
@@ -121,12 +111,8 @@ const MapContainer = ({ searchPlace, faci, pharmacy, parking, faciSearch, fillse
               yAnchor:1.09
           });
 
-          
-              
-
           kakao.maps.event.addListener(facimarker, 'click', makeOverListener(map, facimarker, customOverlay));
           kakao.maps.event.addListener(map, 'click', makeOutListener(map, facimarker, customOverlay));
-
                    
           overlays.push(customOverlay);
 
@@ -147,7 +133,6 @@ const MapContainer = ({ searchPlace, faci, pharmacy, parking, faciSearch, fillse
          
           // 지도 중심을 이동 시킵니다
           map.setCenter(marker.getPosition());
-
         };
       }
 
@@ -160,19 +145,13 @@ const MapContainer = ({ searchPlace, faci, pharmacy, parking, faciSearch, fillse
 
         };
       }
-
-      
-
-      
     }else{
-      for (let j = 0; j < facit.length; j++) {
-        facimarkers.push(null);
+      for (let j = 0; j < facimarkers.length; j++) {
+        facimarkers[i].setMap(null);
       }
     }
 
-    
-
-    if(fillsearched === true){
+    if(faciSearch !== null ){
       for (let i = 0; i < facit.length; i++) {
         if(facit[i].fcobNm.includes(faciSearch) || facit[i].faciNm.includes(faciSearch) || facit[i].faciRoadAddr1.includes(faciSearch)){
           searchedFacit.push(facit[i]);
@@ -189,12 +168,12 @@ const MapContainer = ({ searchPlace, faci, pharmacy, parking, faciSearch, fillse
           clickable: true,
           title:searchedFacit.faciNm
         });
-        searchedfaciMarkers.push(facimarker);
+        facimarkers.push(facimarker);
       }
       itda = false;
     }else{
-      for (let j = 0; j < searchedFacit.length; j++) {
-        searchedfaciMarkers.push(null);
+      for (let j = 0; j < facimarkers.length; j++) {
+        facimarkers[i].setMap(null);
       }
     }
 
@@ -348,7 +327,7 @@ const MapContainer = ({ searchPlace, faci, pharmacy, parking, faciSearch, fillse
 
   
 
-  }, [searchPlace, faci, pharmacy, parking, fillsearched, itda]);
+  }, [searchPlace, faci, pharmacy, parking, itda, faciSearch]);
 
   return (
     <div className="wrap">
