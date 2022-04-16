@@ -72,7 +72,7 @@ const RegisterForm = ({ history }) => {
     member.userEmail = form.email;
 
     axios.post("http://localhost:8080/member/save", member)
-    .then(response => response.text())
+    .then((response) => response.data)
     .then(message => {
       if(message === "Success"){
         alert("가입 되었습니다.");

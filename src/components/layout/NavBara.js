@@ -1,13 +1,8 @@
 import React, { useState } from "react";
-import {
-  Nav,
-  Navbar,
-  Offcanvas,
-  Container,
-  NavDropdown,
-} from "react-bootstrap";
+import {Nav, Navbar, Offcanvas, Container, NavDropdown } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
+import Kakao from "../oauth/kakao";
 
 function NavBara() {
   const [InputText, setInputText] = useState("");
@@ -31,6 +26,9 @@ function NavBara() {
           </Link>
           <div className="d-flex" style={styles.move}>
             <Nav.Link href="/post" style={{color:"white"}}>공지사항</Nav.Link>
+            {/* <Link to={"/"}>
+              <img src="../img/kakaologinmediumwide.png" alt="카카오 로그인" id="logo"></img>
+            </Link> */}
             <Nav.Link href="/login" style={{color:"white"}}>Login</Nav.Link>
           </div>
           <Navbar.Toggle className="border-0" aria-controls="offcanvasNavbar" />
