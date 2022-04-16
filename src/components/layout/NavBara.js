@@ -29,7 +29,7 @@ function NavBara() {
           <Link to={"/"}>
             <img src="../img/logo5.png" alt="부산광역시 통합예약시스템" id="logo" className="me-3" />
           </Link>
-          <div className="d-flex justify-content-center" style={styles.move}>
+          <div className="d-flex" style={styles.move}>
             <Nav.Link href="/post" style={{color:"white"}}>공지사항</Nav.Link>
             <Nav.Link href="/login" style={{color:"white"}}>Login</Nav.Link>
           </div>
@@ -62,9 +62,7 @@ function NavBara() {
 const styles = {
     move : {
       position: 'absolute',
-      marginLeft: '950px',
-      display: 'flex',
-      fontSize: '1.53rem',
+      right: '100px'
 
   },
 }

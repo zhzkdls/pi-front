@@ -290,9 +290,9 @@ input, select, textarea{font-size:0.8em!important}
 
 /*Search box*/
 .search-box{
-  position:absolute;left:50%;top:112px;z-index:999;
+  position:absolute;left:50%;top:37px;z-index:9999;
   transform: translate(-50%, 0);
-  min-width: 800px;
+  /* min-width: 800px; */
 }
 
 .text-truncate2 {
@@ -358,5 +358,68 @@ input, select, textarea{font-size:0.8em!important}
 }
 
 
+/*overlay*/
+.overlaybox {
+  position: relative;
+  /* width: 360px; */
+  height: 350px;
+  background: url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/box_movie.png) no-repeat;
+  /* background: url('../public/img/logo4.png') no-repeat center; */
+  padding: 15px 10px;
+}
 
+.overlaybox .boxtitle {
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  /* background: url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/arrow_white.png) no-repeat right 95px center; */
+  margin-bottom: 8px;
+}
+
+.overlaybox .first {
+  position: relative;
+  width: 247px;
+  height: 136px;
+  /* background: url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/thumb.png) no-repeat; */
+  background: #f8f9fa url('../public/img/logo4.png') no-repeat center 35px;
+  background-size: contain;
+  margin-bottom: 8px;
+  border: 0px solid #f8f9fa
+}
+
+.first .triangle {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  top: 0;
+  left: 0;
+  background: url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/triangle.png) no-repeat;
+  padding: 6px;
+  font-size: 18px;
+}
+
+.first .facititle {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  background: rgba(0,0,0,0.4);
+  padding: 7px 15px;
+  font-size: 14px;
+  color:#fff
+}
+
+.overlaybox ul {
+  width: 247px;
+  padding:0!important;
+}
+
+.overlaybox li {
+  position: relative;
+  margin-bottom: 2px;
+  background: #2b2d36;
+  padding: 5px 10px;
+  color: #aaabaf;
+  font-size:12px;
+  /* line-height: 1; */
+}
 
