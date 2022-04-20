@@ -34,23 +34,25 @@ const NewPost = () => {
    
     
     return (
-        <div style={styles.form} encType="multipart/form-data">
+        <div className='shadow' style={styles.form} encType="multipart/form-data">
 
             
             <div style={styles.container}>
                 <label style={styles.label}>제목</label>
-                <input style={styles.input} onChange={(e) => setPstgTitle(e.target.value)} value={pstgTitle}></input>
+                <input style={styles.input} className="form-control mx-auto my-3 py-3 rounded-4 shadow"  placeholder="제목을 입력하세요..." onChange={(e) => setPstgTitle(e.target.value)} value={pstgTitle}></input>
             </div>
 
             <div style={styles.container}>
-                <label style={styles.label}>작성자</label>
-                <input style={styles.input} onChange={(e) => setPstgPblrName(e.target.value)} value={pstgPblrName}></input>
+                <label style={styles.label}>이름</label>
+                <input style={styles.input}  className="form-control mx-auto my-3 py-3 rounded-4 shadow" placeholder="이름을 입력하세요..." onChange={(e) => setPstgPblrName(e.target.value)} value={pstgPblrName}></input>
             </div>
             
             
-            <textarea style={styles.textarea} onChange={(e) => setPstgCn(e.target.value)} value={pstgCn}></textarea>
-            
-           
+            <div style={styles.containers}>
+                <label style={styles.label}>내용</label>
+                <textarea style={styles.input} className="form-control mx-auto my-3 py-3 rounded-4 shadow" rows="5" placeholder="게시글을 입력 하세요...." 
+                onChange={(e) => setPstgCn(e.target.value)} value={pstgCn}></textarea>
+            </div>
             <div>
                 <button style={styles.okBtn} onClick={handleSubmit} >등록</button>
                 <Link to="/post" style={styles.cancelBtn}>취소</Link>
@@ -61,13 +63,15 @@ const NewPost = () => {
 
 const styles = {
     form : {
+        padding: '41px',
         position: 'absolute',
-        width: '100%',
-        marginTop: '9%',
+        marginLeft: '335px',
+        width: '65%',
+        marginTop: '10%',
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        borderRadius: '30px',
     },
     container: {
         display: 'flex',
@@ -75,14 +79,22 @@ const styles = {
         justifyContent: 'center',
         padding: '9px',
         alignItems: 'center',
-        marginTop: '30px',
     },
+
+    containers: {
+        display: 'flex',
+        width: '60%',
+        justifyContent: 'center',
+        padding: '9px',
+        alignItems: 'center',
+    },
+
     label: {
-        flex: 0.4,
+        // flex: 0.2,
         textAlign: 'center'
     },
     input: {
-        flex: 0.6,
+        flex: 0.8,
         padding: '.3em .5em', /* 여백으로 높이설정 */
     },
     textarea: {

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import PostList from '../board/PostList';
-import Search from '../board/Search';
+// import Search from '../board/Search';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+// import BoardSummary from '../board/BoardSummary';
 
 class Post extends Component {
     state = {
@@ -48,9 +49,11 @@ class Post extends Component {
       return (
         <div>
           <PostList posts={posts}></PostList>
+          {/* <BoardSummary/> */}
           <div style={styles.container}>
             {/* <Search handleSearch = {handleSearch}></Search> */}
             <Link to="/write" style={styles.addBtn}> 등록</Link>
+
           </div>
         </div>
       );
@@ -59,10 +62,10 @@ class Post extends Component {
   
   const styles = {
     container: {
-      padding: '10px 0',
+      padding: '20px 0',
       textAlign: 'center',
       position: 'fixed',
-      bottom: '0px',
+      bottom: '120px',
       height: '10%', 
       width: '100%'
     },
