@@ -8,31 +8,27 @@ import BoardSummary from "../board/BoardSummary";
 
 const { kakao } = window;
 
-const MapContainer = ({ searchPlace, faci, pharmacy, parking, faciSearch, fillsearched, setFillSearched}) => {
+const MapContainer = ({ searchPlace, faci, pharmacy, parking, faciSearch, faciSearchBool}) => {
 
   const [Places, setPlaces] = useState([]);
   const [facit, setFacit] = useState([]);
-  const searchedFacit = [];
   let itda = false;
   let dataorder = "";
 
   useEffect(() => {
-
-    // 체육시설 불러오기
-
     //fetch("http://localhost:8081/tbfacit/getAll")
-
     fetch("http://192.168.0.36:8081/tbfacit/getAll")
     .then((res) => res.json())
     .then((res) => {
-        setFacit(res)
+      setFacit(res);
     });
 
     // 마커를 클릭했을 때 해당 장소의 상세정보를 보여줄 커스텀오버레이입니다
     let placeOverlay = new kakao.maps.CustomOverlay({ zIndex: 1 }),
       contentNode = document.createElement("div"), // 커스텀 오버레이의 컨텐츠 엘리먼트 입니다
       currCategory = ""; // 현재 선택된 카테고리를 가지고 있을 변수입니다
-    let searchedfaciMarkers = [], facimarkers = [], markers = [];
+    let facimarkers = [], markers = [];
+    let searchedFacit = [];
     let facimarker;
     let marker;
     let overlays = [];
@@ -40,7 +36,7 @@ const MapContainer = ({ searchPlace, faci, pharmacy, parking, faciSearch, fillse
     const container = document.getElementById("myMap");
     const options = {
       center: new kakao.maps.LatLng(35.17973316713768, 129.07505674557024),
-      level: 6,
+      level: 4,
     };
 
     const map = new kakao.maps.Map(container, options);
@@ -59,69 +55,30 @@ const MapContainer = ({ searchPlace, faci, pharmacy, parking, faciSearch, fillse
     placeOverlay.setContent(contentNode);
 
     if(faci === true){
-      
       displayFaciMarker(facit);
-      
-    }else{
-      for (let j = 0; j < facit.length; j++) {
-        facimarkers.push(null);
-      }
     }
 
-    
-
-    if(fillsearched === true){
-      //searchedFacit.clear();
+    if(faciSearchBool === true){
       console.log(facit.length);
+      
       for (let i = 0; i < facit.length; i++) {
         if(facit[i].fcobNm.includes(faciSearch) || facit[i].faciNm.includes(faciSearch) || facit[i].faciRoadAddr1.includes(faciSearch)){
-        //if(facit[i].fcobNm.indexOf(faciSearch) > -1 || facit[i].faciNm.indexOf(faciSearch) > -1 || facit[i].faciRoadAddr1.indexOf(faciSearch) > -1){  
+          // faci.push(facit[i]);
           searchedFacit.push(facit[i]);
         }
       }
-
-      console.log(searchedFacit.length);
-      for (let j = 0; j < searchedFacit.length; j++) {
-             facimarkers.push(null);
-      }
-
       displayFaciMarker(searchedFacit);
-
-      //itda = true;
-
+      map.setLevel(9);
     }
-
-    // if(itda === true){
-    //   for (let i = 0; i < searchedFacit.length; i++) {
-    //     facimarker = new kakao.maps.Marker({
-    //       map:map,
-    //       position: new kakao.maps.LatLng(searchedFacit[i].faciPointY, searchedFacit[i].faciPointX),
-    //       clickable: true,
-    //       title:searchedFacit.faciNm
-    //     });
-    //     searchedfaciMarkers.push(facimarker);
-    //   }
-    //   itda = false;
-    // }else{
-    //   for (let j = 0; j < searchedFacit.length; j++) {
-    //     searchedfaciMarkers.push(null);
-    //   }
-    // }
 
     if(pharmacy === true){
       dataorder = "2";
       searchPlaces();
-    }else{
-      currCategory = '';
-      removeMarker();
     }
 
     if(parking === true){
       dataorder = "3";
       searchPlaces();
-    }else{
-      currCategory = '';
-      removeMarker();
     }
 
     // 엘리먼트에 이벤트 핸들러를 등록하는 함수입니다
@@ -140,6 +97,7 @@ const MapContainer = ({ searchPlace, faci, pharmacy, parking, faciSearch, fillse
 
       // 지도에 표시되고 있는 마커를 제거합니다
       removeMarker();
+
       if(pharmacy === true){
         pss.categorySearch('PM9', placesSearchCB, { useMapBounds: true });
       }
@@ -202,14 +160,21 @@ const MapContainer = ({ searchPlace, faci, pharmacy, parking, faciSearch, fillse
       return marker;
     }
 
-      // 지도 위에 표시되고 있는 마커를 모두 제거합니다
-      function removeMarker() {
-        for ( var i = 0; i < markers.length; i++ ) {
-            markers[i].setMap(null);
-        }   
-        markers = [];
+    // 지도 위에 표시되고 있는 마커를 모두 제거합니다
+    function removeMarker() {
+      for ( var i = 0; i < markers.length; i++ ) {
+        markers[i].setMap(null);
+      }   
+      markers = [];
+    }
 
-      }
+    // 지도 위에 표시되고 있는 마커를 모두 제거합니다
+    function removefaciMarker() {
+      for ( var i = 0; i < facimarkers.length; i++ ) {
+        facimarkers[i].setMap(null);
+      }   
+      facimarkers = [];
+    }
 
     // 클릭한 마커에 대한 장소 상세정보를 커스텀 오버레이로 표시하는 함수입니다
     function displayPlaceInfo(place) {
@@ -259,12 +224,10 @@ const MapContainer = ({ searchPlace, faci, pharmacy, parking, faciSearch, fillse
     //시설마커표시
     function displayFaciMarker(list){
 
-        console.log("list = " + list.length);
-
+      console.log("list = " + list.length);
+      
       for (let i = 0; i < list.length; i++) {
-
         console.log(list[i].faciNm);
-
         var content = '<div class="overlaybox">' +
         '    <div class="boxtitle">체육시설 정보<button type="button" class="btn-close float-end text-secondary" id="close" onclick="makeOutListener()"></button></div>' +
         '    <div class="first">' +
@@ -291,7 +254,6 @@ const MapContainer = ({ searchPlace, faci, pharmacy, parking, faciSearch, fillse
         '        </li>' +        
         '    </ul>' +
         '</div>';
-
         
         var imageSrc = "";
         
@@ -317,53 +279,41 @@ const MapContainer = ({ searchPlace, faci, pharmacy, parking, faciSearch, fillse
         var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
             markerPosition = new kakao.maps.LatLng(list[i].faciPointY, list[i].faciPointX); // 마커가 표시될 위치입니다
 
-          facimarker = new kakao.maps.Marker({
-            map:map,
+        facimarker = new kakao.maps.Marker({
+          map:map,
+          position: new kakao.maps.LatLng(list[i].faciPointY, list[i].faciPointX),
+          //clickable: true,
+          //content: content,
+          image: markerImage,
+          title:list[i].faciNm,
+        });
+
+        // 커스텀 오버레이를 생성합니다
+        var customOverlay = new kakao.maps.CustomOverlay({
             position: new kakao.maps.LatLng(list[i].faciPointY, list[i].faciPointX),
-            //clickable: true,
-            //content: content,
-            image: markerImage,
-            title:list[i].faciNm,
-          });
+            content: content,
+            xAnchor: 0.44,
+            // yAnchor: 0.91
+            yAnchor:1.09
+        });
 
+        kakao.maps.event.addListener(facimarker, 'click', makeOverListener(map, facimarker, customOverlay));
+        kakao.maps.event.addListener(map, 'click', makeOutListener(map, facimarker, customOverlay));
 
-          
-
-          // 커스텀 오버레이를 생성합니다
-          var customOverlay = new kakao.maps.CustomOverlay({
-              position: new kakao.maps.LatLng(list[i].faciPointY, list[i].faciPointX),
-              content: content,
-              xAnchor: 0.44,
-              // yAnchor: 0.91
-              yAnchor:1.09
-          });
-
-          
-              
-
-          kakao.maps.event.addListener(facimarker, 'click', makeOverListener(map, facimarker, customOverlay));
-          kakao.maps.event.addListener(map, 'click', makeOutListener(map, facimarker, customOverlay));
-
-                   
-          overlays.push(customOverlay);
-          facimarkers.push(facimarker);
-          
+        overlays.push(customOverlay);
+        facimarkers.push(facimarker);
       }
     }
 
     // 인포윈도우를 표시하는 클로저를 만드는 함수입니다 
     function makeOverListener(map, marker, customOverlay) {
       return function() {
-        
         for(var i = 0; i < overlays.length; i++){
           overlays[i].setMap(null);
         }
-
         customOverlay.setMap(map);
-       
         // 지도 중심을 이동 시킵니다
         map.setCenter(marker.getPosition());
-
       };
     }
 
@@ -376,10 +326,7 @@ const MapContainer = ({ searchPlace, faci, pharmacy, parking, faciSearch, fillse
 
       };
     }
-
-  
-
-  }, [searchPlace, faci, pharmacy, parking, fillsearched, itda]);
+  }, [searchPlace, faci, pharmacy, parking, faciSearch, faciSearchBool]);
 
   return (
     <div className="wrap">
@@ -393,53 +340,6 @@ const MapContainer = ({ searchPlace, faci, pharmacy, parking, faciSearch, fillse
           </span>
             <Link to={"/post"} style={{color:"black"}}><span>더보기</span></Link>
         </div>
-        {/* <div className="row">
-          <div className="col-12 col-lg-4 px-lg-0">
-            <div className="card border-0">              
-              <div className="card-body">
-                <h5 className="font-weight-700 mb-3">공지사항 제목</h5>
-                <p className="text-truncate2 text-secondary" style={{height: "52px"}}>
-                  공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용
-                  공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용
-                  공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용
-                  공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용
-                  공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용
-                </p>
-                <div className="text-end">2022-04-05</div>
-              </div>              
-            </div>
-          </div>
-          <div className="col-12 col-lg-4 px-lg-0 border-start border-end">
-            <div className="card border-0">              
-              <div className="card-body">
-              <h5 className="font-weight-700 mb-3">공지사항 제목</h5>
-                <p className="text-truncate2 text-secondary" style={{height: "52px"}}>
-                  공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용
-                  공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용
-                  공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용
-                  공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용
-                  공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용
-                </p>
-                <div className="text-end">2022-04-03</div>
-              </div>              
-            </div>
-          </div>
-          <div className="col-12 col-lg-4 px-lg-0">
-            <div className="card border-0">              
-              <div className="card-body">
-              <h5 className="font-weight-700 mb-3">공지사항 제목</h5>
-                <p className="text-truncate2 text-secondary" style={{height: "52px"}}>
-                  공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용
-                  공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용
-                  공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용
-                  공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용
-                  공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용
-                </p>
-                <div className="text-end">2022-04-01</div>
-              </div>              
-            </div>
-          </div>
-        </div>  */}
         <BoardSummary/>
       </div>
 

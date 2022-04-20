@@ -13,7 +13,6 @@ function Kakao(){
              <a href={KAKAO_AUTH_URL} style={{color:"white", textDecorationLine:'none'}}>Kakao Login</a>
         </div>
     )
-
 }
 
 export default Kakao;
