@@ -228,12 +228,14 @@ const MapContainer = ({ searchPlace, faci, pharmacy, parking, faciSearch, faciSe
       
       for (let i = 0; i < list.length; i++) {
         console.log(list[i].faciNm);
-        var content = '<div class="overlaybox">' +
-        '    <div class="boxtitle">체육시설 정보<button type="button" class="btn-close float-end text-secondary" id="close" onclick="makeOutListener()"></button></div>' +
-        '    <div class="first">' +
+        var content = 
         
-        '        <div class="facititle text">'+list[i].faciNm+'</div>' +
+        '<div class="overlaybox">' +
+        '    <div class="boxtitle">체육시설 정보<button type="button" class="btn-close float-end text-secondary" id="close" onclick="makeOutListener()"></button></div>' +
+        '"   <div class="first">' +
+        '    <div class="facititle text">'+list[i].faciNm+'</div>' +
         '    </div>' +
+
         '    <ul>' +
         '        <li class="up">' +
         

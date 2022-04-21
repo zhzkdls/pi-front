@@ -13,6 +13,7 @@ import Footer from "./components/layout/Footer";
 import LoginPage from "./components/page/LoginPage"
 import RegisterPage from "./components/page/RegisterPage"
 import FacitMap2 from "./components/facit/FacitMap2";
+import Kakao from "./components/oauth/kakao";
 
 function App() {
   return (

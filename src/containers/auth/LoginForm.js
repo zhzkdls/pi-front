@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams, useLocation, useNavigate } from "react-router-dom";
 import { changeField, initializeForm, login } from "../../modules/auth";
 import Login from "../../components/auth/Login";
-import { check } from "../../modules/user";
 import axios from "axios";
 
 const LoginForm = ({ history }) => {
@@ -51,7 +50,7 @@ const LoginForm = ({ history }) => {
     loginAttempt.userId = form.userId;
     loginAttempt.userPassword = form.password;
 
-    axios.post("http://localhost:8080/login/Attempt", loginAttempt)
+    axios.post("http://localhost:8080/member/login", loginAttempt)
     .then(response => response.data)
     .then(message => {
       console.log(message);
