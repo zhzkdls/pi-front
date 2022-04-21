@@ -31,7 +31,7 @@ const Search = ({handleSearch}) => {
 
 const styles = {
     input: {
-        width: '500px',
+        width: '400px',
         padding: '.3em', /* 여백으로 높이설정 */
     },
     searchBtn: {

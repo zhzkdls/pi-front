@@ -30,8 +30,15 @@
     "react-calendar": "^3.7.0",
     "react-datepicker": "^4.7.0",
     "react-dom": "^17.0.2",
+<<<<<<< HEAD
     "react-icons": "^4.3.1",
+=======
+<<<<<<< HEAD
+    "react-js-pagination": "^3.0.3",
+=======
+>>>>>>> 74c07555d6381f52ca1998e598ce31fcdc406ffc
     "react-kakao-login": "^2.1.0",
+>>>>>>> 99f4a930576cdb7f87576f1e9e5757f07f66f246
     "react-multi-date-picker": "^3.3.0",
     "react-redux": "^7.2.8",
     "react-router-dom": "^6.3.0",

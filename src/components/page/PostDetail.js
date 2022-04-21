@@ -45,7 +45,6 @@ const PostDetail = () => {
 
     // 게시글 삭제
     const handleDelete = () => {
-        // const postUrl = "http://localhost:8080/api/delete/" + pstg_seq;
         const postUrl = `http://localhost:8080/api/delete/${pstgSeq}`;
 
         axios.post(postUrl)
@@ -60,7 +59,6 @@ const PostDetail = () => {
 
     // 게시글 수정
     const handleUpdate = () => {
-        // const url = "http://localhost:8080/api/update/" + pstgSeq;
         const url = `http://localhost:8080/api/update/${pstgSeq}`;
         const body = { pstgTitle, pstgCn, stat, pstgPblrName, pstgSeq}
           
@@ -76,28 +74,30 @@ const PostDetail = () => {
   
 
     return (
-        <div  style={styles.form}>
+        <div  style={styles.form} className='shadow'>
             <div style={styles.container}>
-                <label style={styles.label}>제목</label>
+                <label style={styles.label}>제목:</label>
                 {
                     isEdit === false ? <div style={styles.pstg_cn}>{pstgTitle}</div>
-                    : <input style={styles.pstg_cn} onChange={(e) => setPstgTitle(e.target.value)} value={pstgTitle}></input>
+                    : <input style={styles.pstg_cn} className="form-control mx-auto my-3 py-3 rounded-4 " onChange={(e) => setPstgTitle(e.target.value)} value={pstgTitle}></input>
                 }
             </div>
 
             <div style={styles.container}>
-                <label style={styles.label}>작성자</label>
+                <label style={styles.label}>이름:</label>
                 {
-                    isEdit === true ? <div style={styles.pstg_cn}>{pstgPblrName}</div>
-                    : <input style={styles.pstg_cn} onChange={(e) => setPstgTitle(e.target.value)} value={pstgPblrName}></input>
+                    isEdit === false ? <div style={styles.pstg_cn}>{pstgPblrName}</div>
+                    : <input style={styles.pstg_cn} className="form-control mx-auto my-3 py-3 rounded-4 "  onChange={(e) => setPstgTitle(e.target.value)} value={pstgPblrName}></input>
                 }
             </div>
 
-
+            <div style={styles.container}>
+                 <label style={styles.label}>내용:</label>  
             {
-                isEdit === false ? <div style={styles.textarea}>{pstgCn}</div>
-                :  <textarea style={styles.textarea} onChange={(e) => setPstgCn(e.target.value)} value={pstgCn}></textarea>
+                isEdit === false ? <div style={styles.pstg_cn}>{pstgCn}</div>
+                :  <textarea style={styles.pstg_cn} className="form-control mx-auto my-3 py-3 rounded-4 " rows="5" onChange={(e) => setPstgCn(e.target.value)} value={pstgCn}></textarea>
             }
+            </div>
            
             <div>
                 {
@@ -122,33 +122,35 @@ const PostDetail = () => {
 
 const styles = {
     form : {
+        padding: '41px',
         position: 'absolute',
-        width: '100%',
-        marginTop: '5%',
+        marginLeft: '335px',
+        width: '65%',
+        marginTop: '10%',
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        borderRadius: '30px',
     },
     container: {
         display: 'flex',
         width: '60%',
         justifyContent: 'center',
-        padding: '5px',
+        padding: '9px',
         alignItems: 'center',
     },
     label: {
-        flex: 0.4,
+        // flex: 0.4,
         textAlign: 'center'
     },
     pstg_cn: {
-        flex: 0.6,
+        flex: 0.8,
         padding: '.3em .5em', /* 여백으로 높이설정 */
     },
     textarea: {
         width: '60%',
         height: '300px',
-        marginTop: '10px'
+        marginTop: '30px'
     },
     Btn: {
         width: '70px',
