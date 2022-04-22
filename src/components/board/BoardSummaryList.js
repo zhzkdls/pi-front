@@ -3,6 +3,8 @@ import BoardSummaryItem from './BoardSummaryItem';
 
 
 class BoardSummaryList extends Component {
+
+    
      // 리렌더링을 할 지 말지 결정 (기본값은 true)
      shouldComponentUpdate(nextProps, nextState) {
         return this.props.posts !== nextProps.posts;
@@ -11,13 +13,12 @@ class BoardSummaryList extends Component {
         const { posts } = this.props;
 
         const BoardSummaryList = posts.map(
-            ({pstgSeq, pstgTitle, pstgPblrName, pstgDt, pstgCn}) => (
+            ({pstgSeq, pstgTitle, pstgDt, pstgCn}) => (
                 <BoardSummaryItem
                     pstgSeq = {pstgSeq}
                     pstgTitle = {pstgTitle}
                     pstgCn = {pstgCn}
                     pstgDt = {pstgDt}
-                    pstgPblrName = {pstgPblrName}
                     key = {pstgSeq}
                 />
                 
