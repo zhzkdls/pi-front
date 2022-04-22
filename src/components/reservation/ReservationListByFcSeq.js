@@ -10,7 +10,6 @@ const ReservationListByFcSeq = (props) => {
       fetch(`http://localhost:8081/reservation/getAll/${fcSeq}`)
         .then((res) => res.json())
         .then((res) => {
-          console.log(1, res);
           setReservations(res);
         });
     }, []);

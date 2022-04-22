@@ -55,8 +55,7 @@ const Reservation = () => {
         }else if(message !== "예약 완료!"){
           alert("이미 예약된 시간입니다.");
         }
-    });
-      console.log(reservation);
+      });
     }
   };
 

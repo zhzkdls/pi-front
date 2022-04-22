@@ -16,7 +16,6 @@ const CommentAdd = () => {
         axios.post("http://192.168.0.36:8080/comments/add", body)
             .then(async res => {
                 // response  
-                console.log(res.data);
                 document.location.href = "/facit/:fcSeq "
             })
             .catch(error => {

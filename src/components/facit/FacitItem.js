@@ -20,7 +20,6 @@ function FacitItem(props) {
         .then(response => response.text())
         .then(message => {
             setMessage(message);
-            console.log(message);
         });
         window.location.reload();
     };

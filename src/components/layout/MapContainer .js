@@ -59,8 +59,6 @@ const MapContainer = ({ searchPlace, faci, pharmacy, parking, faciSearch, faciSe
     }
 
     if(faciSearchBool === true){
-      console.log(facit.length);
-      
       for (let i = 0; i < facit.length; i++) {
         if(facit[i].fcobNm.includes(faciSearch) || facit[i].faciNm.includes(faciSearch) || facit[i].faciRoadAddr1.includes(faciSearch)){
           // faci.push(facit[i]);

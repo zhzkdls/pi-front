@@ -19,10 +19,10 @@ const RegisterPage = () => {
 
   const handleChange = e => {
     const { name, value } = e.target;
-    setMember({
+      setMember({
         ...member,
         [name]: value,
-    });
+      });
   };
 
   const fillConfirmPassword = (e) => {

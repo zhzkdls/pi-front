@@ -10,7 +10,6 @@ function FacitList() {
     fetch("http://localhost:8081/tbfacit/getAll")
       .then((res) => res.json())
       .then((res) => {
-        console.log(1, res);
         setFacits(res);
       });
   }, []);

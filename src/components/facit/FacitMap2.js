@@ -12,8 +12,6 @@ function FacitMap2(props) {
         var map;
         var markerPosition;
         var marker;
-        console.log(faciPointX);
-        console.log(faciPointY);
         if(faciPointX === 0 || faciPointY === 0){
             options = {
                 center: new kakao.maps.LatLng(35.17973316713768, 129.07505674557024),

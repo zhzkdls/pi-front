@@ -27,7 +27,6 @@ function LoginPage() {
     dispatch(loginUser(body))
     .then(response => response.payload)
     .then(message => {
-        console.log(message);
         if(message !== null){
             navigate("/");
         }else{

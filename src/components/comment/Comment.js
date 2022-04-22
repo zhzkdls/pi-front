@@ -52,7 +52,6 @@ class Comment extends Component {
 
     render() {
         const { comments } = this.state
-        console.log(comments);
         return (
             <div>
                 <header className="site-header jumbotron">

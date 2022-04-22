@@ -45,7 +45,6 @@ function Reservation() {
       },
       body: JSON.stringify(reservation),
     });
-    console.log(reservation);
   };
 
   const changeValue = (e) => {

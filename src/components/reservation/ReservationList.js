@@ -9,7 +9,6 @@ const ReservationList = (props) => {
       fetch("http://localhost:8081/reservation/getAll")
         .then((res) => res.json())
         .then((res) => {
-          console.log(1, res);
           setReservations(res);
         });
     }, []);

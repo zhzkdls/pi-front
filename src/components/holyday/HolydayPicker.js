@@ -32,8 +32,6 @@ function HolydayPicker() {
             body: JSON.stringify(holyDay),
             })
         }
-        console.log(holyDay);
-        console.log(startDate[0]);
     };
 
     return ( 
