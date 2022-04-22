@@ -30,7 +30,7 @@ const ReservationItems = (props) => {
     return (
         <div style={{textAlign: "center"}} >
             <Table striped bordered hover variant="dark" style={{textAlign: "center", margin: "0px", padding: "0px"}}>
-            <tbody>
+            <tbody className="container">
                 <tr>
                 <td>{rsvtSeq}</td>
                 <td>{fcSeq}</td>

@@ -8,24 +8,28 @@ import "react-datepicker/dist/react-datepicker.css";
 import {ko} from "date-fns/esm/locale"
 import addDays from "date-fns/addDays";
 import axios from "axios";
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../_reducers';
 
-const Reservation = (props) => {
+
+const Reservation = () => {
+
+  const user = useSelector(selectUser);
 
   const fcSeq = useParams().fcSeq;
   const [startDate, setStartDate] = useState(new Date());
   const navigate = useNavigate();
-  const nowTime = moment().format("YYYY-MM-DD hh:mm:ss");
   const [message, setMessage] = useState("");
 
   const [reservation, setReservation] = useState({
     fcSeq: 0,
-    userId: "test1",
-    userTel: "010-7777-8888",
+    userId: "",
+    userTel: "",
     rsvtYmd: "",
     rsvtHr: "",
     rsvtPdt: 0,
-    rsvtAprvDt: nowTime,
-    rsvtRcptDt: nowTime,
+    rsvtAprvDt: "",
+    rsvtRcptDt: "",
     operHr: "",
     stat:2,
   });
@@ -38,6 +42,8 @@ const Reservation = (props) => {
     }else{
       reservation.fcSeq = fcSeq;
       reservation.rsvtYmd = moment(startDate).format("YYYY-MM-DD");
+      reservation.userId = user.userId,
+      reservation.userTel = user.userPhone,
       
       axios.post("http://localhost:8081/reservation/save", reservation)
       .then(response => response.data)

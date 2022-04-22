@@ -223,7 +223,6 @@ const MapContainer = ({ searchPlace, faci, pharmacy, parking, faciSearch, faciSe
 
     //시설마커표시
     function displayFaciMarker(list){
-      console.log(list.length);
       for (let i = 0; i < list.length; i++) {
         var content = 
         '<div class="overlaybox">' +

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import {Nav, Navbar, Offcanvas, Container, NavDropdown } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Weather from "./Weather";
 import { useDispatch, useSelector } from 'react-redux';
 import { selectUser } from '../../_reducers';
@@ -11,7 +11,16 @@ import { logoutUser } from '../../_actions/user_action';
 function NavBara() {
 
   const user = useSelector(selectUser);
-  console.log(user);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const onLogoutHandle=()=>{
+    dispatch(logoutUser())
+    .then(
+      navigate('/')
+    )
+  }
+
   return (
     <div id="nav">
       <Navbar fixed="top" bg="dark" variant="dark" className="container mx-auto my-3 py-3 rounded-4 shadow" expand={false}>
@@ -23,21 +32,23 @@ function NavBara() {
             <Weather />
             <Nav.Link href="/post" style={{color:"white"}}>공지사항</Nav.Link>
             {user ? 
-            (
-              <>
-                {
-                  (user.role === "User") ? (
-                    <Nav.Link href="/" style={{color:"white"}}>Logout</Nav.Link>
-                  )
-                  : (
-                    <Nav.Link href="/" style={{color:"white"}}>관리자 {user.userName}님 반갑습니다.</Nav.Link>
-                  )
-                }
-              </>
-            ) 
-            : (
-              <Nav.Link href="/login" style={{color:"white"}}>Login</Nav.Link>
-            )}
+              (
+                <>
+                  {
+                    user.role === "User" ? (
+                      <>
+                      <Nav.Link href="/" style={{color:"white"}}>{user.userName}님 반갑습니다.</Nav.Link>
+                      </>
+                    )
+                    : (
+                      <Nav.Link href="/" style={{color:"white"}}>관리자 {user.userName}님 반갑습니다.</Nav.Link>
+                    )
+                  }
+                </>
+              ) 
+                : (
+                  <Nav.Link href="/login" style={{color:"white"}}>Login</Nav.Link>
+                )}
             {/* <Nav.Link href="/login" style={{color:"white"}}>Login</Nav.Link> */}
           </div>
           <Navbar.Toggle className="border-0" aria-controls="offcanvasNavbar" />
@@ -61,10 +72,13 @@ function NavBara() {
                     <>
                       {
                         user.role === "User" ? (
-                          <Nav.Link href="/">Logout</Nav.Link>
+                          <Nav.Link onClick={onLogoutHandle}>Logout</Nav.Link>
                         )
                         : (
-                          <Nav.Link href="/">관리자</Nav.Link>
+                          <>
+                            <Nav.Link href="/" onClick={onLogoutHandle}>Logout</Nav.Link>
+                            <Nav.Link href="/reservationList">예약 관리</Nav.Link>
+                          </>
                         )
                       }
                     </>

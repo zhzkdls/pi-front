@@ -9,7 +9,7 @@ export function loginUser(dataTosubmit){
     
     const request = axios.post('http://192.168.0.36:8080/member/login',dataTosubmit)
     .then(res =>res.data)
-
+    
     return {
         type: LOGIN_USER,
         payload : request
@@ -29,7 +29,6 @@ export function registerUser(dataTosubmit){
 
 
 export function logoutUser(){
-
     return {
         type: LOGOUT_USER,
     }

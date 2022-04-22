@@ -11,8 +11,8 @@ import FacitDetail from "./components/facit/FacitDetail";
 import ReservationListByFcSeq from "./components/reservation/ReservationListByFcSeq";
 import Footer from "./components/layout/Footer";
 import RegisterPage from "./components/page/RegisterPage"
-import FacitMap2 from "./components/facit/FacitMap2";
 import LoginPage from "./components/page/LoginPage";
+import ReservationList from "./components/reservation/ReservationList";
 
 
 function App() {
@@ -30,6 +30,7 @@ function App() {
         <Route path="/reservation/:fcSeq" element={<Reservation />} />
         <Route path="/facitlist" element={<FacitList />} />
         <Route path="/facit/:fcSeq" element={<FacitDetail />} />
+        <Route path="/reservationList" element={<ReservationList />} />
         <Route path="/reservationList/:fcSeq" element={<ReservationListByFcSeq />} />
       </Routes>
       <Footer/>

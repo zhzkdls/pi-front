@@ -28,7 +28,7 @@ function LoginPage() {
     .then(response => response.payload)
     .then(message => {
         console.log(message);
-        if(message === true){
+        if(message !== null){
             navigate("/");
         }else{
             alert("아이디 혹은 비밀번호를 확인해주세요.")
