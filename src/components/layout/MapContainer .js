@@ -223,35 +223,31 @@ const MapContainer = ({ searchPlace, faci, pharmacy, parking, faciSearch, faciSe
 
     //시설마커표시
     function displayFaciMarker(list){
-
-      console.log("list = " + list.length);
-      
+      console.log(list.length);
       for (let i = 0; i < list.length; i++) {
-        console.log(list[i].faciNm);
-        var content = '<div class="overlaybox">' +
-        '    <div class="boxtitle">체육시설 정보<button type="button" class="btn-close float-end text-secondary" id="close" onclick="makeOutListener()"></button></div>' +
-        '    <div class="first">' +
-        
-        '        <div class="facititle text">'+list[i].faciNm+'</div>' +
+        var content = 
+        '<div class="overlaybox">' +
+        '    <div class="boxtitle">체육시설 정보</div>' +
+        '   <div class="first">' +
+        '    <div class="facititle text">'+list[i].faciNm+'</div>' +
         '    </div>' +
         '    <ul>' +
         '        <li class="up">' +
-        
         '            <span class="title">종류 : '+list[i].fcobNm+'</span>' +
         '            <span class="arrow up"></span>' +
         '        </li>' +
         '        <li>' +
-        
         '            <span class="title">연락처 : '+list[i].fmngUserTel+'</span>' +
         '            <span class="arrow up"></span>' +
-        
         '        </li>' +
         '        <li>' +
-        
         '            <span class="title">'+list[i].faciRoadAddr1+'</span>' +
         '            <span class="arrow up"></span>' +
-        
-        '        </li>' +        
+        '        </li>' +     
+        '        <li>' +
+        '            <a href="http://localhost:3000/facit/'+ list[i].fcSeq +'" class="title" target="_self" >바로가기</a>' +
+        '            <span class="arrow up"></span>' +
+        '        </li>' +       
         '    </ul>' +
         '</div>';
         
@@ -277,24 +273,22 @@ const MapContainer = ({ searchPlace, faci, pharmacy, parking, faciSearch, faciSe
 
         // 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
         var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
-            markerPosition = new kakao.maps.LatLng(list[i].faciPointY, list[i].faciPointX); // 마커가 표시될 위치입니다
 
         facimarker = new kakao.maps.Marker({
           map:map,
           position: new kakao.maps.LatLng(list[i].faciPointY, list[i].faciPointX),
           //clickable: true,
-          //content: content,
           image: markerImage,
           title:list[i].faciNm,
         });
 
         // 커스텀 오버레이를 생성합니다
         var customOverlay = new kakao.maps.CustomOverlay({
-            position: new kakao.maps.LatLng(list[i].faciPointY, list[i].faciPointX),
-            content: content,
-            xAnchor: 0.44,
-            // yAnchor: 0.91
-            yAnchor:1.09
+          position: new kakao.maps.LatLng(list[i].faciPointY, list[i].faciPointX),
+          content: content,
+          clickable: true,
+          xAnchor: 0.44,
+          yAnchor:1.09
         });
 
         kakao.maps.event.addListener(facimarker, 'click', makeOverListener(map, facimarker, customOverlay));
@@ -319,13 +313,12 @@ const MapContainer = ({ searchPlace, faci, pharmacy, parking, faciSearch, faciSe
 
     function makeOutListener() {
       return function() {
-        
         for(var i = 0; i < overlays.length; i++){
           overlays[i].setMap(null);
         }
-
       };
     }
+
   }, [searchPlace, faci, pharmacy, parking, faciSearch, faciSearchBool]);
 
   return (
@@ -378,6 +371,5 @@ const styles = {
       
   }
 }
-
 
 export default MapContainer;

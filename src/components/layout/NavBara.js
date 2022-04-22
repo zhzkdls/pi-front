@@ -2,20 +2,11 @@ import React, { useState } from "react";
 import {Nav, Navbar, Offcanvas, Container, NavDropdown } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
+import Weather from "./Weather";
+
 
 function NavBara() {
-  const [InputText, setInputText] = useState("");
-  const [Place, setPlace] = useState("");
 
-  const onChange = (e) => {
-    setInputText(e.target.value);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setPlace(InputText);
-    setInputText("");
-  };
   return (
     <div id="nav">
       <Navbar fixed="top" bg="dark" variant="dark" className="container mx-auto my-3 py-3 rounded-4 shadow" expand={false}>
@@ -24,6 +15,7 @@ function NavBara() {
             <img src="../img/logo5.png" alt="부산광역시 통합예약시스템" id="logo" className="me-3" />
           </Link>
           <div className="d-flex" style={styles.move}>
+            <Weather />
             <Nav.Link href="/post" style={{color:"white"}}>공지사항</Nav.Link>
             <Nav.Link href="/login" style={{color:"white"}}>Login</Nav.Link>
           </div>

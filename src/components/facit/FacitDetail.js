@@ -32,9 +32,9 @@ function FacitDetail(props) {
     useEffect(() => {
         axios.get(`http://192.168.0.36:8081/tbfacit/get/${fcSeq}`)
         .then((res) => {
-            if (isMount) {
-                setFacit(res.data);
-            }    
+          if (isMount) {
+              setFacit(res.data);
+          }    
         });
     }, [fcSeq, isMount]);
 

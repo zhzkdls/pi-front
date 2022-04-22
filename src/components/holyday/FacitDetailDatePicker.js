@@ -16,11 +16,9 @@ function FacitDetailDatePicker() {
         fetch(`http://localhost:8081/hldy/getAllByhldySeq/${fcSeq}`)
         .then((res) => res.json())
         .then((data) => {
-            console.log(data.length);
             for(let i = 0; i < data.length; i++){
                 setDisableDate(data.ymdFormat)
             }
-        setDisableDate(data);
         });
     }, [fcSeq]);
 

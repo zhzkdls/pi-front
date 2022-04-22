@@ -20,7 +20,7 @@ class BoardSummary extends Component {
           })
         })
         .catch(error => {
-          console.log(error);
+          // console.log(error);
         });
       } 
 
@@ -30,7 +30,7 @@ class BoardSummary extends Component {
       }
       render () {
         const { posts } = this.state;
-        console.log(posts);
+        // console.log(posts);
 
         return (
             <div>
