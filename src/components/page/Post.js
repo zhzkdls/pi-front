@@ -27,14 +27,14 @@ class Post extends Component {
   
     // 게시글 검색
     handleSearch = (keyword, type) => {
-      const url = keyword !== '' ? "http://localhost:8080/api/search/" + keyword + "/post" + type
-      : "http://localhost:8080/api/getAll";
+      const url = keyword !== '' ? "http://192.168.0.36:8080/api/search/" + keyword + "/post" + type
+      : "http://192.168.0.36:8080/api/getAll";
   
       this.handleGetList(url);
     }
 
     componentDidMount() {
-      this.handleGetList("http://localhost:8080/api/getAll");
+      this.handleGetList("http://192.168.0.36:8080/api/getAll");
     }
 
     // 리렌더링을 할 지 말지 결정 (기본값은 true)

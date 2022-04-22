@@ -10,7 +10,7 @@ class Comment extends Component {
     }
     
     componentDidMount() {
-      this.handleGetList("http://localhost:8080/comments/getAll");
+      this.handleGetList("http://192.168.0.36:8080/comments/getAll");
     }
      // 게시글 목록 불러오기 
      handleGetList = (url) => {
@@ -39,7 +39,7 @@ class Comment extends Component {
     // 삭제를 클릭을 할떄 axios 실행(공지사항에서 가져온 코드)
     handleDelComment = ()=>{
       // 여기서 어떤 걸 써야될까?
-      const postUrl = `http://localhost:8080/comments/delete/${id}`;
+      const postUrl = `http://192.168.0.36:8080/comments/delete/${id}`;
       axios.post(postUrl)
       .then(res => {
           window.location.href="/facit/:fcSeq"

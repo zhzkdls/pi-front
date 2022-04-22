@@ -22,7 +22,7 @@ const CommentDetail = () => {
 
     // 게시글 삭제
     const handleDelete = () => {
-        const postUrl = `http://localhost:8080/comments/delete/${id}`;
+        const postUrl = `http://192.168.0.36:8080/comments/delete/${id}`;
 
         axios.post(postUrl)
         .then(res => {
@@ -35,7 +35,7 @@ const CommentDetail = () => {
 
     // 게시글 수정
     const handleUpdate = () => {
-        const url = `http://localhost:8080/comments/update/${id}`;
+        const url = `http://192.168.0.36:8080/comments/update/${id}`;
         const body = { userId, content, stat, id}
           
         axios.post(url, body)
