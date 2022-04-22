@@ -10,10 +10,10 @@ import FacitList from "./components/facit/FacitList";
 import FacitDetail from "./components/facit/FacitDetail";
 import ReservationListByFcSeq from "./components/reservation/ReservationListByFcSeq";
 import Footer from "./components/layout/Footer";
-import LoginPage from "./components/page/LoginPage"
 import RegisterPage from "./components/page/RegisterPage"
 import FacitMap2 from "./components/facit/FacitMap2";
-import Kakao from "./components/oauth/kakao";
+import LoginPage from "./components/page/LoginPage";
+
 
 function App() {
   return (
@@ -30,12 +30,7 @@ function App() {
         <Route path="/reservation/:fcSeq" element={<Reservation />} />
         <Route path="/facitlist" element={<FacitList />} />
         <Route path="/facit/:fcSeq" element={<FacitDetail />} />
-        <Route
-          path="/reservationList/:fcSeq"
-          element={<ReservationListByFcSeq />}
-        />
-        <Route path="/map2" element={<FacitMap2 />} />
-        {/* <Route path="/oauth/callback/kakao" element={KakaoRedirectHandler} /> */}
+        <Route path="/reservationList/:fcSeq" element={<ReservationListByFcSeq />} />
       </Routes>
       <Footer/>
     </BrowserRouter>

@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import Filter from "../layout/Filter";
 import MapContainer from "../layout/MapContainer ";
-import MapContainer2 from "../layout/MapContainer2";
+
 
 export const Home = () => {
   const [Place, setPlace] = useState();

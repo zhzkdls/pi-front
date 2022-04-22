@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
 import Weather from "./Weather";
 
+
 function NavBara() {
 
   return (
@@ -16,7 +17,7 @@ function NavBara() {
           <div className="d-flex" style={styles.move}>
             <Weather />
             <Nav.Link href="/post" style={{color:"white"}}>공지사항</Nav.Link>
-            <Nav.Link href="/login2" style={{color:"white"}}>Login</Nav.Link>
+            <Nav.Link href="/login" style={{color:"white"}}>Login</Nav.Link>
           </div>
           <Navbar.Toggle className="border-0" aria-controls="offcanvasNavbar" />
           <Navbar.Offcanvas
