@@ -10,11 +10,16 @@ import addDays from "date-fns/addDays";
 import axios from "axios";
 import { useSelector } from 'react-redux';
 import { selectUser } from '../../_reducers';
-
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 
 const Reservation = () => {
 
   const user = useSelector(selectUser);
+  const TimenonSelect = withReactContent(Swal);
+  const ReservationSuccess = withReactContent(Swal);
+  const ReservationFail = withReactContent(Swal);
+
 
   const fcSeq = useParams().fcSeq;
   const [startDate, setStartDate] = useState(new Date());
@@ -35,9 +40,14 @@ const Reservation = () => {
   });
 
   const addReservation = (e) => {
+
     e.preventDefault();
+
     if (reservation.rsvtHr.length === 0) {
-      alert("시간을 선택해주세요.");
+      TimenonSelect.fire({
+        title: "시간을 선택해 주세요!",
+        icon: 'warning',
+      });
       navigate("/reservation/" + fcSeq);
     }else{
       reservation.fcSeq = fcSeq;
@@ -45,15 +55,22 @@ const Reservation = () => {
       reservation.userId = user.userId,
       reservation.userTel = user.userPhone,
       
-      axios.post("http://localhost:8081/reservation/save", reservation)
+      axios.post("http://192.168.0.36:8081/reservation/save", reservation)
       .then(response => response.data)
       .then(message => {
         setMessage(message);
         if(message === "예약 완료!"){
-          alert("예약 되었습니다.");
+          ReservationSuccess.fire({
+            title: "예약되었습니다!",
+            icon: 'success',
+          });
           navigate("/facit/" + fcSeq);
         }else if(message !== "예약 완료!"){
-          alert("이미 예약된 시간입니다.");
+          ReservationFail.fire({
+            title: "예약 실패!",
+            text:"이미 예약된 시간입니다.",
+            icon: 'error',
+          });
         }
       });
     }

@@ -26,20 +26,18 @@ class BoardSummaryList extends Component {
         )
         return (
             <div className="d-flex " >
-            <div style = {styles.container}>
-                {BoardSummaryList}
-            </div>
+                <div style = {styles.container}>
+                    {BoardSummaryList}
+                </div>
 
-            <div style = {styles.container}>
-                {BoardSummaryList}
-            </div>
+                <div style = {styles.container}>
+                    {BoardSummaryList}
+                </div>
 
-            <div style = {styles.container}>
-                {BoardSummaryList}
+                <div style = {styles.container}>
+                    {BoardSummaryList}
                 </div>
             </div>
-
-            
         )
     }
 }
@@ -47,7 +45,6 @@ class BoardSummaryList extends Component {
 const styles = {
     container: {
         marginLeft: '20px',
-        textAlign: 'center',
         width: '68%',
         borderBottom: '2px solid lightgray',
        

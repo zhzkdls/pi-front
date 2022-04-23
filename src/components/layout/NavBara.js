@@ -41,7 +41,7 @@ function NavBara() {
                       </>
                     )
                     : (
-                      <Nav.Link href="/" style={{color:"white"}}>관리자 {user.userName}님 반갑습니다.</Nav.Link>
+                      <Nav.Link href="/" style={{color:"white"}}>{user.userName}님 반갑습니다.</Nav.Link>
                     )
                   }
                 </>

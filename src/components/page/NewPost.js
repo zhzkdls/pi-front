@@ -19,7 +19,7 @@ const NewPost = () => {
                 stat: 1,
             }
 
-            axios.post("http://192.168.0.36:8080/api/posts", body)
+            axios.post("http://192.168.0.36:8083/api/posts", body)
             .then(async res => {
                 console.log(res.data);
                 // await uploadFiles(res.data); 

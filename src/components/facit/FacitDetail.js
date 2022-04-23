@@ -13,98 +13,125 @@ import UseIsMount from "../UseIsMount";
 import FacitMap2 from './FacitMap2';
 import Comment from '../comment/Comment';
 import { Card } from 'react-bootstrap';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../_reducers';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 
 
-function FacitDetail(props) {
-    const fcSeq = useParams().fcSeq;
-    const isMount = UseIsMount;
-    const [Place, setPlace] = useState("");
+function FacitDetail() {
+  const user = useSelector(selectUser);
 
-    const [facit, setFacit] = useState({
-        fcSeq:"",
-        faciNm: "",
-        faciRoadAddr1: "",
-        faciHomepage: '',
-        faciPointX:"",
-        faciPointY:"",
+  const fcSeq = useParams().fcSeq;
+  const isMount = UseIsMount;
+  const [Place, setPlace] = useState("");
+
+  const NoUser = withReactContent(Swal);
+
+
+  const [facit, setFacit] = useState({
+      fcSeq:"",
+      faciNm: "",
+      faciRoadAddr1: "",
+      faciHomepage: '',
+      faciPointX:"",
+      faciPointY:"",
+  });
+  function NoLogin() {
+    NoUser.fire({
+      title: "시간을 선택해 주세요!",
+      text:"로그인 후 이용해 주세요!",
+      icon: 'error',
     });
+    navigate('/login');
+  }
 
-    useEffect(() => {
-        axios.get(`http://192.168.0.36:8081/tbfacit/get/${fcSeq}`)
-        .then((res) => {
-          if (isMount) {
-              setFacit(res.data);
-          }    
-        });
-    }, [fcSeq, isMount]);
+  useEffect(() => {
+      axios.get(`http://192.168.0.36:8081/tbfacit/get/${fcSeq}`)
+      .then((res) => {
+        if (isMount) {
+            setFacit(res.data);
+        }    
+      });
+  }, [fcSeq, isMount]);
 
-    return ( 
-    <div>
-      <div style={styles.div} className='div'>
-          <div>
-            <Card border="dark" style={styles.form}>
-              <Card.Header>체육시설</Card.Header>
-              <Card.Body>
-                <Card.Text>
-                <h2> 장소 : {facit.faciNm}</h2><br/>
-                <h2> 주소 : {facit.faciRoadAddr1}</h2><br/>
-                <h2> 사이트 : {facit.faciHomepage}</h2><br/>
-                <h2> 전화번호 : {facit.fmngUserTel}</h2><br/>
-                <h2> 시설 : {facit.fcobNm}</h2>
-                </Card.Text>
-              </Card.Body>
-            </Card>
-          </div>
-          <br />
-          
-          <FacitDetailDatePicker />
-          <Link to={"/reservation/" + fcSeq} style={styles.Pick} variant="primary">예약하기</Link>
-          <Link to={"/reservationList/" + fcSeq} style={styles.Pickm} variant="primary">예약현황</Link>
-      </div>
-      <TabsUnstyled defaultValue={''}>
-        <TabsList>
-            <Tab>이용안내</Tab>
-            <Tab>장소안내</Tab>
-            <Tab>이용후기</Tab>
-        </TabsList>
-        <TabPanel value={0}> 
-        <strong>필수 준수사항</strong>
-        <br/><br/>
-        <hr />
-        <p>
-          모든 서비스의 이용은 담당 기관의 규정에 따릅니다. 각 시설의 규정 및 허가조건을 반드시 준수하여야 합니다.
-          각 관리기관의 시설물과 부대시설을 이용함에 있어 담당자들과 협의 후 사용합니다.
-          각 관리기관의 사고 발생시 부산시청에서는 어떠한 책임도 지지않습니다.
-          시설이용료 납부는 각 관리기관에서 규정에 준합니다.
-          본 사이트와 각 관리기관의 규정을 위반할 시에는 시설이용 취소 및 시설이용 불허의 조치를 취할 수 있습니다.
-          접수 시간을 기준으로 브라우저에서 새로고침을 하면 변경된 정보를 볼 수 있습니다.
-        </p>
-        <strong>시설예약</strong>
-        <br/><br/>
-        <hr />
-        <p>     
-          비회원일 경우에는 실명 확인을 통하여 사용하실 수 있으며 부산시 통합 회원에 가입하시게 되면 부산시에서 제공하는 다양하고 많은 혜택을 받으실 수 있습니다.
-        </p>
-
-      </TabPanel>
-        <TabPanel value={1}>
-          지도
-          <br/>
-          <hr />
-          <FacitMap2 key={facit.fcSeq} map1={facit} />
-        </TabPanel>
-        <TabPanel value={2}>
-           공공시설을 직접 이용한 이용자들의 이용후기를 확인하세요.
-          <br/>
-          <hr />
-            <form >
-              <Comment/>
-            </form>
-          </TabPanel>
-      </TabsUnstyled>
-
+  return ( 
+  <div>
+    <div style={styles.div} className='div'>
+        <div>
+          <Card border="dark" style={styles.form}>
+            <Card.Header>체육시설</Card.Header>
+            <Card.Body>
+              <Card.Text>
+              <h2> 장소 : {facit.faciNm}</h2><br/>
+              <h2> 주소 : {facit.faciRoadAddr1}</h2><br/>
+              <h2> 사이트 : {facit.faciHomepage}</h2><br/>
+              <h2> 전화번호 : {facit.fmngUserTel}</h2><br/>
+              <h2> 시설 : {facit.fcobNm}</h2>
+              </Card.Text>
+            </Card.Body>
+          </Card>
+        </div>
+        <br />
+        
+        <FacitDetailDatePicker />
+        {user ?(
+          <>
+            <Link to={"/reservation/" + fcSeq} style={styles.Pick} variant="primary">예약하기</Link>
+          </>
+        ):
+          (
+            <>
+              {NoLogin()}
+              <Link to={"/reservation/"} style={styles.Pick} variant="primary">예약하기</Link>
+            </>
+          )
+        }
+        <Link to={"/reservationList/" + fcSeq} style={styles.Pickm} variant="primary">예약현황</Link>
     </div>
-     );
+    <TabsUnstyled defaultValue={''}>
+      <TabsList>
+          <Tab>이용안내</Tab>
+          <Tab>장소안내</Tab>
+          <Tab>이용후기</Tab>
+      </TabsList>
+      <TabPanel value={0}> 
+      <strong>필수 준수사항</strong>
+      <br/><br/>
+      <hr />
+      <p>
+        모든 서비스의 이용은 담당 기관의 규정에 따릅니다. 각 시설의 규정 및 허가조건을 반드시 준수하여야 합니다.
+        각 관리기관의 시설물과 부대시설을 이용함에 있어 담당자들과 협의 후 사용합니다.
+        각 관리기관의 사고 발생시 부산시청에서는 어떠한 책임도 지지않습니다.
+        시설이용료 납부는 각 관리기관에서 규정에 준합니다.
+        본 사이트와 각 관리기관의 규정을 위반할 시에는 시설이용 취소 및 시설이용 불허의 조치를 취할 수 있습니다.
+        접수 시간을 기준으로 브라우저에서 새로고침을 하면 변경된 정보를 볼 수 있습니다.
+      </p>
+      <strong>시설예약</strong>
+      <br/><br/>
+      <hr />
+      <p>     
+        비회원일 경우에는 실명 확인을 통하여 사용하실 수 있으며 부산시 통합 회원에 가입하시게 되면 부산시에서 제공하는 다양하고 많은 혜택을 받으실 수 있습니다.
+      </p>
+
+    </TabPanel>
+      <TabPanel value={1}>
+        지도
+        <br/>
+        <hr />
+        <FacitMap2 key={facit.fcSeq} map1={facit} />
+      </TabPanel>
+      <TabPanel value={2}>
+          공공시설을 직접 이용한 이용자들의 이용후기를 확인하세요.
+        <br/>
+        <hr />
+          <form >
+            <Comment/>
+          </form>
+        </TabPanel>
+    </TabsUnstyled>
+    </div>
+  );
 }
 
 const blue = {

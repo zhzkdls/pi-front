@@ -13,7 +13,7 @@ const CommentAdd = () => {
             content: content,
             stat: 1,
         }
-        axios.post("http://192.168.0.36:8080/comments/add", body)
+        axios.post("http://192.168.0.36:8083/comments/add", body)
             .then(async res => {
                 // response  
                 document.location.href = "/facit/:fcSeq "

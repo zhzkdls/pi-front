@@ -8,7 +8,7 @@ class BoardSummary extends Component {
     }
     
     componentDidMount() {
-      this.handleGetList("http://192.168.0.36:8080/api/getAll");
+      this.handleGetList("http://192.168.0.36:8083/api/getAll");
     }
      // 게시글 목록 불러오기 
      handleGetList = (url) => {

@@ -7,7 +7,7 @@ const ReservationListByFcSeq = (props) => {
     const fcSeq = useParams().fcSeq;
   
     useEffect(() => {
-      fetch(`http://localhost:8081/reservation/getAll/${fcSeq}`)
+      fetch(`http://192.168.0.36:8081/reservation/getAll/${fcSeq}`)
         .then((res) => res.json())
         .then((res) => {
           setReservations(res);
