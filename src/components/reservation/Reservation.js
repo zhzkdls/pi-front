@@ -12,6 +12,7 @@ import { useSelector } from 'react-redux';
 import { selectUser } from '../../_reducers';
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
+import { RESERVATIONBACKEND } from "../../_actions/types";
 
 const Reservation = () => {
 
@@ -55,7 +56,7 @@ const Reservation = () => {
       reservation.userId = user.userId,
       reservation.userTel = user.userPhone,
       
-      axios.post("http://192.168.0.36:8081/reservation/save", reservation)
+      axios.post(`${RESERVATIONBACKEND}:8081/reservation/save`, reservation)
       .then(response => response.data)
       .then(message => {
         setMessage(message);
@@ -69,7 +70,7 @@ const Reservation = () => {
           ReservationFail.fire({
             title: "예약 실패!",
             text:"이미 예약된 시간입니다.",
-            icon: 'error',
+            icon: 'error-',
           });
         }
       });

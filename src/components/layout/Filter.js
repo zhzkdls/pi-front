@@ -5,7 +5,6 @@ import "../../App.css";
 export default function Filter({faci, toggleFaci, pharmacy, togglePharmacy, parking, toggleParking, searchFaci, setFaciSearchBool}) {
 
   const [InputText, setInputText] = useState("");
-  let faciSearcher;
   let btnnm = "검색";
 
   const onSubmit = (e) => {

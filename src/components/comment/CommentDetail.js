@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
+import { BOARDBACKEND } from '../../_actions/types';
 
 const CommentDetail = () => {
     const navigate = useNavigate();
@@ -11,7 +12,6 @@ const CommentDetail = () => {
     const [isEdit, setEdit] = useState(false);
     const [stat, setStat] = useState(1);
     
-
     useEffect(() => {
         getPost().then(data => {
             setUserId(data.userId);
@@ -22,7 +22,7 @@ const CommentDetail = () => {
 
     // 게시글 삭제
     const handleDelete = () => {
-        const postUrl = `http://192.168.0.36:8080/comments/delete/${id}`;
+        const postUrl = `${BOARDBACKEND}:8080/comments/delete/${id}`;
 
         axios.post(postUrl)
         .then(res => {
@@ -35,9 +35,9 @@ const CommentDetail = () => {
 
     // 게시글 수정
     const handleUpdate = () => {
-        const url = `http://192.168.0.36:8083/comments/update/${id}`;
+        const url = `${BOARDBACKEND}:8083/comments/update/${id}`;
         const body = { userId, content, stat, id}
-          
+
         axios.post(url, body)
         .then()
         
@@ -56,13 +56,10 @@ const CommentDetail = () => {
                     : <input style={styles.pstg_cn} onChange={(e) => setUserId(e.target.value)} value={userId}></input>
                 }
             </div>
-
-
             {
                 isEdit === false ? <div style={styles.textarea}>{content}</div>
                 :  <textarea style={styles.textarea} onChange={(e) => setContent(e.target.value)} value={content}></textarea>
             }
-          
             <div>
                 {
                     isEdit === false ? (

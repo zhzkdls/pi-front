@@ -86,7 +86,6 @@ function NavBara() {
                   : (
                     <Nav.Link href="/login">Login</Nav.Link>
                   )}
-                {/* <Nav.Link href="/login">로그인</Nav.Link> */}
               </Nav>
             </Offcanvas.Body>
           </Navbar.Offcanvas>

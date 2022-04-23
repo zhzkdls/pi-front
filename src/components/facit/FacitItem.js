@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import Table from 'react-bootstrap/Table';
 import { Button } from "react-bootstrap";
 import React, {useState} from 'react';
+import { RESERVATIONBACKEND } from "../../_actions/types";
 
 function FacitItem(props) {
 
@@ -11,7 +12,7 @@ function FacitItem(props) {
     const [message, setMessage] = useState("");
 
     const deleteFacit = () => {
-        fetch(`http://192.168.0.36:8081/tbfacit/delete/${fcSeq}`, {
+        fetch(`${RESERVATIONBACKEND}:8081/tbfacit/delete/${fcSeq}`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json; charset=utf-8",
@@ -46,7 +47,7 @@ function FacitItem(props) {
                 <td>{nationYn}</td>
                 <td>{updated}</td>
                 <td>{stat}</td>
-                <td><Link to={"http://192.168.0.36:8081/tbfacit/edit/" + fcSeq} className="btn btn-primary" variant="primary">수정</Link></td>
+                <td><Link to={`${RESERVATIONBACKEND}:8081/tbfacit/edit/` + fcSeq} className="btn btn-primary" variant="primary">수정</Link></td>
                 <td>
                     <Button type="button" onClick={deleteFacit} className="btn btn-primary" variant="primary">삭제</Button></td>
                 </tr>

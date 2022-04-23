@@ -3,7 +3,8 @@ import {Calendar} from "react-multi-date-picker";
 import { Form } from 'react-bootstrap';
 import { useParams } from "react-router-dom";
 import addDays from "date-fns/addDays";
-import "react-multi-date-picker/styles/colors/teal.css"
+import "react-multi-date-picker/styles/colors/teal.css";
+import { RESERVATIONBACKEND } from '../../_actions/types';
 
 function FacitDetailDatePicker() {
     const fcSeq = useParams().fcSeq;
@@ -13,7 +14,7 @@ function FacitDetailDatePicker() {
     const months = ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"];
 
     useEffect(() => {
-        fetch(`http://localhost:8081/hldy/getAllByhldySeq/${fcSeq}`)
+        fetch(`${RESERVATIONBACKEND}:8081/hldy/getAllByhldySeq/${fcSeq}`)
         .then((res) => res.json())
         .then((data) => {
             for(let i = 0; i < data.length; i++){

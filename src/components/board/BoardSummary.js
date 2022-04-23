@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import BoardSummaryList from './BoardSummaryList';
+import { BOARDBACKEND } from '../../_actions/types';
 
 class BoardSummary extends Component {
     state = {
@@ -8,7 +9,7 @@ class BoardSummary extends Component {
     }
     
     componentDidMount() {
-      this.handleGetList("http://192.168.0.36:8083/api/getAll");
+      this.handleGetList(`${BOARDBACKEND}:8083/api/getAll`);
     }
      // 게시글 목록 불러오기 
      handleGetList = (url) => {

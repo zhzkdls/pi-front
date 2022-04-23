@@ -4,7 +4,7 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import "../../App.css";
 import { Link } from "react-router-dom";
 import BoardSummary from "../board/BoardSummary";
-
+import { RESERVATIONBACKEND } from "../../_actions/types";
 
 const { kakao } = window;
 
@@ -16,7 +16,7 @@ const MapContainer = ({ searchPlace, faci, pharmacy, parking, faciSearch, faciSe
   let dataorder = "";
 
   useEffect(() => {
-    fetch("http://192.168.0.36:8081/tbfacit/getAll")
+    fetch(`${RESERVATIONBACKEND}:8081/tbfacit/getAll`)
     .then((res) => res.json())
     .then((res) => {
       setFacit(res);
@@ -241,7 +241,7 @@ const MapContainer = ({ searchPlace, faci, pharmacy, parking, faciSearch, faciSe
         '            <span class="arrow up"></span>' +
         '        </li>' +     
         '        <li>' +
-        '            <a href="http://localhost:3000/facit/'+ list[i].fcSeq +'" class="title" target="_self" >바로가기</a>' +
+        '            <a href="http://localhost:3000/facit/'+ list[i].fcSeq +'" class="title" target="_blank" >바로가기</a>' +
         '            <span class="arrow up"></span>' +
         '        </li>' +       
         '    </ul>' +

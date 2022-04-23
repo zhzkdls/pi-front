@@ -1,13 +1,18 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../_reducers';
+import { BOARDBACKEND } from '../../_actions/types';
 
 const NewPost = () => {
+
     const [pstgTitle, setPstgTitle] = useState(); // 제목
     const [pstgPblrName, setPstgPblrName] = useState(""); // 작성자
     const [pstgCn, setPstgCn] = useState(""); // 내용
     const [stat, setStat] = useState(1); //삭제할떄 상태 값
-    
+
+    const user = useSelector(selectUser);
 
     const handleSubmit = () => {
         if(pstgTitle === '' || pstgCn === '' || pstgPblrName === '') alert('모든 내용을 다 입력하세요');
@@ -15,11 +20,11 @@ const NewPost = () => {
             const body = {
                 pstgTitle: pstgTitle,
                 pstgCn: pstgCn,
-                pstgPblrName: pstgPblrName,
+                pstgPblrName: user.userName,
                 stat: 1,
             }
 
-            axios.post("http://192.168.0.36:8083/api/posts", body)
+            axios.post(`${BOARDBACKEND}:8083/api/posts`, body)
             .then(async res => {
                 console.log(res.data);
                 // await uploadFiles(res.data); 
@@ -30,8 +35,6 @@ const NewPost = () => {
             })
         }
     }
-
-   
     
     return (
         <div className='shadow' style={styles.form} encType="multipart/form-data">
@@ -43,8 +46,8 @@ const NewPost = () => {
             </div>
 
             <div style={styles.container}>
-                <label style={styles.label}>이름</label>
-                <input style={styles.input}  className="form-control mx-auto my-3 py-3 rounded-4 shadow" placeholder="이름을 입력하세요..." onChange={(e) => setPstgPblrName(e.target.value)} value={pstgPblrName}></input>
+                <label style={styles.label}>작성자</label>
+                <input style={styles.input}  className="form-control mx-auto my-3 py-3 rounded-4 shadow" value={user.userName} disabled></input>
             </div>
             
             

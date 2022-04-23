@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
-import MapContainer from "../layout/MapContainer ";
 import FacitItem from "./FacitItem";
+import { RESERVATIONBACKEND } from "../../_actions/types";
 
 function FacitList() {
     
   const [facits, setFacits] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8081/tbfacit/getAll")
+    fetch(`${RESERVATIONBACKEND}:8081/tbfacit/getAll`)
       .then((res) => res.json())
       .then((res) => {
         setFacits(res);

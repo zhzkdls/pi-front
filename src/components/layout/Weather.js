@@ -1,16 +1,12 @@
 import styled from "styled-components";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-
-const api = {
-  key: "a7c2f342c4be7902411e89d9b854427d",
-  base: "https://api.openweathermap.org/data/2.5/",
-};
+import { WEATHERAPI } from "../../_actions/types";
 
 function Weather() {
   const city = "Busan";
   const lang = "kr";
-  const url = `${api.base}weather?q=${city}&appid=${api.key}&lang=${lang}&units=metric`;
+  const url = `${WEATHERAPI.base}weather?q=${city}&appid=${WEATHERAPI.key}&lang=${lang}&units=metric`;
   const [weather, setWeather] = useState("");
 
   useEffect(() => {

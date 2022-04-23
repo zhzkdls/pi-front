@@ -1,18 +1,15 @@
 import { Link } from "react-router-dom";
 import Table from 'react-bootstrap/Table';
-import axios from "axios";
 import { Button } from "react-bootstrap";
-import { useNavigate} from "react-router-dom";
 import React, {useState} from 'react';
-
+import { RESERVATIONBACKEND } from "../../_actions/types";
 
 const ReservationItems = (props) => {
     const { rsvtSeq, fcSeq, userId, userTel, rsvtYmd, rsvtHr, rsvtPdt, rsvtRtrchDt, rsvtAprvDt, rsvtRcptDt, rsvtMdfcnDt, operHr, stat} = props.reservation;
     const [message, setMessage] = useState("");
-    const navigate = useNavigate();
 
     const deleteReservation = () => {
-        fetch(`http://192.168.0.36:8081/reservation/delete/${rsvtSeq}`, {
+        fetch(`${RESERVATIONBACKEND}:8081/reservation/delete/${rsvtSeq}`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json; charset=utf-8",
@@ -44,7 +41,7 @@ const ReservationItems = (props) => {
                 <td>{rsvtMdfcnDt}</td>
                 <td>{operHr}</td>
                 <td>{stat}</td>
-                <td><Link to={"http://192.168.0.36:8081/reservation/edit/" + rsvtSeq} className="btn btn-primary" variant="primary">예약수정</Link></td>
+                <td><Link to={`${RESERVATIONBACKEND}:8081/reservation/edit/` + rsvtSeq} className="btn btn-primary" variant="primary">예약수정</Link></td>
                 <td>
                     <Button type="button" onClick={deleteReservation} className="btn btn-primary" variant="primary">예약취소</Button></td>
                 </tr>

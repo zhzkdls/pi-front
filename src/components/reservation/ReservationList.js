@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import ReservationItems from "./ReservationItems";
+import { RESERVATIONBACKEND } from "../../_actions/types";
 
-
-const ReservationList = (props) => {
+const ReservationList = () => {
     const [reservations, setReservations] = useState([]);
   
     useEffect(() => {
-      fetch("http://192.168.0.36:8081/reservation/getAll")
+      fetch(`${RESERVATIONBACKEND}:8081/reservation/getAll`)
         .then((res) => res.json())
         .then((res) => {
           setReservations(res);

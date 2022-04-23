@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../_reducers';
+import { BOARDBACKEND } from '../../_actions/types';
 
 const PostDetail = () => {
-    const navigate = useNavigate();
     const {pstgSeq} = useParams();
     const [pstgTitle, setPstgTitle] = useState('');
     const [pstgCn, setPstgCn] = useState('');
@@ -12,6 +14,7 @@ const PostDetail = () => {
     const [isEdit, setEdit] = useState(false);
     const [stat, setStat] = useState(1);
     
+    const user = useSelector(selectUser);
 
     useEffect(() => {
         getPost().then(data => {
@@ -23,7 +26,7 @@ const PostDetail = () => {
 
     // 해당 게시글 내용 불러오기 
     const getPost = () => {
-        const url = `http://192.168.0.36:8083/api/find/${pstgSeq}`;
+        const url = `${BOARDBACKEND}:8083/api/find/${pstgSeq}`;
         const body = {
             pstgTitle: pstgTitle,
             pstgCn: pstgCn,
@@ -45,7 +48,7 @@ const PostDetail = () => {
 
     // 게시글 삭제
     const handleDelete = () => {
-        const postUrl = `http://192.168.0.36:8083/api/delete/${pstgSeq}`;
+        const postUrl = `${BOARDBACKEND}:8083/api/delete/${pstgSeq}`;
 
         axios.post(postUrl)
         .then(res => {
@@ -59,7 +62,7 @@ const PostDetail = () => {
 
     // 게시글 수정
     const handleUpdate = () => {
-        const url = `http://192.168.0.36:8083/api/update/${pstgSeq}`;
+        const url = `${BOARDBACKEND}:8083/api/update/${pstgSeq}`;
         const body = { pstgTitle, pstgCn, stat, pstgPblrName, pstgSeq}
           
         axios.post(url, body)
@@ -100,21 +103,32 @@ const PostDetail = () => {
             </div>
            
             <div>
-                {
-                    isEdit === false ? (
-                        <div>
-                            <button style={styles.Btn} onClick={() => setEdit(true)}>수정</button>
-                            <button style={styles.Btn} onClick={() => handleDelete(pstgSeq)}>삭제</button>
-                            <Link to="/post" style={styles.cancelBtn}>목록</Link>
-                        </div>
-                    ) :
-                    (
-                        <div>
-                            <button style={styles.Btn} onClick={handleUpdate}>완료</button>
-                            <button style={styles.Btn} onClick={() => setEdit(false)}>취소</button>
-                        </div>
-                    )
-                }
+                {user ? 
+                (
+                <>
+                    {
+                        user.role === "Admin" ? (
+                            isEdit === false ? (
+                                <div>
+                                    <button style={styles.Btn} onClick={() => setEdit(true)}>수정</button>
+                                    <button style={styles.Btn} onClick={() => handleDelete(pstgSeq)}>삭제</button>
+                                    <Link to="/post" style={styles.cancelBtn}>목록</Link>
+                                </div>
+                            ) :
+                            (
+                                <div>
+                                    <button style={styles.Btn} onClick={handleUpdate}>완료</button>
+                                    <button style={styles.Btn} onClick={() => setEdit(false)}>취소</button>
+                                </div>
+                            )
+                        ) : 
+                        (
+                        <></>
+                    )}
+                    </>
+                ):(
+                    <></>
+                )}
             </div>
         </div>
     )

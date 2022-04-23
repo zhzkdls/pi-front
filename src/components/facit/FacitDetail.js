@@ -12,11 +12,12 @@ import FacitDetailDatePicker from "../holyday/FacitDetailDatePicker";
 import UseIsMount from "../UseIsMount";
 import FacitMap2 from './FacitMap2';
 import Comment from '../comment/Comment';
-import { Card } from 'react-bootstrap';
+import { Button, Card } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import { selectUser } from '../../_reducers';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
+import { RESERVATIONBACKEND } from '../../_actions/types';
 
 
 function FacitDetail() {
@@ -24,7 +25,6 @@ function FacitDetail() {
 
   const fcSeq = useParams().fcSeq;
   const isMount = UseIsMount;
-  const [Place, setPlace] = useState("");
 
   const NoUser = withReactContent(Swal);
 
@@ -37,17 +37,16 @@ function FacitDetail() {
       faciPointX:"",
       faciPointY:"",
   });
-  function NoLogin() {
+
+  const NoLogin = () => {
     NoUser.fire({
-      title: "시간을 선택해 주세요!",
-      text:"로그인 후 이용해 주세요!",
+      title: "로그인 후 이용해 주세요!",
       icon: 'error',
     });
-    navigate('/login');
   }
 
   useEffect(() => {
-      axios.get(`http://192.168.0.36:8081/tbfacit/get/${fcSeq}`)
+      axios.get(`${RESERVATIONBACKEND}:8081/tbfacit/get/${fcSeq}`)
       .then((res) => {
         if (isMount) {
             setFacit(res.data);
@@ -82,8 +81,7 @@ function FacitDetail() {
         ):
           (
             <>
-              {NoLogin()}
-              <Link to={"/reservation/"} style={styles.Pick} variant="primary">예약하기</Link>
+              <Button className='primary' onClick={NoLogin} style={styles.Pick}>예약하기</Button>
             </>
           )
         }

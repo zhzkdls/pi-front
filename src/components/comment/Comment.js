@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import CommentAdd from './CommentAdd';
 import CommentList from './CommentList';
 import axios from 'axios';
+import { BOARDBACKEND } from '../../_actions/types';
 
 class Comment extends Component {
 
@@ -10,7 +11,7 @@ class Comment extends Component {
     }
     
     componentDidMount() {
-      this.handleGetList("http://192.168.0.36:8080/comments/getAll");
+      this.handleGetList(`${BOARDBACKEND}:8080/comments/getAll`);
     }
      // 게시글 목록 불러오기 
      handleGetList = (url) => {
@@ -39,7 +40,7 @@ class Comment extends Component {
     // 삭제를 클릭을 할떄 axios 실행(공지사항에서 가져온 코드)
     handleDelComment = ()=>{
       // 여기서 어떤 걸 써야될까?
-      const postUrl = `http://192.168.0.36:8083/comments/delete/${id}`;
+      const postUrl = `${BOARDBACKEND}:8083/comments/delete/${id}`;
       axios.post(postUrl)
       .then(res => {
           window.location.href="/facit/:fcSeq"
@@ -48,7 +49,6 @@ class Comment extends Component {
         console.log(error);
       })
     }
-
 
     render() {
         const { comments } = this.state

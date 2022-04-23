@@ -3,8 +3,9 @@ import DatePicker from "react-multi-date-picker";
 import { Button, Form } from 'react-bootstrap';
 import { useParams } from "react-router-dom";
 import DatePanel from "react-multi-date-picker/plugins/date_panel";
-import opacity from "react-element-popper/animations/opacity"
-import "react-multi-date-picker/styles/layouts/mobile.css"
+import opacity from "react-element-popper/animations/opacity";
+import "react-multi-date-picker/styles/layouts/mobile.css";
+import { RESERVATIONBACKEND } from '../../_actions/types';
 
 
 function HolydayPicker() {
@@ -24,7 +25,7 @@ function HolydayPicker() {
         for (let i = 0; i < startDate.length; i++) {
             holyDay.tcbizBgngYmd = startDate[i];
             holyDay.fcSeq=fcSeq;
-            fetch("http://localhost:8081/hldy/save", {
+            fetch(`${RESERVATIONBACKEND}:8081/hldy/save`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json; charset=utf-8",
