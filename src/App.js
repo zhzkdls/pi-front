@@ -4,7 +4,6 @@ import Reservation from "./components/reservation/Reservation";
 import HolydayPicker from "./components/holyday/HolydayPicker";
 import PostDetail from "./components/page/PostDetail";
 import NewPost from "./components/page/NewPost";
-import Post from "./components/page/Post";
 import NavBara from "./components/layout/NavBara";
 import FacitList from "./components/facit/FacitList";
 import FacitDetail from "./components/facit/FacitDetail";
@@ -13,7 +12,7 @@ import Footer from "./components/layout/Footer";
 import RegisterPage from "./components/page/RegisterPage"
 import LoginPage from "./components/page/LoginPage";
 import ReservationList from "./components/reservation/ReservationList";
-
+import Post from "./components/page/Post";
 
 function App() {
   return (

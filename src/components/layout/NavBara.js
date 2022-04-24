@@ -37,11 +37,11 @@ function NavBara() {
                   {
                     user.role === "User" ? (
                       <>
-                      <Nav.Link href="/" style={{color:"white"}}>{user.userName}님 반갑습니다.</Nav.Link>
+                      <Nav.Link style={{color:"white"}}>{user.userName}님 반갑습니다.</Nav.Link>
                       </>
                     )
                     : (
-                      <Nav.Link href="/" style={{color:"white"}}>{user.userName}님 반갑습니다.</Nav.Link>
+                      <Nav.Link style={{color:"white"}}>{user.userName}님 반갑습니다.</Nav.Link>
                     )
                   }
                 </>
@@ -99,7 +99,6 @@ const styles = {
     move : {
       position: 'absolute',
       right: '100px'
-
   },
 }
   
