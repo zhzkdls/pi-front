@@ -18,7 +18,11 @@ import { selectUser } from '../../_reducers';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import { RESERVATIONBACKEND } from '../../_actions/types';
-
+import DatePicker from 'react-datepicker';
+import "react-datepicker/dist/react-datepicker.css";
+import addDays from "date-fns/addDays";
+import {ko} from "date-fns/esm/locale"
+import "../../App.css";
 
 function FacitDetail() {
   const user = useSelector(selectUser);
@@ -27,7 +31,7 @@ function FacitDetail() {
   const isMount = UseIsMount;
 
   const NoUser = withReactContent(Swal);
-
+  const [startDate, setStartDate] = useState(new Date());
 
   const [facit, setFacit] = useState({
       fcSeq:"",
@@ -56,24 +60,27 @@ function FacitDetail() {
 
   return ( 
   <div>
-    <div style={styles.div} className='div'>
-        <div>
+    <div style={styles.div} className='div container'>
+        <div >
           <Card border="dark" style={styles.form}>
             <Card.Header>체육시설</Card.Header>
             <Card.Body>
               <Card.Text>
-              <h2> 장소 : {facit.faciNm}</h2><br/>
-              <h2> 주소 : {facit.faciRoadAddr1}</h2><br/>
-              <h2> 사이트 : {facit.faciHomepage}</h2><br/>
-              <h2> 전화번호 : {facit.fmngUserTel}</h2><br/>
-              <h2> 시설 : {facit.fcobNm}</h2>
+              <h4> 장소 : {facit.faciNm}</h4><br/>
+              <h4> 주소 : {facit.faciRoadAddr1}</h4><br/>
+              <h4> 사이트 : {facit.faciHomepage}</h4><br/>
+              <h4> 전화번호 : {facit.fmngUserTel}</h4><br/>
+              <h4> 시설 : {facit.fcobNm}</h4>
               </Card.Text>
             </Card.Body>
           </Card>
         </div>
         <br />
-        
-        <FacitDetailDatePicker />
+        <div style={styles.BBk}>
+        <DatePicker  name="rsvtYmd" selected={startDate} onChange={date => setStartDate(date)} minDate={addDays(new Date(), 1)} 
+            maxDate={addDays(new Date(), 14)} locale={ko} disabledKeyboardNavigation inline showOtherMonths="false"/>
+        {/* <FacitDetailDatePicker className=" mx-auto my-3 py-3 rounded-4 "/> */}
+        </div>
         {user ?(
           <>
             <Link to={"/reservation/" + fcSeq} style={styles.Pick} variant="primary">예약하기</Link>
@@ -87,17 +94,17 @@ function FacitDetail() {
         }
         <Link to={"/reservationList/" + fcSeq} style={styles.Pickm} variant="primary">예약현황</Link>
     </div>
-    <TabsUnstyled defaultValue={''}>
+    <TabsUnstyled className="container mx-auto my-3 py-3 rounded-4 shadow" defaultValue={2}>
       <TabsList>
           <Tab>이용안내</Tab>
           <Tab>장소안내</Tab>
           <Tab>이용후기</Tab>
       </TabsList>
       <TabPanel value={0}> 
-      <strong>필수 준수사항</strong>
-      <br/><br/>
+      <strong style={styles.p}>필수 준수사항</strong>
+      <br/>
       <hr />
-      <p>
+      <p style={styles.p}>
         모든 서비스의 이용은 담당 기관의 규정에 따릅니다. 각 시설의 규정 및 허가조건을 반드시 준수하여야 합니다.
         각 관리기관의 시설물과 부대시설을 이용함에 있어 담당자들과 협의 후 사용합니다.
         각 관리기관의 사고 발생시 부산시청에서는 어떠한 책임도 지지않습니다.
@@ -105,12 +112,12 @@ function FacitDetail() {
         본 사이트와 각 관리기관의 규정을 위반할 시에는 시설이용 취소 및 시설이용 불허의 조치를 취할 수 있습니다.
         접수 시간을 기준으로 브라우저에서 새로고침을 하면 변경된 정보를 볼 수 있습니다.
       </p>
-      <strong>시설예약</strong>
-      <br/><br/>
+      <strong style={styles.p}>시설예약</strong>
+      <br/>
       <hr />
-      <p>     
+      <p style={styles.p}>     
         비회원일 경우에는 실명 확인을 통하여 사용하실 수 있으며 부산시 통합 회원에 가입하시게 되면 부산시에서 제공하는 다양하고 많은 혜택을 받으실 수 있습니다.
-      </p>
+      </p><br/>
 
     </TabPanel>
       <TabPanel value={1}>
@@ -152,7 +159,7 @@ const Tab = styled(TabUnstyled)`
   font-weight: bold;
   color: white;
   background-color: transparent;
-  width: 20%;
+  width: 50%;
   padding: 12px 16px;
   margin: 6px 6px;
   border: none;
@@ -194,29 +201,32 @@ const TabsList = styled(TabsListUnstyled)`
 `;
 
 const styles = {
+  p : {
+    marginLeft: '30px',
+  },
   div : {
     color: '#483D8B',
   },
 
   form : {
       position: 'absolute',
-      marginTop: '150px',
-      marginLeft: '950px',
+      marginTop: '165px',
+      marginLeft: '700px',
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'center',
       padding: '1em',
-      width: '40rem',
+      width: '35rem',
 
   },
 
 
   Pick : {
     position: 'absolute',
-    padding: '1em', /* 여백으로 높이설정 */
+    padding: '1.2em', /* 여백으로 높이설정 */
     width: '8%',
     display: 'flex',
-    marginLeft: '1100px',
+    marginLeft: '790px',
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
@@ -224,16 +234,16 @@ const styles = {
     color: '#FFFFFF',
     background: '#007FFF',
     borderRadius: '10px',
-    bottom: '22%',   
+    bottom: '28%',   
     textDecoration: 'none'
   },
 
   Pickm : {
     position: 'absolute',
-    padding: '1em', /* 여백으로 높이설정 */
+    padding: '1.2em', /* 여백으로 높이설정 */
     width: '8%',
     display: 'flex',
-    marginLeft: '1300px',
+    marginLeft: '1020px',
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
@@ -241,8 +251,15 @@ const styles = {
     color: '#FFFFFF',
     background: '#007FFF',
     borderRadius: '10px',
-    bottom: '22%',   
+    bottom: '28%',   
     textDecoration: 'none'
+  },
+
+  BBk : { //달력
+    padding: '4em', /* 여백으로 높이설정 */
+    right: '48%',
+    bottom: '20%',
+    position: 'absolute',
   },
 }
 

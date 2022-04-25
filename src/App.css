@@ -338,14 +338,10 @@ input, select, textarea{font-size:0.8em!important}
   top: 14px !important;
  }
 .react-datepicker__day-name, .react-datepicker__day {    /* /위로/왼쪽/아래/오른쪽/   */
-  margin: 1.3rem 1.9rem 1.2rem 3.7rem !important; 
+  margin: 1.3rem 1.9rem 1.2rem 1.7rem !important; 
  } 
-.saturday {
-  color: rgb(0, 0, 255) !important; 
- }
-.sunday {
-  color: rgb(255, 0, 0) !important; 
- }
+
+
 .react-datepicker__day--disabled {
   color: #cccccc !important; 
  }
@@ -353,6 +349,8 @@ input, select, textarea{font-size:0.8em!important}
 
  .rounded-4{border-radius: 15px!important;}
  
+
+
 .div {
   margin-bottom: 750px;
 }

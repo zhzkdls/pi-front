@@ -148,7 +148,7 @@ const styles = {
   form : {
     position: 'absolute',
     marginTop: '200px',
-    marginLeft: '950px',
+    marginLeft: '850px',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
@@ -204,35 +204,11 @@ const styles = {
 
   },
 
-  BBs : { //예약날짜선택
-    position: 'absolute',
-    flex: 1,
-    flexDirection: 'row',
-    marginTop: '3%',
-    flexDirection: 'column',
-    
-    padding: '1em', /* 여백으로 높이설정 */
-    position: 'fixed',
-    right: '55%',
-    bottom: '77%',
-    fontSize: '22px',
-    borderRadius: '20px',
-    width: '10%',
-    height: '70px',
-    
-
-  },
-
   BBk : { //달력
     
     padding: '2em', /* 여백으로 높이설정 */
-    marginTop: '5%',
-    right: '37%',
+    right: '45%',
     bottom: '20%',
-    borderRadius: '30px',
-    color: '#000000',
-    
-    // position: 'fixed',
     position: 'absolute',
 
   },

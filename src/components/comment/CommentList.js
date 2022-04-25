@@ -10,7 +10,7 @@ class CommentList extends Component {
         return (
             <div className="col-md-8">
                 <h3 className="reply"></h3>
-                <h2 style={{display}}>이용후기가 없습니다. 윗쪽을 클릭하여 이용후기를 등록 하세요.</h2>
+                <h2 style={{display}}>이용후기가 없습니다. 윗쪽을 클릭하여 이용후기를 등록 하세요.</h2><br/><br/>
                 <ul className="list-group mx-auto shadow">
                     {
                         comments.map((item,index)=>
