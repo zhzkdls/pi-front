@@ -241,7 +241,7 @@ const MapContainer = ({ searchPlace, faci, pharmacy, parking, faciSearch, faciSe
         '            <span class="arrow up"></span>' +
         '        </li>' +     
         '        <li>' +
-        '            <a href="http://localhost:3000/facit/'+ list[i].fcSeq +'" class="title" target="_blank" >바로가기</a>' +
+        '            <a href="http://' + `${RESERVATIONBACKEND}`+ '/facit/' + list[i].fcSeq + '" class="title" target="_blank" >바로가기</a>' +
         '            <span class="arrow up"></span>' +
         '        </li>' +       
         '    </ul>' +
