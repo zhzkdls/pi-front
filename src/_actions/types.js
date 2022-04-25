@@ -4,9 +4,9 @@ export const REGISTER_USER = "REGISTER_USER";
 export const LOGOUT_USER = "LOGOUT_USER";
 
 
-// export const RESERVATIONBACKEND = "http://192.168.0.36";
-// export const MEMBERBACKEND = "http://192.168.0.36";
-// export const BOARDBACKEND = "http://192.168.0.36";
+// export const RESERVATIONBACKEND = "http://192.168.0.36:8081";
+// export const MEMBERBACKEND = "http://192.168.0.36:8080";
+// export const BOARDBACKEND = "http://192.168.0.36:8083";
 
 export const RESERVATIONBACKEND = "http://54.153.15.108:8080";
 export const MEMBERBACKEND = "http://18.144.161.2:8080";
