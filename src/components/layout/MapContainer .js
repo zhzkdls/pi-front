@@ -4,7 +4,7 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import "../../App.css";
 import { Link } from "react-router-dom";
 import BoardSummary from "../board/BoardSummary";
-import { RESERVATIONBACKEND } from "../../_actions/types";
+import { RESERVATIONBACKEND, FACITDETAIL } from "../../_actions/types";
 
 const { kakao } = window;
 
@@ -241,7 +241,7 @@ const MapContainer = ({ searchPlace, faci, pharmacy, parking, faciSearch, faciSe
         '            <span class="arrow up"></span>' +
         '        </li>' +     
         '        <li>' +
-        '            <a href="' + `${RESERVATIONBACKEND}`+ '/facit/' + list[i].fcSeq + '" class="title" target="_blank" >바로가기</a>' +
+        '            <a href="' + `${FACITDETAIL}`+ '/facit/' + list[i].fcSeq + '" class="title" target="_blank" >바로가기</a>' +
         '            <span class="arrow up"></span>' +
         '        </li>' +       
         '    </ul>' +
