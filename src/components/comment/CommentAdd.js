@@ -19,7 +19,7 @@ const CommentAdd = () => {
             content: content,
             stat: 1,
         }
-        axios.post(`${BOARDBACKEND}:8083/comments/add`, body)
+        axios.post(`${BOARDBACKEND}/comments/add`, body)
             .then(async res => {
                 document.location.href = "/facit/:fcSeq "
             })

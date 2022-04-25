@@ -9,7 +9,7 @@ const ReservationItems = (props) => {
     const [message, setMessage] = useState("");
 
     const deleteReservation = () => {
-        fetch(`${RESERVATIONBACKEND}:8081/reservation/delete/${rsvtSeq}`, {
+        fetch(`${RESERVATIONBACKEND}/reservation/delete/${rsvtSeq}`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json; charset=utf-8",
@@ -41,7 +41,7 @@ const ReservationItems = (props) => {
                 <td>{rsvtMdfcnDt}</td>
                 <td>{operHr}</td>
                 <td>{stat}</td>
-                <td><Link to={`${RESERVATIONBACKEND}:8081/reservation/edit/` + rsvtSeq} className="btn btn-primary" variant="primary">예약수정</Link></td>
+                <td><Link to={`${RESERVATIONBACKEND}/reservation/edit/` + rsvtSeq} className="btn btn-primary" variant="primary">예약수정</Link></td>
                 <td>
                     <Button type="button" onClick={deleteReservation} className="btn btn-primary" variant="primary">예약취소</Button></td>
                 </tr>

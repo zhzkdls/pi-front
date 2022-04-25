@@ -24,7 +24,7 @@ const NewPost = () => {
                 stat: 1,
             }
 
-            axios.post(`${BOARDBACKEND}:8083/api/posts`, body)
+            axios.post(`${BOARDBACKEND}/api/posts`, body)
             .then(async res => {
                 console.log(res.data);
                 // await uploadFiles(res.data); 

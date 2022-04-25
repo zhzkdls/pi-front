@@ -8,7 +8,7 @@ import {
 
 export function loginUser(dataTosubmit){
     
-    const request = axios.post(`${MEMBERBACKEND}:8080/member/login`,dataTosubmit)
+    const request = axios.post(`${MEMBERBACKEND}/member/login`,dataTosubmit)
     .then(res =>res.data)
     
     return {
@@ -19,7 +19,7 @@ export function loginUser(dataTosubmit){
 
 export function registerUser(dataTosubmit){
     
-    const request = axios.post(`${MEMBERBACKEND}:8080/member/save`,dataTosubmit )
+    const request = axios.post(`${MEMBERBACKEND}/member/save`,dataTosubmit )
     .then(res =>res.data)
 
     return {

@@ -16,7 +16,7 @@ const MapContainer = ({ searchPlace, faci, pharmacy, parking, faciSearch, faciSe
   let dataorder = "";
 
   useEffect(() => {
-    fetch(`${RESERVATIONBACKEND}:8081/tbfacit/getAll`)
+    fetch(`${RESERVATIONBACKEND}/tbfacit/getAll`)
     .then((res) => res.json())
     .then((res) => {
       setFacit(res);

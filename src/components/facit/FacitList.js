@@ -7,7 +7,7 @@ function FacitList() {
   const [facits, setFacits] = useState([]);
 
   useEffect(() => {
-    fetch(`${RESERVATIONBACKEND}:8081/tbfacit/getAll`)
+    fetch(`${RESERVATIONBACKEND}/tbfacit/getAll`)
       .then((res) => res.json())
       .then((res) => {
         setFacits(res);

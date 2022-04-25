@@ -26,7 +26,7 @@ const PostDetail = () => {
 
     // 해당 게시글 내용 불러오기 
     const getPost = () => {
-        const url = `${BOARDBACKEND}:8083/api/find/${pstgSeq}`;
+        const url = `${BOARDBACKEND}/api/find/${pstgSeq}`;
         const body = {
             pstgTitle: pstgTitle,
             pstgCn: pstgCn,
@@ -48,7 +48,7 @@ const PostDetail = () => {
 
     // 게시글 삭제
     const handleDelete = () => {
-        const postUrl = `${BOARDBACKEND}:8083/api/delete/${pstgSeq}`;
+        const postUrl = `${BOARDBACKEND}/api/delete/${pstgSeq}`;
 
         axios.post(postUrl)
         .then(res => {
@@ -62,7 +62,7 @@ const PostDetail = () => {
 
     // 게시글 수정
     const handleUpdate = () => {
-        const url = `${BOARDBACKEND}:8083/api/update/${pstgSeq}`;
+        const url = `${BOARDBACKEND}/api/update/${pstgSeq}`;
         const body = { pstgTitle, pstgCn, stat, pstgPblrName, pstgSeq}
           
         axios.post(url, body)

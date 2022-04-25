@@ -14,7 +14,7 @@ function FacitDetailDatePicker() {
     const months = ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"];
 
     useEffect(() => {
-        fetch(`${RESERVATIONBACKEND}:8081/hldy/getAllByhldySeq/${fcSeq}`)
+        fetch(`${RESERVATIONBACKEND}/hldy/getAllByhldySeq/${fcSeq}`)
         .then((res) => res.json())
         .then((data) => {
             for(let i = 0; i < data.length; i++){

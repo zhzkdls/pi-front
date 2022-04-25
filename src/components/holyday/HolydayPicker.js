@@ -25,7 +25,7 @@ function HolydayPicker() {
         for (let i = 0; i < startDate.length; i++) {
             holyDay.tcbizBgngYmd = startDate[i];
             holyDay.fcSeq=fcSeq;
-            fetch(`${RESERVATIONBACKEND}:8081/hldy/save`, {
+            fetch(`${RESERVATIONBACKEND}/hldy/save`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json; charset=utf-8",

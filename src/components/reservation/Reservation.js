@@ -56,7 +56,7 @@ const Reservation = () => {
       reservation.userId = user.userId,
       reservation.userTel = user.userPhone,
       
-      axios.post(`${RESERVATIONBACKEND}:8081/reservation/save`, reservation)
+      axios.post(`${RESERVATIONBACKEND}/reservation/save`, reservation)
       .then(response => response.data)
       .then(message => {
         setMessage(message);

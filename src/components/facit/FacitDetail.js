@@ -46,7 +46,7 @@ function FacitDetail() {
   }
 
   useEffect(() => {
-      axios.get(`${RESERVATIONBACKEND}:8081/tbfacit/get/${fcSeq}`)
+      axios.get(`${RESERVATIONBACKEND}/tbfacit/get/${fcSeq}`)
       .then((res) => {
         if (isMount) {
             setFacit(res.data);

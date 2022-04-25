@@ -9,7 +9,7 @@ class BoardSummary extends Component {
     }
     
     componentDidMount() {
-      this.handleGetList(`${BOARDBACKEND}:8083/api/getAll`);
+      this.handleGetList(`${BOARDBACKEND}/api/getAll`);
     }
      // 게시글 목록 불러오기 
      handleGetList = (url) => {

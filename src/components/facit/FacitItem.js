@@ -12,7 +12,7 @@ function FacitItem(props) {
     const [message, setMessage] = useState("");
 
     const deleteFacit = () => {
-        fetch(`${RESERVATIONBACKEND}:8081/tbfacit/delete/${fcSeq}`, {
+        fetch(`${RESERVATIONBACKEND}/tbfacit/delete/${fcSeq}`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json; charset=utf-8",

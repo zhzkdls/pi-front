@@ -9,7 +9,7 @@ const ReservationListByFcSeq = () => {
     const fcSeq = useParams().fcSeq;
   
     useEffect(() => {
-      fetch(`${RESERVATIONBACKEND}:8081/reservation/getAll/${fcSeq}`)
+      fetch(`${RESERVATIONBACKEND}/reservation/getAll/${fcSeq}`)
         .then((res) => res.json())
         .then((res) => {
           setReservations(res);

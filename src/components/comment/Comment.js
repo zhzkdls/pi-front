@@ -40,7 +40,7 @@ class Comment extends Component {
     // 삭제를 클릭을 할떄 axios 실행(공지사항에서 가져온 코드)
     handleDelComment = ()=>{
       // 여기서 어떤 걸 써야될까?
-      const postUrl = `${BOARDBACKEND}:8083/comments/delete/${id}`;
+      const postUrl = `${BOARDBACKEND}/comments/delete/${id}`;
       axios.post(postUrl)
       .then(res => {
           window.location.href="/facit/:fcSeq"
