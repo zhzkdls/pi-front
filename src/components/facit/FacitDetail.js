@@ -131,7 +131,7 @@ function FacitDetail() {
         <br/>
         <hr />
           <form >
-            <Comment/>
+            <Comment fcSeq={fcSeq}/>
           </form>
         </TabPanel>
     </TabsUnstyled>

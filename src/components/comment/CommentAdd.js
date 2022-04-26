@@ -21,7 +21,7 @@ const CommentAdd = () => {
         }
         axios.post(`${BOARDBACKEND}/comments/add`, body)
             .then(async res => {
-                document.location.href = "/facit/:fcSeq "
+                document.location.href = "/facit/fcSeq "
             })
             .catch(error => {
                 console.log(error);
