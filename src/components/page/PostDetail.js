@@ -123,7 +123,9 @@ const PostDetail = () => {
                             )
                         ) : 
                         (
-                        <></>
+                        <>
+                            <Link to="/post" style={styles.cancelBtn}>목록</Link>
+                        </>
                     )}
                     </>
                 ):(
