@@ -8,14 +8,12 @@ import { BOARDBACKEND } from '../../_actions/types';
 const NewPost = () => {
 
     const [pstgTitle, setPstgTitle] = useState(); // 제목
-    const [pstgPblrName, setPstgPblrName] = useState(""); // 작성자
     const [pstgCn, setPstgCn] = useState(""); // 내용
-    const [stat, setStat] = useState(1); //삭제할떄 상태 값
 
     const user = useSelector(selectUser);
 
     const handleSubmit = () => {
-        if(pstgTitle === '' || pstgCn === '' || pstgPblrName === '') alert('모든 내용을 다 입력하세요');
+        if(pstgTitle === '' || pstgCn === '') alert('모든 내용을 다 입력하세요');
         else {
             const body = {
                 pstgTitle: pstgTitle,
