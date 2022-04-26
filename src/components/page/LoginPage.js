@@ -4,6 +4,9 @@ import { Link, useNavigate } from 'react-router-dom';
 import {loginUser} from '../../_actions/user_action'
 import { Card, Form, Button } from 'react-bootstrap';
 import BlankAuth from '../layout/BlankAuth';
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+
 
 function LoginPage() {
   const dispatch = useDispatch();
@@ -11,11 +14,17 @@ function LoginPage() {
   const [userId, setUserId] = useState('');
   const [userPassword, setUserPassword] = useState('');
 
+  const FailedLogin = withReactContent(Swal);
+  const MemberMissMatch = withReactContent(Swal);
+
   const onSubmit =(e) =>{
     e.preventDefault();
 
     if(userId.length === 0 || userPassword.length === 0) {
-        alert("아이디 혹은 비밀번호를 입력해 주세요.");
+        FailedLogin.fire({
+            title: "아이디 혹은 비밀번호를 입력해 주세요.",
+            icon: 'warning',
+          });
         return;
     }
 
@@ -30,7 +39,10 @@ function LoginPage() {
         if(message !== null){
             navigate("/");
         }else{
-            alert("아이디 혹은 비밀번호를 확인해주세요.")
+            MemberMissMatch.fire({
+                title: "아이디 혹은 비밀번호를 확인해 주세요.",
+                icon: 'error',
+            });
         }
     });
   }

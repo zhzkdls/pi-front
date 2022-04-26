@@ -40,9 +40,9 @@ function FacitMap2(props) {
 
     return ( 
         <div>
-            <div id="map" style={ {width:"1600px", height:"600px", alignItems:"center"} }></div>
+            <div id="map" style={ {width:"1100px", height:"600px", alignItems:"center"} }></div>
         </div>
      );
-}
+}   
 
 export default FacitMap2;
