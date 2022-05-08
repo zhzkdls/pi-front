@@ -29,9 +29,56 @@
 시설예약 [🚀](https://github.com/zhzkdls/PI-reservation.git) 
 
 
-## 😏 미리보기
+## 주요기능별 시연 GIF 😏
 
-![Hnet-image](https://user-images.githubusercontent.com/93629804/167285536-a2a48220-a6e2-41f6-9d17-91771df01b67.gif)
+<details>
+  <summary> 이미지마크,시설검색, 예약 상세페이지  </summary>
+  
+  <details>
+  <summary> 이미지마크 </summary>
+    
+  </details>
+  
+  <details>
+  <summary> 시설검색 </summary>
+   
+  </details>
+  
+  <details>
+  <summary> 예약 상세페이지 </summary>
+    <img width="727" src="https://user-images.githubusercontent.com/93629804/167287321-9ff6c3b1-3378-41c6-b0ef-656dbdffb0e5.gif"/>
+  </details>
+  
+</details>
+
+---
+
+<details>
+  <summary> 회원가입, 로그인, 예약하기, 로그아웃 </summary>
+  
+  <details>
+  <summary> 회원가입 </summary>
+    <img width="727" src="https://user-images.githubusercontent.com/93629804/167286253-fd05eea8-eed4-4055-b70f-bc09fd655779.gif"/>
+  </details>
+  
+  <details>
+  <summary> 로그인 </summary>
+    <img width="727" src="https://user-images.githubusercontent.com/93629804/167286371-100e368c-6e69-4211-a5a9-f5a6513b3e62.gif"/>
+  </details>
+  
+  <details>
+  <summary> 예약하기 </summary>
+    <img width="727" src="https://user-images.githubusercontent.com/93629804/167286762-607c855f-7600-41f3-b7e3-fdeddd4ac723.gif"/>
+  </details>
+ 
+  <details>
+   <summary> 로그아웃 </summary>
+     <img width="727" src="복사한 동영상 링크"/>
+   </details>
+  
+</details>
+
+
 
 
 ## 😁 Team Introduction
