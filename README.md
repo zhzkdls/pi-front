@@ -21,7 +21,32 @@
 ![MySQL](https://img.shields.io/badge/MySQL-4479A1.svg?&style=for-the-badge&logo=MySQL&logoColor=white)
 
 
-## 설치 및 실행 방법
+
+
+
+📝 Back-end Repository
+---
+
+공지사항 [🚀](https://github.com/zhzkdls/PI-board.git)   
+사용자 [🚀](https://github.com/zhzkdls/PI-loginAndManager.git)   
+시설예약 [🚀](https://github.com/zhzkdls/PI-reservation.git) 
+
+
+😁 Team Introduction
+---
+
+| 이름(깃헙링크) | Position & Role|
+| ------- | ----- |
+| [김하영](https://github.com/zhzkdls) | 💻 Full-stack, 🌟 Team member|
+| [서영선](https://github.com/YeongSeon1) | 💻 Full-stack, ⏰ Team leader |
+| [김민우](https://github.com/gomino90) | 💻 Full-stack, 📝 Team member |
+
+
+
+
+🌟  설치 및 실행 방법
+---
+
 ```sh
 npm install
 ```
@@ -29,56 +54,8 @@ npm install
 npm start
 ```
 
-
-## Back-end Repository
-공지사항 [🚀](https://github.com/zhzkdls/PI-board.git)   
-사용자 [🚀](https://github.com/zhzkdls/PI-loginAndManager.git)   
-시설예약 [🚀](https://github.com/zhzkdls/PI-reservation.git) 
-
-
-# 😁 Team Introduction
-<table>
-    <tr>
-        <td align="center" width="40px" height="60px">
-            <br />
-            <a href="https://github.com/zhzkdls">김하영</a>
-        </td>
-       <td align="center" width="40px" height="60px">
-            <br />
-            <a href="https://github.com/YeongSeon1">서영선</a>
-        </td>
-         <td align="center" width="40px" height="60px">
-            <br />
-           <a href="https://github.com/gomino90">김민우</a>
-        </td>
-    </tr>
-    <tr>
-      <td align="center">
-        <a>Hayoung</a>
-       </td>
-      <td align="center">
-        <a>Youngsun</a>
-      </td>
-        <td align="center">
-            <a>Mino</a>
-        </td>
-    </tr>
-    <tr>
-      <td align="center">
-        <a>Full-stack</a>
-       </td>
-      <td align="center">
-        <a>Full-stack</a>
-      </td>
-        <td align="center">
-            <a>Full-stack</a>
-        </td>
-    </tr>
-</table>
-
-
-
-## redux 
+⏰ redux 
+---
 
 ```sh
 npm install redux-saga
