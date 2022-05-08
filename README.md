@@ -32,16 +32,21 @@
 ## 주요기능별 시연 GIF 😏
 
 <details>
-  <summary> 이미지마크,시설검색, 예약 상세페이지  </summary>
+  <summary> 이미지마크,지역검색,종목별검색 , 예약 상세페이지  </summary>
   
   <details>
   <summary> 이미지마크 </summary>
-    
+    <img width="727" src="https://user-images.githubusercontent.com/93629804/167288026-ce0a726a-7185-4b3c-b12e-8cefabb9c5ca.gif"/>
   </details>
   
   <details>
-  <summary> 시설검색 </summary>
-   
+  <summary> 지역검색 </summary>
+    <img width="727" src="https://user-images.githubusercontent.com/93629804/167288110-b79926da-1609-4156-8cad-f19ce1a5f3d9.gif"/>
+  </details>
+ 
+  <details>
+  <summary> 종목별검색 </summary>
+    <img width="727" src="https://user-images.githubusercontent.com/93629804/167288208-e181c366-2944-4609-8f84-74ec7d40ecb0.gif"/>
   </details>
   
   <details>
