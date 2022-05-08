@@ -78,10 +78,38 @@
  
   <details>
    <summary> 로그아웃 </summary>
-     <img width="727" src="복사한 동영상 링크"/>
+     <img width="727" src="https://user-images.githubusercontent.com/93629804/167289253-6533fe8e-2060-4224-b87b-f3a831a356a9.gif"/>
    </details>
   
 </details>
+
+---
+
+<details>
+  <summary> 관리자 로그인, 공지사항 목록 및 수정, 공지사항 등록, 공지사항 삭제 </summary>
+  
+  <details>
+  <summary> 관리자 로그인 </summary>
+    <img width="727" src="https://user-images.githubusercontent.com/93629804/167289361-adc87d55-f635-409d-8664-06bf6a3386d5.gif"/>
+  </details>
+  
+  <details>
+  <summary> 공지사항 목록 및 수정 </summary>
+    <img width="727" src="https://user-images.githubusercontent.com/93629804/167289447-63f2cd39-b858-4b44-85bc-ed2b5f6945f7.gif"/>
+  </details>
+  
+  <details>
+  <summary> 공지사항 등록 </summary>
+    <img width="727" src="https://user-images.githubusercontent.com/93629804/167289504-56a9c94c-ab83-4592-81b9-6f020887be5c.gif"/>
+  </details>
+ 
+  <details>
+   <summary> 공지사항 삭제 </summary>
+     <img width="727" src="https://user-images.githubusercontent.com/93629804/167289582-82dee5d5-8754-4ca6-896f-a649fa1a760f.gif"/>
+   </details>
+  
+</details>
+
 
 
 
