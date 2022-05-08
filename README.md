@@ -2,8 +2,8 @@
 
 
  
-✨ Feature
----
+## ✨ Feature
+
 
 - 공공데이터 API 연게 하여 시설 정보를 제공 받을 수 있습니다.
 - 체육시설 주변 편이시설(주차장, 약국)정보를 제공 받을 수 있습니다.
@@ -12,8 +12,8 @@
 - 시설에약을 할 수 있는 날짜와 시간을 클릭하면 예약을 할 수 있습니다.  
 
 
-⚒  Stack
----
+## ⚒  Stack
+
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 ![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white)
 ![Java](https://img.shields.io/badge/Java-007396.svg?&style=for-the-badge&logo=Java&logoColor=white)
@@ -21,19 +21,21 @@
 ![MySQL](https://img.shields.io/badge/MySQL-4479A1.svg?&style=for-the-badge&logo=MySQL&logoColor=white)
 
 
+## 📝 Back-end Repository
 
-
-
-📝 Back-end Repository
----
 
 공지사항 [🚀](https://github.com/zhzkdls/PI-board.git)   
 사용자 [🚀](https://github.com/zhzkdls/PI-loginAndManager.git)   
 시설예약 [🚀](https://github.com/zhzkdls/PI-reservation.git) 
 
 
-😁 Team Introduction
----
+## 😏 미리보기
+
+![Hnet-image](https://user-images.githubusercontent.com/93629804/167285536-a2a48220-a6e2-41f6-9d17-91771df01b67.gif)
+
+
+## 😁 Team Introduction
+
 
 | 이름(깃헙링크) | Position & Role|
 | ------- | ----- |
@@ -44,8 +46,8 @@
 
 
 
-🌟  설치 및 실행 방법
----
+## 🌟  설치 및 실행 방법
+
 
 ```sh
 npm install
@@ -54,8 +56,8 @@ npm install
 npm start
 ```
 
-⏰ redux 
----
+## ⏰ redux 
+
 
 ```sh
 npm install redux-saga
