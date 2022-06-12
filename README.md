@@ -24,8 +24,16 @@
 
 
 공지사항 [🚀](https://github.com/zhzkdls/PI-board.git)   
+
 사용자 [🚀](https://github.com/zhzkdls/PI-loginAndManager.git)   
+
 시설예약 [🚀](https://github.com/zhzkdls/PI-reservation.git) 
+
+## 📝 Front-end improvements
+
+프론트엔드 [⚒]('') 
+
+백엔드 [⚒]('') (준비중) 
 
 
 ## 주요기능별 시연 GIF 😏
