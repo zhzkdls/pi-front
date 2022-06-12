@@ -1,6 +1,4 @@
-# 부산시 공공체육시설 서비스
-
-
+# 공공체육시설 정보 제공 및 예약 시스템
  
 ## ✨ Feature
 
@@ -10,6 +8,7 @@
 - 이용후기를 이용한 시설문제에 대한 피드백을 받을 수 있습니다. 
 - 공지사항을 사용함으로써 시설상황을 알 수 있습니다.
 - 시설에약을 할 수 있는 날짜와 시간을 클릭하면 예약을 할 수 있습니다.  
+- 야외시설에 대한 날씨정보를 제공합니다.
 
 
 ## ⚒  Stack
@@ -111,7 +110,9 @@
 </details>
 
 
-
+## 😁 기간 및 인원
+- 약 2달간 진행(22/2 ~22/4)
+- 3명에서 2명됨
 
 
 ## 😁 Team Introduction
@@ -119,9 +120,8 @@
 
 | 이름(깃헙링크) | Position & Role|
 | ------- | ----- |
-| [김하영](https://github.com/zhzkdls) | 💻 Full-stack, 🌟 Team member|
-| [서영선](https://github.com/YeongSeon1) | 💻 Full-stack, ⏰ Team leader |
-| [김민우](https://github.com/gomino90) | 💻 Full-stack, 📝 Team member |
+| [김하영](https://github.com/zhzkdls) | 💻 Full-stack, 🌟 Team leader|
+| [서영선](https://github.com/YeongSeon1) | 💻 Full-stack, ⏰ Team member |
 
 
 
