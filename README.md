@@ -22,21 +22,20 @@
 
 ## 📝 Back-end Repository
 
+ > [공지사항 - backend project →](https://github.com/zhzkdls/PI-board.git)   
+   
+ > [사용자 - backend project →](https://github.com/zhzkdls/PI-loginAndManager.git)   
 
-공지사항 [🚀](https://github.com/zhzkdls/PI-board.git)   
+ > [시설예약 - backend project →](https://github.com/zhzkdls/PI-reservation.git)
 
-사용자 [🚀](https://github.com/zhzkdls/PI-loginAndManager.git)   
-
-시설예약 [🚀](https://github.com/zhzkdls/PI-reservation.git) 
 
 ## 📝 Front-end improvements
 
 프론트엔드 [⚒]('') (준비중) 
 
-백엔드 [⚒]('') (준비중) 
 
 
-## 주요기능별 시연 GIF 😏
+## 주요기능별 시연 GIF  😏
 
 <details>
   <summary> 이미지마크,지역검색,종목별검색 , 예약 상세페이지  </summary>
@@ -118,7 +117,7 @@
 </details>
 
 
-## 😁 기간 및 인원
+## ⏰ 기간 및 인원
 - 약 2달간 진행(22/2 ~22/4)
 - 3명에서 2명됨
 
@@ -144,7 +143,7 @@ npm install
 npm start
 ```
 
-## ⏰ redux 
+## 🚀 redux 
 
 
 ```sh
